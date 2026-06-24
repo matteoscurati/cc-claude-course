@@ -488,6 +488,31 @@
         <div class="src-row"><a class="src" href="https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills" target="_blank" rel="noopener">Lessons from building Claude Code — skills</a></div></div>
       </div>
 
+      <h3>Skill o Plugin? Non sono la stessa cosa</h3>
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Plugin</div>
+        <p>Un <strong>pacchetto distribuibile</strong> che estende Claude Code e può impacchettare insieme più componenti — skills, subagents, hooks, server MCP (e altro) — con un manifest <code>plugin.json</code> (nome, versione, autore). Si condivide e si installa tramite <em>marketplace</em>, con skill «namespaced» (es. <code>/mio-plugin:hello</code>) per evitare conflitti.</p>
+        <div class="src-row">
+          <a class="src" href="https://code.claude.com/docs/en/plugins" target="_blank" rel="noopener">Claude Code — Plugins</a>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>🧩 Skill = un mattone</h3>
+          <p>Una <strong>singola capacità</strong> (cartella con <code>SKILL.md</code>) che il modello carica <em>on demand</em> quando è rilevante. Può vivere da sola in <code>.claude/</code>.</p>
+        </div>
+        <div class="card flat">
+          <h3>📦 Plugin = la scatola</h3>
+          <p>Raggruppa <strong>più componenti</strong> (skills + subagents + hooks + MCP) in un pacchetto <strong>versionabile e condivisibile</strong>, installabile con <code>/plugin install</code> da un marketplace.</p>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="c-ico">📦</span>
+        <div>In una frase: <strong>la skill è un singolo strumento; il plugin è la confezione installabile che ne raggruppa molti</strong> e li distribuisce al team o alla community — con versioni e aggiornamenti.
+        <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/plugins" target="_blank" rel="noopener">Claude Code — Plugins</a> <a class="src" href="https://code.claude.com/docs/en/discover-plugins" target="_blank" rel="noopener">Claude Code — Discover &amp; install plugins</a></div></div>
+      </div>
+
       <!-- WIDGET: steering helper -->
       <div class="widget" id="w-steer">
         <div class="widget-head">

@@ -51,6 +51,8 @@ Fonti primarie:
 - Claude Code MCP: https://code.claude.com/docs/en/mcp
 - Claude Code subagents: https://docs.anthropic.com/en/docs/claude-code/sub-agents
 - Claude Code hooks: https://docs.anthropic.com/en/docs/claude-code/hooks
+- Claude Code plugins (creare ed estendere): https://code.claude.com/docs/en/plugins
+- Claude Code discover and install plugins (marketplace): https://code.claude.com/docs/en/discover-plugins
 
 Fonti di approfondimento ufficiali:
 

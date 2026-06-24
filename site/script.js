@@ -495,6 +495,9 @@
       { sc: "Ripeti sempre lo stesso prompt / playbook", pick: "Skill",
         why: "Istruzioni, script e risorse caricati on demand: incapsuli la procedura una volta e Claude la richiama quando serve.",
         src: ["Lessons — skills", "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills"] },
+      { sc: "Vuoi condividere skill, agenti o hook col team o la community", pick: "Plugin",
+        why: "Un plugin impacchetta più componenti (skills, subagents, hooks, MCP) in un pacchetto versionabile, distribuito via marketplace e installabile con /plugin install.",
+        src: ["Claude Code — Plugins", "https://code.claude.com/docs/en/plugins"] },
       { sc: "Serve un worker che esplora molto senza sporcare il contesto", pick: "Subagent",
         why: "Assistente isolato per side task/esplorazioni: lavora a parte e torna solo un summary, tenendo pulito il thread principale.",
         src: ["Anthropic — Subagents", "https://docs.anthropic.com/en/docs/claude-code/sub-agents"] },
@@ -608,6 +611,7 @@
       ["Compaction", "Riassunto automatico del contesto quando la context window si riempie.", "Claude Code — Context window", "https://code.claude.com/docs/en/context-window"],
       ["Prompt caching", "Tecnica che migliora velocità e costi riusando parti di contesto; può essere invalidata da cambiamenti a tool/modello.", "Prompt caching is everything", "https://claude.com/blog/lessons-from-building-claude-code-prompt-caching-is-everything"],
       ["Artifact", "Contenuto sostanzioso e autonomo (documento, codice, sito HTML, SVG, diagramma, componente React) che Claude apre in una finestra dedicata: modificabile, versionabile e condivisibile.", "Claude — What are Artifacts", "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them"],
+      ["Plugin", "Pacchetto distribuibile che estende Claude Code impacchettando più componenti (skills, subagents, hooks, server MCP) con un manifest; si condivide e si installa via marketplace. Una skill è un mattone, il plugin è la scatola.", "Claude Code — Plugins", "https://code.claude.com/docs/en/plugins"],
       ["Hook", "Automazione deterministica agganciata a un evento (es. lint/test a ogni modifica): gira sempre allo stesso modo, non dipende dal giudizio del modello.", "Claude Code — Hooks", "https://docs.anthropic.com/en/docs/claude-code/hooks"],
     ].sort((a, b) => a[0].localeCompare(b[0]));
 
@@ -669,6 +673,8 @@
         ["MCP", "https://code.claude.com/docs/en/mcp"],
         ["Subagents", "https://docs.anthropic.com/en/docs/claude-code/sub-agents"],
         ["Hooks", "https://docs.anthropic.com/en/docs/claude-code/hooks"],
+        ["Plugins (creare ed estendere)", "https://code.claude.com/docs/en/plugins"],
+        ["Discover &amp; install plugins", "https://code.claude.com/docs/en/discover-plugins"],
         ["Steering Claude Code (blog)", "https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more"],
         ["Skills (blog)", "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills"],
         ["Prompt caching (blog)", "https://claude.com/blog/lessons-from-building-claude-code-prompt-caching-is-everything"],
