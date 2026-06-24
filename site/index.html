@@ -1,0 +1,755 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Corso · LLM, Agenti e gli strumenti Anthropic</title>
+  <meta name="description" content="Mini-sito interattivo per una lezione di ~60 minuti su LLM, agenti e gli strumenti Anthropic: Claude Code, Cowork e Design. Ogni definizione con fonte verificabile." />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23d97757'/></svg>" />
+</head>
+<body>
+
+  <!-- ============================================================ TOPBAR -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>LLM &amp; Agenti <small>· strumenti Anthropic</small></span>
+    </div>
+    <div class="spacer"></div>
+    <div class="timer" id="timer" title="Click per avviare / fermare il cronometro della lezione">
+      <span class="t-state"></span>
+      <span class="t-elapsed">00:00</span>
+      <span class="t-target">/ 60:00</span>
+    </div>
+    <button class="iconbtn" id="btn-overview" title="Indice delle sezioni (O)">☰</button>
+    <button class="iconbtn" id="btn-notes" title="Note del relatore (N)">🗒</button>
+    <button class="iconbtn" id="btn-mode" title="Modalità scorrimento / presentazione (S)">⤓</button>
+    <button class="iconbtn" id="btn-theme" title="Tema chiaro / scuro (T)">◐</button>
+  </header>
+
+  <div class="progress"><i id="progressbar"></i></div>
+
+  <!-- ============================================================ DECK -->
+  <main class="deck" id="deck">
+
+    <!-- ===================================================== SLIDE 0: COVER -->
+    <section class="slide" data-title="Apertura" data-time="—"
+      data-notes="Benvenuto. Obiettivo della call: dare un modello mentale solido, non rendere tutti esperti. Dì subito che il sito è interattivo: useremo slider, diagrammi, tokenizer e un terminale dal vivo. Invita a interrompere con domande. Spiega la navigazione: frecce o pulsanti in basso.">
+      <div class="cover">
+        <span class="eyebrow">Formazione interna · ~60 minuti · prima lezione</span>
+        <h1>Da <em>chatbot</em> a <em>agente</em>.<br />Capire gli LLM e gli strumenti Anthropic.</h1>
+        <p class="sub">Cos'è davvero un modello linguistico, perché un agente non è una chat, e come usare Claude Code, Cowork e Design senza prenderli per magia.</p>
+        <div class="meta-row">
+          <span class="pill clay">LLM &amp; token</span>
+          <span class="pill">chatbot vs agente</span>
+          <span class="pill">prompt &amp; context engineering</span>
+          <span class="pill sage">Claude Code · Cowork · Design</span>
+          <span class="pill">rischi &amp; verifica</span>
+        </div>
+        <div class="hint">
+          <span>→ <kbd>←</kbd> <kbd>→</kbd> per navigare</span>
+          <span>→ <kbd>O</kbd> indice · <kbd>N</kbd> note · <kbd>T</kbd> tema · <kbd>S</kbd> scorri tutto</span>
+          <span>→ ogni definizione ha la sua <span class="src" style="pointer-events:none">fonte</span> verificabile</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== SLIDE 1: LLM -->
+    <section class="slide" data-title="Cos'è un LLM" data-time="8 min"
+      data-notes="Concetto guida: un LLM predice il pezzo di testo successivo più probabile, non 'sa' la verità. Fai scrivere una frase nel tokenizer e mostra che il testo è spezzato in token. Poi usa la predizione next-token: muovi la temperatura e mostra come cambia la creatività/casualità. Frase chiave da pronunciare: 'genera risposte plausibili, non verità garantite'.">
+      <span class="kicker"><span class="num">01</span> · Cos'è un LLM · <span class="time">8 min</span></span>
+      <h1 class="slide-title">Cos'è un LLM, e perché non è magia</h1>
+      <p class="lead">Un Large Language Model lavora su <strong>token</strong> e fa una cosa sola, tantissime volte: prevede il pezzo di testo successivo più probabile.</p>
+
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Large Language Model (LLM)</div>
+        <p>Un modello addestrato su grandi quantità di testo che genera linguaggio prevedendo, un token alla volta, la continuazione più probabile date le istruzioni e il contesto. Non interroga un database della verità: produce testo plausibile.</p>
+        <div class="src-row">
+          <a class="src" href="https://docs.anthropic.com/en/docs/resources/glossary" target="_blank" rel="noopener">Anthropic — Glossary</a>
+          <a class="src" href="https://developers.google.com/machine-learning/crash-course/llm/transformers" target="_blank" rel="noopener">Google ML Crash Course — LLM/Transformers</a>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Token</div>
+          <p>L'unità minima con cui il modello legge e scrive: un pezzo di parola, una parola corta, un simbolo. Il testo viene "spezzato" in token prima di essere elaborato.</p>
+          <div class="src-row">
+            <a class="src" href="https://docs.anthropic.com/en/docs/resources/glossary" target="_blank" rel="noopener">Anthropic — Glossary</a>
+          </div>
+        </div>
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Context window</div>
+          <p>La "memoria di lavoro" di una sessione: tutto ciò che il modello ha davanti adesso — istruzioni, file letti, risultati di strumenti, cronologia. Ha un limite di token.</p>
+          <div class="src-row">
+            <a class="src" href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows" target="_blank" rel="noopener">Anthropic — Context windows</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIDGET: Tokenizer -->
+      <div class="widget" id="w-tokenizer">
+        <div class="widget-head">
+          <span class="try">Prova tu</span>
+          <span class="w-title">Tokenizer — come il modello "vede" il tuo testo</span>
+          <span class="w-hint">scrivi qualcosa e guarda i token</span>
+        </div>
+        <div class="field">
+          <textarea id="tok-input" rows="2" spellcheck="false">Un LLM non sa: prevede il prossimo token più probabile.</textarea>
+        </div>
+        <div class="tok-out" id="tok-out" aria-live="polite"></div>
+        <div class="tok-stats">
+          <div class="stat"><div class="big" id="tok-count">0</div><div class="lbl">token (stima)</div></div>
+          <div class="stat"><div class="big" id="tok-chars">0</div><div class="lbl">caratteri</div></div>
+          <div class="stat"><div class="big" id="tok-words">0</div><div class="lbl">parole</div></div>
+        </div>
+        <p class="note">Stima didattica: la tokenizzazione reale usa algoritmi tipo BPE e dipende dal modello. Regola pratica diffusa: ~4 caratteri ≈ 1 token in testi latini. Fonte: <a class="src" href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows" target="_blank" rel="noopener">Anthropic — Context windows</a></p>
+      </div>
+
+      <!-- WIDGET: Next token prediction -->
+      <div class="widget" id="w-predict">
+        <div class="widget-head">
+          <span class="try">Prova tu</span>
+          <span class="w-title">Predizione del prossimo token</span>
+          <span class="w-hint">il modello assegna probabilità; la temperatura decide quanto "osa"</span>
+        </div>
+        <div class="chips" style="margin-bottom:14px">
+          <div class="seg" id="pred-examples"></div>
+        </div>
+        <div class="pred-ctx" id="pred-ctx"></div>
+        <div class="predbars" id="pred-bars"></div>
+        <div class="chips" style="margin-top:18px; gap:16px">
+          <button class="btn" id="pred-sample">🎲 Campiona un token</button>
+          <button class="btn ghost small" id="pred-reset">reset</button>
+          <label style="display:flex;align-items:center;gap:10px;font-size:.85rem;color:var(--muted-2)">
+            temperatura <input type="range" id="pred-temp" min="0.1" max="1.5" step="0.05" value="0.7" style="width:160px">
+            <b id="pred-temp-val" style="font-family:var(--mono);color:var(--clay)">0.70</b>
+          </label>
+        </div>
+        <p class="note">Temperatura bassa = sceglie quasi sempre il token più probabile (output prevedibile). Temperatura alta = appiattisce le probabilità (output più vario, più rischio di errori). Fonti: <a class="src" href="https://developers.google.com/machine-learning/crash-course/llm/transformers" target="_blank" rel="noopener">Google ML Crash Course</a> · <a class="src" href="https://docs.anthropic.com/en/docs/resources/glossary" target="_blank" rel="noopener">Anthropic — Glossary</a></p>
+      </div>
+
+      <h2>Cosa portare a casa</h2>
+      <div class="grid cols-3">
+        <div class="card flat"><h3>📦 Token</h3><p>Tutto è testo spezzato in pezzi. Anche i tuoi file e le istruzioni.</p></div>
+        <div class="card flat"><h3>🎯 Predizione</h3><p>Genera il continuazione probabile, non recupera fatti certi.</p></div>
+        <div class="card flat"><h3>⚠️ Può sbagliare</h3><p>Convincente ≠ corretto. Hallucination, lacune, output incompleto.</p></div>
+      </div>
+
+      <blockquote class="quote">Un LLM non "sa" nel senso umano: genera risposte plausibili sulla base di contesto, istruzioni e conoscenza appresa.</blockquote>
+      <p class="note">Limiti chiave (hallucination, conoscenza datata, context window come memoria limitata, steerability): <a class="src" href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank" rel="noopener">Anthropic — Mapping the Mind of a LLM</a> · <a class="src" href="https://stanford-cs324.github.io/winter2022/" target="_blank" rel="noopener">Stanford CS324</a></p>
+    </section>
+
+    <!-- ===================================================== SLIDE 2: CHAT → AGENTE -->
+    <section class="slide" data-title="Da chat ad agente" data-time="8 min"
+      data-notes="Mostra la scala: chatbot → assistant → tool-using → agente. Il salto vero è 'usa strumenti e lavora in loop'. Fai cliccare il diagramma del loop: gather context → act → verify → repeat. Esempio concreto: 'scrivimi una mail' (chat) vs 'leggi i documenti, estrai, confronta, crea il file' (agente). Prima di passare oltre, chiedi all'aula ad alta voce: cosa rende 'agente' un sistema?">
+      <span class="kicker"><span class="num">02</span> · Da chat ad agente · <span class="time">8 min</span></span>
+      <h1 class="slide-title">Da chat ad agente</h1>
+      <p class="lead">Lo stesso modello, usato in modi diversi. Il salto non è "prompt migliori": è passare dal <strong>rispondere</strong> al <strong>lavorare su un obiettivo</strong> usando strumenti.</p>
+
+      <div class="ladder">
+        <div class="rung"><span class="lvl">1</span><span class="r-name">Chatbot</span><span class="r-desc">Risponde a domande, una alla volta.</span></div>
+        <div class="rung"><span class="lvl">2</span><span class="r-name">Assistant</span><span class="r-desc">Segue istruzioni e mantiene il contesto della conversazione.</span></div>
+        <div class="rung"><span class="lvl">3</span><span class="r-name">Tool-using AI</span><span class="r-desc">Usa strumenti: file, web, database, API.</span></div>
+        <div class="rung"><span class="lvl">4</span><span class="r-name">Agente</span><span class="r-desc">Riceve un obiettivo, pianifica, agisce, verifica e itera.</span></div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Agente</div>
+          <p>Un sistema in cui il modello dirige dinamicamente il proprio processo e l'uso degli strumenti: persegue un obiettivo, mantiene stato/contesto e completa task multi-step — non si limita a rispondere.</p>
+          <div class="src-row">
+            <a class="src" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic — Building effective agents</a>
+            <a class="src" href="https://cloud.google.com/discover/what-are-ai-agents" target="_blank" rel="noopener">Google Cloud — What are AI agents?</a>
+          </div>
+        </div>
+        <div class="def">
+          <span class="deftag">Distinzione utile</span>
+          <div class="term">Workflow ≠ Agente</div>
+          <p>Nei <em>workflow</em> i passi sono predefiniti. In un <em>agente</em> è il modello a decidere dinamicamente cosa fare e quali strumenti usare. Spesso non serve un agente: basta una buona chiamata con il contesto giusto.</p>
+          <div class="src-row">
+            <a class="src" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic — Building effective agents</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIDGET: Loop diagram -->
+      <div class="widget" id="w-loop">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Chatbot lineare vs loop dell'agente</span>
+          <span class="w-hint">cambia modalità e avanza passo passo</span>
+        </div>
+        <div class="chips" style="margin-bottom:18px">
+          <div class="seg" id="loop-mode">
+            <button data-mode="chat" class="on">💬 Chatbot</button>
+            <button data-mode="agent">🤖 Agente</button>
+          </div>
+          <button class="btn small" id="loop-step">▶ Passo successivo</button>
+          <button class="btn ghost small" id="loop-reset">reset</button>
+        </div>
+        <div class="loop-stage" id="loop-stage"></div>
+        <div class="loop-caption" id="loop-caption"></div>
+        <p class="note">Il loop "gather context → take action → verify results → repeat" è il modo in cui lavora un agente di coding come Claude Code. Fonte: <a class="src" href="https://code.claude.com/docs/en/how-claude-code-works" target="_blank" rel="noopener">Claude Code — How Claude Code works</a></p>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">💡</span>
+        <div>
+          <strong>Esempio concreto.</strong><br />
+          <em>Chat:</em> «Scrivimi una mail.» &nbsp;→&nbsp; risposta singola.<br />
+          <em>Agente:</em> «Leggi questi documenti, estrai i punti rilevanti, prepara una bozza, confrontala con lo storico, crea il file finale.» &nbsp;→&nbsp; task multi-step con strumenti e verifica.
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===================================================== SLIDE 3: PROMPT & CONTEXT -->
+    <section class="slide" data-title="Prompt &amp; Context engineering" data-time="10 min"
+      data-notes="Due idee distinte: prompt engineering = COME chiedi; context engineering = COSA metti a disposizione. Usa il prompt builder dal vivo con un esempio reale (es. mail a cliente arrabbiato). Poi lo slider del costo del contesto: più contesto = più token = più costo, più latenza, più rischio di confusione. Frase chiave: 'il contesto è carburante, ma anche peso'.">
+      <span class="kicker"><span class="num">03</span> · Prompt &amp; Context engineering · <span class="time">10 min</span></span>
+      <h1 class="slide-title">Chiedere bene, e dare il contesto giusto</h1>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Prompt engineering</div>
+          <p><strong>Come</strong> scrivi le istruzioni: ruolo, obiettivo, contesto, vincoli, esempi, formato di output e criteri di successo. Per prompt importanti, si testano con esempi/eval.</p>
+          <div class="src-row">
+            <a class="src" href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic — Prompt engineering</a>
+            <a class="src" href="https://developers.openai.com/api/docs/guides/prompt-engineering" target="_blank" rel="noopener">OpenAI — Prompt engineering</a>
+          </div>
+        </div>
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Context engineering</div>
+          <p><strong>Cosa</strong> metti, mantieni, recuperi, comprimi o isoli nel contesto disponibile al modello durante un task: documenti, esempi, regole, dati aggiornati, memoria, strumenti.</p>
+          <div class="src-row">
+            <a class="src" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — Effective context engineering</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- WIDGET: Prompt builder -->
+      <div class="widget" id="w-prompt">
+        <div class="widget-head">
+          <span class="try">Prova tu</span>
+          <span class="w-title">Prompt builder — costruisci un'istruzione efficace</span>
+          <span class="w-hint">compila i campi: il prompt si scrive da solo e la barra valuta la completezza</span>
+        </div>
+        <div class="grid cols-2">
+          <div>
+            <div class="field"><label>🎯 Obiettivo</label><input type="text" data-pf="Obiettivo" value="Scrivere una mail a un cliente"></div>
+            <div class="field"><label>🧭 Contesto</label><input type="text" data-pf="Contesto" value="Il progetto è in ritardo di 3 giorni per un problema tecnico"></div>
+            <div class="field"><label>⛔ Vincoli</label><input type="text" data-pf="Vincoli" value="Tono professionale e trasparente, non difensivo. Max 180 parole"></div>
+          </div>
+          <div>
+            <div class="field"><label>📄 Formato desiderato</label><input type="text" data-pf="Formato" value="Email pronta da inviare, con oggetto"></div>
+            <div class="field"><label>✅ Criteri di qualità</label><input type="text" data-pf="Criteri" value="Chiara, empatica, propone un prossimo passo concreto"></div>
+            <div class="field"><label>🚫 Cosa evitare</label><input type="text" data-pf="Evita" value="Non promettere date certe"></div>
+          </div>
+        </div>
+        <h3 style="margin-top:6px">Prompt generato</h3>
+        <pre><code id="prompt-out"></code></pre>
+        <div class="meter" style="grid-template-columns:160px 1fr 96px">
+          <span class="mlbl">Completezza prompt</span>
+          <div class="mtrack"><div class="mfill" id="prompt-score-fill" style="width:0;background:var(--clay)"></div></div>
+          <span class="mval" id="prompt-score">0 / 6</span>
+        </div>
+        <p class="note">Schema da fonti ufficiali: includere ruolo/obiettivo, contesto, vincoli, esempi, formato di output e criteri di successo. <a class="src" href="https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview" target="_blank" rel="noopener">Anthropic</a> · <a class="src" href="https://ai.google.dev/gemini-api/docs/prompting-strategies" target="_blank" rel="noopener">Google Gemini — prompt design</a></p>
+      </div>
+
+      <h2>Il contesto è carburante, ma anche peso</h2>
+      <p>Ogni file, istruzione, risultato di strumento o pezzo di cronologia che entra nella richiesta <strong>consuma token</strong>. Più contesto significa più costo, più latenza e — se è irrilevante — più rischio di confusione.</p>
+
+      <!-- WIDGET: Context cost -->
+      <div class="widget" id="w-cost">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Quanto pesa il contesto?</span>
+          <span class="w-hint">muovi lo slider: token in input → costo, latenza, rischio di drift</span>
+        </div>
+        <label style="display:flex;align-items:center;gap:12px;font-size:.9rem;color:var(--muted-2);flex-wrap:wrap">
+          Contesto in input
+          <input type="range" id="cost-range" min="1" max="200" step="1" value="12" style="flex:1;min-width:200px">
+          <b id="cost-tokens" style="font-family:var(--mono);color:var(--clay)">12k token</b>
+        </label>
+        <div class="meters" id="cost-meters" style="margin-top:18px"></div>
+        <p class="note">Valori illustrativi per dare l'intuizione delle proporzioni, non un listino. Più contesto = più token di input = più costo/latenza; il contesto irrilevante aumenta il rischio di drift. Fonti: <a class="src" href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows" target="_blank" rel="noopener">Anthropic — Context windows</a> · <a class="src" href="https://code.claude.com/docs/en/context-window" target="_blank" rel="noopener">Claude Code — Context window</a></p>
+      </div>
+
+      <div class="callout">
+        <span class="c-ico">🧹</span>
+        <div><strong>Regola pratica.</strong> Se non sapresti spiegare in 30 secondi cosa c'è ancora di utile nella conversazione, probabilmente è ora di pulire il contesto: riassumi (fatti, decisioni, vincoli, prossimi passi) e riparti pulito.
+        <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/memory" target="_blank" rel="noopener">Claude Code — Memory</a> <a class="src" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — Context engineering</a></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================================================== SLIDE 4: MAPPA CLAUDE -->
+    <section class="slide" data-title="Mappa Claude" data-time="15 min"
+      data-notes="È il blocco centrale. Apri ogni card una alla volta. Messaggio cardine: non esiste UN solo uso dell'AI, esistono superfici diverse per lavori diversi. Per Claude Code spiega il loop e i permission modes (fai cliccare i modi). Per Cowork i 5 criteri del task adatto. Per Design: 'non fammi un'immagine', ma artefatto modificabile e iterabile. Skills e MCP li approfondiamo nella sezione successiva.">
+      <span class="kicker"><span class="num">04</span> · Mappa Claude · <span class="time">14 min</span></span>
+      <h1 class="slide-title">Una mappa di Claude: Chat, Code, Cowork, Design</h1>
+      <p class="lead">Non esiste un solo modo di usare l'AI. Esistono <strong>superfici diverse per tipi di lavoro diversi</strong>. Clicca una card per espanderla.</p>
+
+      <!-- WIDGET: surfaces -->
+      <div class="surf-grid" id="surfaces"></div>
+      <p class="note" style="margin-top:14px">Panoramica strumenti: <a class="src" href="https://claude.com/product/overview" target="_blank" rel="noopener">Claude — Product overview</a></p>
+
+      <h2>Artifacts — quando l'output diventa un oggetto</h2>
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Artifact</div>
+        <p>Un contenuto sostanzioso e autonomo che Claude apre in una <strong>finestra dedicata</strong>, accanto alla conversazione: «trasforma le idee in app, strumenti o contenuti condivisibili». Claude lo crea automaticamente quando l'output è significativo e auto-contenuto (in genere oltre ~15 righe) e probabilmente vorrai modificarlo, riusarlo o riferirti ad esso.</p>
+        <div class="src-row">
+          <a class="src" href="https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them" target="_blank" rel="noopener">Claude — What are Artifacts</a>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Cosa può diventare un artifact</h3>
+          <div class="chips">
+            <span class="pill">documenti (Markdown)</span>
+            <span class="pill">snippet di codice</span>
+            <span class="pill clay">siti HTML single-page</span>
+            <span class="pill">immagini SVG</span>
+            <span class="pill">diagrammi &amp; flowchart</span>
+            <span class="pill sage">componenti React interattivi</span>
+          </div>
+          <p class="note">Proprio come questo mini-sito: un artefatto interattivo, non una risposta di testo.</p>
+        </div>
+        <div class="card flat">
+          <h3>Cosa puoi farci</h3>
+          <ul>
+            <li><strong>modificare e iterare</strong>: editing in-place o via chat, con selettore delle versioni;</li>
+            <li><strong>condividere e pubblicare</strong>: link pubblico o all'organizzazione, copia/scarica;</li>
+            <li><strong>renderli interattivi</strong>: stato persistente e connessione a servizi esterni via MCP.</li>
+          </ul>
+          <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them" target="_blank" rel="noopener">Claude — What are Artifacts</a></div>
+        </div>
+      </div>
+      <div class="callout">
+        <span class="c-ico">🧱</span>
+        <div>È il filo che lega Chat, Code e Design: l'AI non «risponde» soltanto, ma produce un <strong>oggetto modificabile, versionabile e condivisibile</strong>. La differenza tra «dammi un testo» e «costruiamo qualcosa insieme».</div>
+      </div>
+
+      <h2>Focus: Claude Code</h2>
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Claude Code</div>
+        <p>Un agente di coding che lavora dove vive il progetto: legge file, cerca nel codice, modifica file, esegue comandi, lancia test/build/lint e usa strumenti esterni — operando nel loop capisci → agisci → verifica. Senza strumenti Claude <em>risponde</em>; con gli strumenti <em>può agire</em>.</p>
+        <div class="src-row">
+          <a class="src" href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code — Overview</a>
+          <a class="src" href="https://code.claude.com/docs/en/how-claude-code-works" target="_blank" rel="noopener">How Claude Code works</a>
+        </div>
+      </div>
+
+      <h3>Come ragiona: obiettivo → loop → workflow</h3>
+      <div class="grid cols-3">
+        <div class="card flat">
+          <h3>🎯 Goal</h3>
+          <p>Gli dai un <strong>obiettivo</strong>, non micro-istruzioni passo-passo: «trova e correggi il bug del login». È lui a decidere come arrivarci.</p>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic — Building effective agents</a></div>
+        </div>
+        <div class="card flat">
+          <h3>🔁 Loop</h3>
+          <p>Lavora in ciclo: <strong>gather context → take action → verify → repeat</strong>, finché l'obiettivo non è completo. La verifica (test/build/lint) chiude ogni giro.</p>
+          <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/how-claude-code-works" target="_blank" rel="noopener">How Claude Code works</a></div>
+        </div>
+        <div class="card flat">
+          <h3>🧩 Workflow</h3>
+          <p>Per task strutturati segue o compone <strong>percorsi ripetibili</strong>: routing, parallelizzazione, orchestratore-worker, evaluator-optimizer. Workflow = passi guidati; agente = decide da sé.</p>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a> <a class="src" href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Common workflows</a></div>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Quando usarlo</h3>
+          <ul>
+            <li>«Spiegami questa codebase.»</li>
+            <li>«Trova dove nasce questo bug.»</li>
+            <li>«Aggiungi questa feature / scrivi i test.»</li>
+            <li>«Refactorizza questo modulo / preparami una PR.»</li>
+          </ul>
+          <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Claude Code — Common workflows</a></div>
+        </div>
+        <div class="card flat">
+          <h3>Concetti da conoscere</h3>
+          <div class="chips">
+            <span class="pill">context window</span>
+            <span class="pill clay">permission modes</span>
+            <span class="pill">plan mode</span>
+            <span class="pill"><code>CLAUDE.md</code></span>
+            <span class="pill">skills</span>
+            <span class="pill">subagents</span>
+            <span class="pill sage">MCP</span>
+          </div>
+          <p class="note">Sette modi per guidare Claude Code (CLAUDE.md, rules, skills, subagents, hooks, output styles, system prompt): <a class="src" href="https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more" target="_blank" rel="noopener">Steering Claude Code</a></p>
+        </div>
+      </div>
+
+      <!-- WIDGET: permission modes -->
+      <div class="widget" id="w-perm">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Permission modes — autonomia ≠ perdere il controllo</span>
+          <span class="w-hint">scegli un modo e vedi cosa viene fatto in automatico</span>
+        </div>
+        <div class="seg" id="perm-modes" style="flex-wrap:wrap"></div>
+        <div class="perm-desc" id="perm-desc"></div>
+        <div class="perm-view" id="perm-view"></div>
+        <p class="note">Si sceglie il livello di supervisione in base al rischio. Fonte: <a class="src" href="https://code.claude.com/docs/en/permission-modes" target="_blank" rel="noopener">Claude Code — Permission modes</a></p>
+      </div>
+
+      <div class="callout">
+        <span class="c-ico">🧩</span>
+        <div><strong>Skills, MCP e Connectors</strong> sono i modi per <em>potenziare</em> un agente come Claude Code: li vediamo in dettaglio nella prossima sezione. Per ora basta sapere che esistono — e che trasformano «Claude risponde» in «Claude lavora dove serve».</div>
+      </div>
+
+      <h2>Focus: Cowork e Design</h2>
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Quando usare Cowork</span>
+          <div class="term">Claude Cowork</div>
+          <p>Per delegare lavoro <em>non tecnico</em> multi-step che produce un deliverable (report, deck, spreadsheet, briefing). Cinque segnali che un task è adatto:</p>
+          <ul style="margin:8px 0 0;padding-left:18px;color:var(--ink-soft);font-size:.92rem">
+            <li>entrano più input (file, folder, connettori);</li>
+            <li>esce un file/deliverable;</li>
+            <li>lo rifarai (è ripetibile);</li>
+            <li>sai riconoscere un buon risultato;</li>
+            <li>il lavoro centrale è noioso: estrarre, riordinare, riconciliare, riformattare.</li>
+          </ul>
+          <p style="margin-top:10px"><strong>Azioni ricorrenti e schedulate.</strong> Cowork non è solo «una volta»: puoi <em>delegare e schedulare</em> task che si ripetono — un briefing ogni mattina da Slack/Gmail/calendario, un report periodico, un pacing di budget — così il deliverable arriva da solo a cadenza fissa (es. ogni giorno, ogni ora, ogni settimana).</p>
+          <div class="src-row"><a class="src" href="https://claude.com/product/overview" target="_blank" rel="noopener">Claude — Product overview</a></div>
+        </div>
+        <div class="def">
+          <span class="deftag">Cos'è davvero</span>
+          <div class="term">Claude Design</div>
+          <p>Claude applicato a output visuali e <strong>iterabili</strong>: wireframe, mockup, prototipi, presentazioni, materiali. Non è «fammi un'immagine»: è «costruiamo un artefatto visuale modificabile e iterabile», con la possibilità di passare tra design e codice.</p>
+          <div class="src-row"><a class="src" href="https://claude.com/product/overview" target="_blank" rel="noopener">Claude — Product overview</a></div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ===================================================== SLIDE 5: SKILLS / MCP -->
+    <section class="slide" data-title="Skills, Subagents, Hooks &amp; MCP" data-time="9 min"
+      data-notes="Idea guida: il modello conta, ma conta moltissimo l'harness intorno. Quattro modi per potenziare un agente. Skills = istruzioni/procedure riutilizzabili caricate solo quando servono. Subagents = worker isolati con contesto separato che tornano un summary (tengono pulito il contesto principale). Hooks = automazioni deterministiche su eventi (girano sempre, non dipendono dal giudizio del modello). MCP/Connectors = collegamento a dati e tool esterni. Usa i due widget interattivi. Chiudi sul rischio MCP: prompt injection, permessi e governance.">
+      <span class="kicker"><span class="num">05</span> · Estendere Claude · <span class="time">9 min</span></span>
+      <h1 class="slide-title">Estendere Claude: Skills, MCP e Connectors</h1>
+      <p class="lead">Il modello conta, ma <strong>conta moltissimo ciò che gli metti intorno</strong>: istruzioni riutilizzabili (skills) e collegamenti al mondo reale (MCP e connectors). È qui che «Claude risponde» diventa «Claude lavora dove serve».</p>
+      <p class="note">Principio di fondo: «il modello conta, ma l'harness intorno al modello conta moltissimo». Fonte: <a class="src" href="https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start" target="_blank" rel="noopener">Claude Code in large codebases</a></p>
+
+      <!-- ===== SKILLS ===== -->
+      <h2>Skills — istruzioni che Claude carica quando servono</h2>
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Skill</div>
+        <p>Una <strong>cartella</strong> con istruzioni, script e risorse (più un piccolo frontmatter) che Claude carica <em>on demand</em>, solo quando sono rilevanti per il task. Non è semplice markdown: è un pacchetto di conoscenza o di procedura, riutilizzabile e condivisibile nel team.</p>
+        <div class="src-row">
+          <a class="src" href="https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills" target="_blank" rel="noopener">Lessons from building Claude Code — skills</a>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Perché esistono</h3>
+          <ul>
+            <li><strong>Caricate solo quando servono</strong>: non pesano sempre sul contesto → meno token, meno rumore.</li>
+            <li><strong>Incapsulano un playbook</strong>: una procedura ripetibile invece di rispiegarla ogni volta.</li>
+            <li><strong>Condivisibili</strong>: lo stesso modo di lavorare per tutto il team.</li>
+          </ul>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — Context engineering</a></div>
+        </div>
+        <div class="card flat">
+          <h3>Categorie utili</h3>
+          <div class="chips">
+            <span class="pill">library / API reference</span>
+            <span class="pill">product verification</span>
+            <span class="pill">data fetching &amp; analysis</span>
+            <span class="pill">business process automation</span>
+            <span class="pill">code scaffolding / templates</span>
+            <span class="pill">code quality / review</span>
+          </div>
+          <div class="src-row"><a class="src" href="https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills" target="_blank" rel="noopener">Lessons — skills</a></div>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">🔑</span>
+        <div><strong>La porta d'ingresso.</strong> «Se ti ritrovi a spiegare sempre la stessa cosa a Claude, quella cosa è candidata a diventare una skill.»
+        <div class="src-row"><a class="src" href="https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills" target="_blank" rel="noopener">Lessons from building Claude Code — skills</a></div></div>
+      </div>
+
+      <!-- WIDGET: steering helper -->
+      <div class="widget" id="w-steer">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Quale meccanismo mi serve?</span>
+          <span class="w-hint">scegli la situazione: Claude si guida in modi diversi</span>
+        </div>
+        <div class="seg" id="steer-scenarios" style="flex-wrap:wrap"></div>
+        <div class="dpanel card flat" id="steer-result"></div>
+        <p class="note">Sette modi per guidare Claude Code (CLAUDE.md, rules, skills, subagents, hooks, output styles, append system prompt) e quando usarli. Fonte: <a class="src" href="https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more" target="_blank" rel="noopener">Steering Claude Code</a></p>
+      </div>
+
+      <!-- ===== SUBAGENTS ===== -->
+      <h2>Subagents — lavoro isolato che non sporca il contesto</h2>
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Subagent</div>
+        <p>Un assistente <strong>isolato, con il proprio contesto separato</strong>, a cui delegare un side task o un'esplorazione lunga. Fa il suo lavoro a parte e restituisce al thread principale solo un <em>summary</em>, invece dell'intero viaggio: così la context window principale resta pulita.</p>
+        <div class="src-row">
+          <a class="src" href="https://docs.anthropic.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener">Anthropic — Subagents</a>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Quando usarli</h3>
+          <ul>
+            <li>esplorazioni lunghe in codebase grandi;</li>
+            <li>task specializzati e ripetuti;</li>
+            <li>mantenere pulito il contesto principale;</li>
+            <li>far tornare un riepilogo invece di tutti i dettagli intermedi.</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h3>Il trade-off</h3>
+          <p>Il thread principale vede <strong>meno dettagli intermedi</strong>. Per task critici, chiedi al subagent evidenze o un riepilogo strutturato (cosa ha trovato, cosa ha cambiato, cosa resta da verificare).</p>
+          <div class="src-row"><a class="src" href="https://docs.anthropic.com/en/docs/claude-code/sub-agents" target="_blank" rel="noopener">Anthropic — Subagents</a></div>
+        </div>
+      </div>
+
+      <!-- ===== HOOKS ===== -->
+      <h2>Hooks — automazioni deterministiche su eventi</h2>
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Hook</div>
+        <p>Un'automazione <strong>deterministica</strong> agganciata a un evento del ciclo di lavoro (es. dopo una modifica a un file, prima di un commit). Gira <em>sempre allo stesso modo</em> e non dipende dal giudizio del modello: è la differenza tra «chiedo a Claude di ricordarsi di…» e «succede e basta».</p>
+        <div class="src-row">
+          <a class="src" href="https://docs.anthropic.com/en/docs/claude-code/hooks" target="_blank" rel="noopener">Anthropic — Claude Code hooks</a>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Esempi tipici</h3>
+          <ul>
+            <li>lanciare <code>lint</code> o <code>format</code> a ogni modifica;</li>
+            <li>eseguire i test prima di considerare un task concluso;</li>
+            <li>bloccare un'azione che non rispetta una regola;</li>
+            <li>registrare/notificare quando avviene un certo evento.</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h3>Skill o Hook?</h3>
+          <p><strong>Skill</strong> = conoscenza/procedura che il modello <em>sceglie</em> di usare quando rilevante. <strong>Hook</strong> = regola che scatta <em>sempre</em>, a prescindere, su un evento. Usa l'hook quando l'automazione deve essere garantita, non opzionale.</p>
+          <div class="src-row"><a class="src" href="https://claude.com/blog/steering-claude-code-skills-hooks-rules-subagents-and-more" target="_blank" rel="noopener">Steering Claude Code</a></div>
+        </div>
+      </div>
+
+      <!-- ===== MCP / CONNECTORS ===== -->
+      <h2>MCP &amp; Connectors — collegare Claude al mondo reale</h2>
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">MCP — Model Context Protocol</div>
+          <p>Uno <strong>standard aperto</strong> per collegare modelli e app a strumenti, dati e API esterni. È la «presa universale»: invece di un'integrazione su misura per ogni sistema, un protocollo comune che li fa parlare con Claude.</p>
+          <div class="src-row">
+            <a class="src" href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code — MCP</a>
+            <a class="src" href="https://developers.openai.com/api/docs/mcp" target="_blank" rel="noopener">OpenAI — MCP</a>
+          </div>
+        </div>
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Connector</div>
+          <p>L'<strong>integrazione concreta</strong> costruita su MCP verso un sistema specifico (GitHub, Figma, Slack, Gmail, Notion, un database…). MCP è il protocollo; il connector è la spina che colleghi davvero.</p>
+          <div class="src-row">
+            <a class="src" href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code — MCP</a>
+          </div>
+        </div>
+      </div>
+
+      <p>Il valore in una frase: <strong>niente più copia/incolla</strong> da sistemi esterni. Claude può leggere e agire <em>dove il lavoro vive già</em>, invece di farti fare da ponte manuale tra gli strumenti.</p>
+
+      <!-- WIDGET: connectors map -->
+      <div class="widget" id="w-connectors">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Cosa può fare Claude con un connector?</span>
+          <span class="w-hint">clicca un sistema esterno</span>
+        </div>
+        <div class="fourd" id="conn-grid" style="grid-template-columns:repeat(3,1fr)"></div>
+        <div class="dpanel card flat" id="conn-panel"></div>
+        <p class="note">Esempi di sistemi collegabili via MCP/connectors. Fonte: <a class="src" href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code — MCP</a></p>
+      </div>
+
+      <div class="callout warn">
+        <span class="c-ico">⚠️</span>
+        <div><strong>Il rovescio della medaglia: fiducia e permessi.</strong> Un connector dà a Claude accesso a dati e azioni reali. Server MCP e contenuti esterni possono introdurre <em>prompt injection</em> o azioni indesiderate: servono fonti fidate, permessi limitati e governance (es. enterprise-managed auth).
+        <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code — MCP</a> <a class="src" href="https://developers.openai.com/api/docs/mcp" target="_blank" rel="noopener">OpenAI — MCP (trust &amp; permessi)</a></div></div>
+      </div>
+    </section>
+
+    <!-- ===================================================== SLIDE 6: CLI vs UI -->
+    <section class="slide" data-title="CLI: confronto &amp; uso" data-time="8 min"
+      data-notes="Prima il confronto fra superfici col filtro profilo. Poi 'uso della CLI': come si lavora davvero nel terminale. Fai avanzare il terminale interattivo passo passo: avvio nella cartella, @file per il contesto, plan mode, esecuzione, verifica con i test. Frase chiave: la CLI è per chi vuole lavorare vicino al sistema; dai sempre a Claude un modo per verificare il lavoro.">
+      <span class="kicker"><span class="num">06</span> · CLI: confronto &amp; uso · <span class="time">8 min</span></span>
+      <h1 class="slide-title">CLI o UI? Dipende da dove lavori</h1>
+      <p class="lead">Stessa intelligenza, superfici diverse. La scelta dipende da quanto vuoi stare vicino al sistema e da quanto è tecnico il task.</p>
+
+      <div class="widget" id="w-matrix">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Quale superficie per te?</span>
+          <span class="w-hint">scegli il profilo: evidenzia le superfici consigliate</span>
+        </div>
+        <div class="seg" id="matrix-profile">
+          <button data-p="dev" class="on">👩‍💻 Sono tecnico/sviluppatore</button>
+          <button data-p="nontech">🧑‍💼 Non sono tecnico</button>
+        </div>
+        <div style="overflow-x:auto">
+          <table class="matrix" id="matrix-table"></table>
+        </div>
+      </div>
+
+      <blockquote class="quote">La CLI è per chi vuole lavorare vicino al sistema. La UI è per chi vuole delegare e controllare visivamente il risultato.</blockquote>
+      <p class="note">Superfici e trade-off: <a class="src" href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code — Overview</a> · <a class="src" href="https://claude.com/product/overview" target="_blank" rel="noopener">Claude — Product overview</a></p>
+
+      <h2>Uso della CLI di Claude Code</h2>
+      <p class="lead" style="font-size:1.05rem">La CLI si usa <strong>dentro la cartella del progetto</strong>, nel terminale. Parli in linguaggio naturale e porti il contesto direttamente da dove lavori.</p>
+      <div class="grid cols-3">
+        <div class="card flat">
+          <h3>🚀 Avvio</h3>
+          <p>Apri il terminale nella cartella del progetto e avvii Claude Code lì: lavora con i file e i comandi del progetto reale.</p>
+          <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/overview" target="_blank" rel="noopener">Claude Code — Overview</a></div>
+        </div>
+        <div class="card flat">
+          <h3>📎 Porta il contesto</h3>
+          <p>Riferisci file con <code>@</code>, incolla log, URL di documentazione, screenshot, o fai <em>pipe</em> dell'output di un comando direttamente nella richiesta.</p>
+          <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code — Best practices</a></div>
+        </div>
+        <div class="card flat">
+          <h3>🧭 Workflow consigliato</h3>
+          <p>Per task incerti: <strong>explore → plan → code</strong>. Per task piccoli, chiedi direttamente. Usa <em>plan mode</em> quando il rischio è medio/alto o il codice è sconosciuto.</p>
+          <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Claude Code — Common workflows</a></div>
+        </div>
+      </div>
+
+      <!-- WIDGET: CLI session stepper -->
+      <div class="widget" id="w-cli">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Una sessione tipo nella CLI</span>
+          <span class="w-hint">avanza passo passo: capisci → pianifica → agisci → verifica</span>
+        </div>
+        <div class="term-mock" id="cli-term"></div>
+        <div class="chips" style="margin-top:14px">
+          <button class="btn small" id="cli-step">▶ Passo successivo</button>
+          <button class="btn ghost small" id="cli-reset">reset</button>
+          <span class="w-hint" id="cli-progress"></span>
+        </div>
+        <p class="note">Esempio illustrativo di interazione (i comandi esatti dipendono dalla versione). Pattern e buone pratiche: <a class="src" href="https://code.claude.com/docs/en/common-workflows" target="_blank" rel="noopener">Common workflows</a> · <a class="src" href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Best practices</a></p>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">✅</span>
+        <div><strong>La regola d'oro della CLI.</strong> Dai sempre a Claude un modo per <em>verificare</em> il proprio lavoro: test, build, lint, uno script, uno screenshot. Senza verifica, l'autonomia diventa un rischio.
+        <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code — Best practices</a></div></div>
+      </div>
+    </section>
+
+    <!-- ===================================================== SLIDE 6: RISCHI + 4D -->
+    <section class="slide" data-title="Rischi &amp; framework 4D" data-time="5 min"
+      data-notes="Chiudi sul giudizio umano. L'AI accelera, non sostituisce la responsabilità. Mostra i rischi (hallucination, dati sensibili, output convincente ma sbagliato, azioni automatiche non controllate). Poi clicca le 4 D: Delegation, Description, Discernment, Diligence. Messaggio: dare sempre criteri di verifica.">
+      <span class="kicker"><span class="num">07</span> · Rischi, verifica &amp; 4D · <span class="time">5 min</span></span>
+      <h1 class="slide-title">Acceleratore, non sostituto del giudizio</h1>
+
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>⚠️ Rischi da tenere a mente</h3>
+          <ul>
+            <li>hallucination: output convincente ma sbagliato;</li>
+            <li>dati sensibili messi in contesti non sicuri;</li>
+            <li>perdita di tono o standard aziendale;</li>
+            <li>azioni automatiche non controllate;</li>
+            <li>dipendenza senza verifica.</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h3>✅ Buone pratiche</h3>
+          <ul>
+            <li>mai fidarsi ciecamente: verifica fonti e numeri;</li>
+            <li>niente dati riservati senza conoscere policy e ambiente;</li>
+            <li>dare sempre criteri di verifica;</li>
+            <li>per task importanti, chiedere assunzioni, incertezze e checklist;</li>
+            <li>usare l'AI per accelerare, non per abdicare.</li>
+          </ul>
+        </div>
+      </div>
+      <p class="note">Verifica e tool design: <a class="src" href="https://code.claude.com/docs/en/best-practices" target="_blank" rel="noopener">Claude Code — Best practices</a> · MCP e prompt injection: <a class="src" href="https://code.claude.com/docs/en/mcp" target="_blank" rel="noopener">Claude Code — MCP</a></p>
+
+      <h2>Il framework 4D dell'AI fluency</h2>
+      <p>Un modello mentale semplice per principianti: collaborare con l'AI in modo <em>effective, efficient, ethical, safe</em>. Clicca ogni D.</p>
+      <div class="fourd" id="fourd"></div>
+      <div class="dpanel card flat" id="fourd-panel"></div>
+      <p class="note">Framework 4D (Delegation, Description, Discernment, Diligence) introdotto nel percorso AI Fluency di Anthropic. Riferimento prodotto/risorse: <a class="src" href="https://docs.anthropic.com/en/docs/intro-to-claude" target="_blank" rel="noopener">Anthropic — Intro to Claude</a></p>
+    </section>
+
+    <!-- ===================================================== SLIDE 7: TAKEAWAY + GLOSSARIO + FONTI -->
+    <section class="slide" data-title="Takeaway · Glossario · Fonti" data-time="2 min"
+      data-notes="Ricapitola i 5 messaggi. Ricorda che il glossario e tutte le fonti sono qui sotto, verificabili in autonomia. Invita a una micro-demo dal vivo se c'è tempo: 'leggi questa cartella, spiegamela, trova un bug, proponi una modifica'.">
+      <span class="kicker"><span class="num">08</span> · In sintesi · <span class="time">chiusura</span></span>
+      <h1 class="slide-title">Cinque cose da portare a casa</h1>
+      <div class="grid cols-2">
+        <div class="card"><h3>1 · Non è magia</h3><p>L'AI lavora su istruzioni, contesto e probabilità. Genera il plausibile, non la verità garantita.</p></div>
+        <div class="card"><h3>2 · Gli agenti agiscono</h3><p>Non si limitano a rispondere: eseguono task usando strumenti, in loop, con verifica.</p></div>
+        <div class="card"><h3>3 · Il contesto conta (e costa)</h3><p>La qualità dipende dal contesto che dai. Ma il contesto pesa: vai gestito, non riversato.</p></div>
+        <div class="card"><h3>4 · Superfici diverse</h3><p>Chat, Code, Cowork, Design: lavori diversi, strumenti diversi. Scegli in base al task.</p></div>
+      </div>
+      <div class="callout tip" style="margin-top:18px"><span class="c-ico">🎯</span><div><strong>5 · Il valore è saper delegare e verificare bene.</strong> L'AI è un collaboratore a cui deleghi lavoro restando responsabile del risultato.</div></div>
+
+      <h2 id="glossario">Glossario</h2>
+      <div class="gloss">
+        <input class="g-search" type="text" id="gloss-search" placeholder="🔎 Cerca un termine…" />
+        <div id="gloss-list"></div>
+      </div>
+
+      <h2 id="fonti">Tutte le fonti</h2>
+      <p class="lead" style="font-size:1rem">Ogni definizione del corso è ancorata a queste fonti ufficiali, così puoi verificare in autonomia.</p>
+      <div class="biblio" id="biblio"></div>
+      <p class="note" style="margin-top:18px">Criteri di selezione delle fonti (solo documentazione ufficiale, paper primari, corsi universitari/istituzionali) descritti in <code>research/certified-sources.md</code>. Verifica fonti: 2026-06-22.</p>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ DECK NAV -->
+  <nav class="deck-nav" id="decknav">
+    <button class="navbtn" id="nav-prev">← Indietro</button>
+    <span class="here">Sezione <b id="nav-cur">1</b> / <span id="nav-total">8</span> · <b id="nav-name">Apertura</b></span>
+    <div class="spacer"></div>
+    <div class="dots" id="dots"></div>
+    <div class="spacer"></div>
+    <button class="navbtn" id="nav-next">Avanti →</button>
+  </nav>
+
+  <!-- Speaker notes -->
+  <aside class="notes" id="notes">
+    <h4>Note del relatore</h4>
+    <div id="notes-body"></div>
+  </aside>
+
+  <!-- Overview -->
+  <div class="overview" id="overview">
+    <div class="ov-grid" id="ov-grid"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
