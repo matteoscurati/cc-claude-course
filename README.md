@@ -1,5 +1,9 @@
 # Corso · LLM, Agenti e gli strumenti Anthropic
 
+**▶ Demo live: <https://matteoscurati.github.io/cc-claude-course/>**
+
+![Schermata di apertura del corso](media/cover.png)
+
 Mini-sito **interattivo** per una lezione di formazione dal vivo (~60 minuti) su
 cosa sia un LLM, la differenza tra chatbot e agenti, e gli strumenti Anthropic
 (**Claude Code, Cowork, Design**). Pensato come supporto da proiettare durante la call.
@@ -9,6 +13,10 @@ inline + bibliografia finale), così i partecipanti possono controllare in auton
 
 > Niente dipendenze, niente build, niente backend: si apre con un doppio clic e
 > funziona **offline**. Il sito stesso è un esempio di "artifact" interattivo.
+
+![Strumento interattivo: predizione del prossimo token con slider di temperatura](media/interactive.png)
+
+*Esempio di momento interattivo: la predizione del prossimo token, con le probabilità a barre e la temperatura regolabile dal vivo.*
 
 ---
 
