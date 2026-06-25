@@ -67,6 +67,98 @@ Per cosa usarle:
 - introdurre loop gather context / act / verify;
 - parlare di memoria, contesto, permessi, skills, subagents, MCP.
 
+## Modelli e inferenza
+
+Data verifica aggiuntiva: 2026-06-25
+
+Fonti primarie:
+
+- Anthropic models overview: https://docs.anthropic.com/en/docs/about-claude/models/overview
+- Anthropic pricing: https://docs.anthropic.com/en/docs/about-claude/pricing
+- Anthropic extended thinking: https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking
+- Anthropic glossary (definizione di inferenza/modello): https://docs.anthropic.com/en/docs/resources/glossary
+
+Per cosa usarle:
+
+- spiegare l'inferenza (il modello già addestrato genera output un token alla volta; latenza e costo per richiesta);
+- spiegare che Claude è una famiglia di modelli (linee Opus / Sonnet / Haiku) e il compromesso capacità / velocità / costo;
+- introdurre extended/adaptive thinking come leva qualità ↔ costo ↔ latenza.
+
+## Claude Cowork
+
+Data verifica: 2026-06-25. Solo domini certificati (claude.com, support.claude.com, anthropic.com).
+
+Fonti primarie:
+
+- Claude — Cowork (product): https://claude.com/product/cowork
+- Get started with Claude Cowork: https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork
+- Best practices for getting started with Cowork: https://claude.com/blog/best-practices-for-getting-started-with-claude-cowork
+- Customize Claude Cowork: https://claude.com/resources/tutorials/customize-claude-cowork
+- Schedule recurring tasks in Cowork: https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork
+- Use Claude Cowork safely: https://support.claude.com/en/articles/13364135-use-claude-cowork-safely
+- Use connectors to extend Claude: https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities
+- Claude — Plugins: https://claude.com/plugins
+
+Punti verificati:
+
+- Cowork: superficie agentica di Claude Desktop per lavoro non-coding; «porti Claude al tuo lavoro», con accesso a file locali e connettori; piani Pro/Max/Team/Enterprise (macOS, Windows).
+- Ordine di setup consigliato: connettori → Instructions/contesto → skill (dopo qualche ripetizione) → plugin per il team.
+- Connettori ufficiali citati: Slack, Gmail, Google Drive, Google Calendar, Microsoft 365, Jira, Linear, Salesforce, Chrome.
+- 5 «ingredienti» del task adatto: più input, deliverable in output, ricorrente, formato noto, lavoro «di mezzo» delegabile.
+- Permessi: «Ask before acting» (consigliato) vs «Act without asking» (aumenta il rischio di prompt injection); cancellazione file sempre con permesso esplicito.
+- Task schedulati via /schedule o sidebar Scheduled; girano solo a computer acceso e app aperta.
+- Governance: computer use senza sandbox; i connettori ereditano i permessi dell'utente; l'utente resta responsabile delle azioni.
+
+NON VERIFICATO (non asserito nel corso): un connettore GitHub dedicato per Cowork; un modello di default consigliato per le sessioni interattive (la scelta del modello è confermata solo come campo opzionale nei task schedulati).
+
+## Orchestrazione di agenti
+
+Data verifica: 2026-06-25. Solo domini certificati Anthropic/Claude.
+
+Fonti primarie:
+
+- Anthropic — Building effective agents: https://www.anthropic.com/engineering/building-effective-agents
+- Anthropic — Multi-agent research system: https://www.anthropic.com/engineering/multi-agent-research-system
+- Building agents with the Claude Agent SDK: https://claude.com/blog/building-agents-with-the-claude-agent-sdk
+- Claude Code — Agents: https://code.claude.com/docs/en/agents
+- Claude Code — Agent teams: https://code.claude.com/docs/en/agent-teams
+- Claude Agent SDK — Subagents: https://code.claude.com/docs/en/agent-sdk/subagents
+
+Punti verificati (citazioni dalla fonte ufficiale):
+
+- Cinque pattern di workflow: prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer.
+- Orchestrator-workers: «un LLM centrale scompone dinamicamente il task, delega a worker LLM e ne sintetizza i risultati»; i sottotask non sono predefiniti.
+- Workflow vs agente: i workflow sono «orchestrati con percorsi di codice predefiniti»; gli agenti «dirigono dinamicamente il proprio processo e l'uso degli strumenti».
+- Sistema multi-agente reale: lead agent + subagent specializzati in parallelo (pattern orchestrator-worker).
+- Costo: gli agenti usano «circa 4× più token» di una chat; i sistemi multi-agente «circa 15× più token».
+- Superfici Claude Code: subagents; agent teams (sperimentale: lead + teammate, task list condivisa, messaggi diretti); dynamic workflows / Workflow tool (orchestra da decine a centinaia di agenti fuori dal contesto).
+
+Nota: la data del blog Managed Agents («new in Claude Managed Agents») è stata estratta dal fetch (≈ maggio 2026) e non riverificata sull'header — citata con cautela.
+
+## Memoria in Claude Cowork
+
+Data verifica: 2026-06-25. Solo domini certificati per le capacità di Claude; obsidian.md solo per definire cos'è Obsidian.
+
+Fonti primarie:
+
+- Get started with Claude Cowork: https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork
+- Cowork — Projects: https://claude.com/docs/cowork/guide/projects
+- Organize your tasks with projects: https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork
+- Use Claude Cowork safely: https://support.claude.com/en/articles/13364135-use-claude-cowork-safely
+- Anthropic — Memory tool (API/agenti, superficie diversa): https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool
+- Obsidian (solo definizione, non una capacità di Claude): https://obsidian.md/
+
+Punti verificati:
+
+- File/cartelle locali: «Claude può leggere e scrivere i tuoi file locali senza upload o download manuali»; legge file fino a 50 MB l'uno → qualsiasi cartella collegata è archivio durevole.
+- Folder instructions: contesto per-cartella che «Claude può anche aggiornare da solo durante una sessione».
+- Memoria dei Project: «un memory store dedicato che persiste tra le sessioni», ma «scoped al progetto» e «non mantenuta tra le sessioni standalone».
+- Instructions globali/di progetto: standing context impostato dall'utente.
+- Memory tool API (`/memories`): superficie diversa da Cowork (sviluppatori/agenti), stessa idea «file che persistono tra le conversazioni».
+- Rischi: Claude può cancellare definitivamente i file; usare una cartella di lavoro dedicata, tenere backup, evitare dati sensibili.
+
+NON VERIFICATO / ESEMPIO ILLUSTRATIVO: nessuna fonte certificata cita Obsidian; ciò che è supportato è «leggere/scrivere una cartella Markdown locale». Una vault Obsidian come cartella di memoria è un esempio editoriale, non un'integrazione ufficiale.
+
 ## Codex
 
 Fonti primarie OpenAI:

@@ -45,18 +45,21 @@ python3 -m http.server
 
 ---
 
-## Struttura della lezione (9 sezioni)
+## Struttura della lezione (11 sezioni)
 
 | # | Sezione | Durata | Momenti interattivi |
 | --- | --- | --- | --- |
 | 1 | Cos'è un LLM | 8′ | tokenizer live · predizione next-token con slider temperatura |
-| 2 | Da chat ad agente | 8′ | diagramma del loop chatbot vs agente, passo-passo |
-| 3 | Prompt & Context engineering | 10′ | prompt builder · misuratore del costo del contesto |
-| 4 | Mappa Claude: Chat/Code/Cowork/Design | 14′ | card espandibili · Artifacts · permission modes · Goal/Loop/Workflow |
-| 5 | Skills, Subagents, Hooks & MCP | 9′ | "quale meccanismo mi serve?" · connectors map |
-| 6 | CLI: confronto & uso | 8′ | matrice per profilo · terminale interattivo |
-| 7 | Rischi, verifica & framework 4D | 5′ | ruota 4D cliccabile |
-| 8 | Sintesi · Glossario · Fonti | — | glossario ricercabile · bibliografia completa |
+| 2 | Inferenza & modelli | 7′ | model chooser Opus/Sonnet/Haiku · barre capacità/velocità/costo |
+| 3 | Da chat ad agente | 8′ | diagramma del loop chatbot vs agente, passo-passo |
+| 4 | Prompt & Context engineering | 10′ | prompt builder · misuratore del costo del contesto |
+| 5 | Mappa Claude: Chat/Code/Cowork/Design | 14′ | card espandibili · Artifacts · permission modes · Goal/Loop/Workflow |
+| 6 | Skills, Subagents, Hooks & MCP | 9′ | "quale meccanismo mi serve?" · connectors map |
+| 7 | Focus: Claude Cowork (configurazione) | 8′ | setup connettori/istruzioni/skill/plugin · 5 «ingredienti» · permessi & governance |
+| 8 | CLI: confronto & uso | 8′ | matrice per profilo · terminale interattivo |
+| 9 | Rischi, verifica & framework 4D | 5′ | ruota 4D cliccabile |
+| 10 | Cosa possiamo fare in Cantiere Creativo | 6′ | persona · produzione/offerta · servizi futuri |
+| 11 | Sintesi · Glossario · Fonti | — | glossario ricercabile · bibliografia completa |
 
 ---
 

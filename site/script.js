@@ -349,6 +349,53 @@
   })();
 
   /* ========================================================================
+     WIDGET 5b · MODEL CHOOSER (Opus / Sonnet / Haiku)
+     ===================================================================== */
+  (function modelChooser() {
+    const seg = $("#model-tiers"), meters = $("#model-meters"), rec = $("#model-rec");
+    if (!seg) return;
+    const tiers = [
+      { id: "Opus", cap: 1.0, speed: 0.42, cost: 1.0,
+        rec: "Ragionamento profondo, lavori difficili e agentici di lunga durata. Lo scegli quando la difficoltà del task giustifica più tempo e più costo." },
+      { id: "Sonnet", cap: 0.8, speed: 0.78, cost: 0.55,
+        rec: "Il punto d'equilibrio: capacità alta a velocità e costo ragionevoli. Spesso la scelta di default per il lavoro di produzione." },
+      { id: "Haiku", cap: 0.55, speed: 1.0, cost: 0.2,
+        rec: "Veloce ed economico: task semplici, classificazione, estrazione, alto volume. Quando velocità e costo contano più della profondità." },
+    ];
+    const defs = [
+      { key: "cap", lbl: "🧠 Capacità", color: "var(--sage)" },
+      { key: "speed", lbl: "⚡ Velocità", color: "var(--gold)" },
+      { key: "cost", lbl: "💰 Costo", color: "var(--clay)" },
+    ];
+    defs.forEach((d) => {
+      const m = el("div", "meter");
+      m.innerHTML = `<span class="mlbl">${d.lbl}</span><div class="mtrack"><div class="mfill" id="mm-${d.key}"></div></div><span class="mval" id="mv-${d.key}"></span>`;
+      meters.appendChild(m);
+    });
+    let cur = 1;
+    const lvl = (v) => v >= 0.85 ? "molto alta" : v >= 0.6 ? "alta" : v >= 0.4 ? "media" : "bassa";
+    const costLvl = (v) => v >= 0.85 ? "alto" : v >= 0.5 ? "medio" : "basso";
+    function paint() {
+      $$("#model-tiers button").forEach((b, i) => b.classList.toggle("on", i === cur));
+      const t = tiers[cur];
+      defs.forEach((d) => {
+        const v = t[d.key];
+        const fill = $("#mm-" + d.key);
+        fill.style.width = (v * 100) + "%";
+        fill.style.background = d.color;
+        $("#mv-" + d.key).textContent = d.key === "cost" ? costLvl(v) : lvl(v);
+      });
+      rec.innerHTML = `<div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap"><span class="pill clay">${t.id}</span><strong>la scelta tipica</strong></div><p style="margin:10px 0 0">${t.rec}</p>`;
+    }
+    tiers.forEach((t, i) => {
+      const b = el("button", i === cur ? "on" : "", t.id);
+      b.addEventListener("click", () => { cur = i; paint(); });
+      seg.appendChild(b);
+    });
+    paint();
+  })();
+
+  /* ========================================================================
      WIDGET 6 · SURFACES (Claude map)
      ===================================================================== */
   (function surfaces() {
@@ -555,6 +602,77 @@
   })();
 
   /* ========================================================================
+     WIDGET 9e · ORCHESTRATION PATTERNS
+     ===================================================================== */
+  (function orchestration() {
+    const grid = $("#orch-grid"), panel = $("#orch-panel");
+    if (!grid) return;
+    const items = [
+      { ico: "⛓️", nm: "Prompt chaining", txt: "Decompone il task in una sequenza di passi: ogni chiamata elabora l'output della precedente. Semplice e prevedibile." },
+      { ico: "🔀", nm: "Routing", txt: "Classifica l'input e lo indirizza a un task specializzato. Utile quando categorie diverse richiedono trattamenti diversi." },
+      { ico: "🟰", nm: "Parallelization", txt: "Spezza il lavoro in sottotask indipendenti eseguiti insieme (sectioning), oppure ripete lo stesso task per voti/varianti (voting)." },
+      { ico: "🧭", nm: "Orchestrator-workers", txt: "Un LLM centrale scompone dinamicamente il task, delega a worker e ne sintetizza i risultati. I sottotask non sono predefiniti: li decide l'orchestratore." },
+      { ico: "🔁", nm: "Evaluator-optimizer", txt: "Un LLM genera una risposta, un altro la valuta e dà feedback, in loop, finché la qualità è sufficiente." },
+    ];
+    panel.innerHTML = '<span style="color:var(--muted-2)">Clicca un pattern per la spiegazione.</span>';
+    items.forEach((it) => {
+      const c = el("button", "dcard");
+      c.innerHTML = `<div class="d-ico">${it.ico}</div><div class="d-nm">${it.nm}</div>`;
+      c.addEventListener("click", () => {
+        $$(".dcard", grid).forEach((x) => x.classList.remove("on"));
+        c.classList.add("on");
+        panel.innerHTML = `<strong>${it.ico} ${it.nm}</strong> — ${it.txt}`;
+      });
+      grid.appendChild(c);
+    });
+  })();
+
+  /* ========================================================================
+     WIDGET 9f · MEMORY SURFACES (Cowork)
+     ===================================================================== */
+  (function memoryMap() {
+    const grid = $("#mem-grid"), panel = $("#mem-panel");
+    if (!grid) return;
+    const items = [
+      { ico: "💾", nm: "Cartella locale", persist: "sempre (è il disco)", scope: "la cartella collegata", writer: "Claude · R/W",
+        txt: "Qualsiasi cartella collegata è archivio durevole: appunti, decisioni, output. Claude legge file fino a 50 MB l'uno.",
+        sn: "Get started", su: "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" },
+      { ico: "📝", nm: "Folder instructions", persist: "tra le sessioni", scope: "per-cartella", writer: "Claude · auto-aggiorna",
+        txt: "Contesto legato a una cartella che Claude può aggiornare da solo durante una sessione: una nota di memoria leggera e auto-mantenuta.",
+        sn: "Get started", su: "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" },
+      { ico: "🗃️", nm: "Memoria del Project", persist: "tra le sessioni", scope: "solo nel progetto", writer: "Claude · accumula",
+        txt: "Memory store dedicato che persiste tra le sessioni. Attenzione: NON è mantenuto nelle sessioni standalone e non passa da un progetto all'altro.",
+        sn: "Cowork — Projects", su: "https://claude.com/docs/cowork/guide/projects" },
+      { ico: "📌", nm: "Instructions globali", persist: "ogni sessione", scope: "tutto Cowork", writer: "tu (utente)",
+        txt: "Standing context impostato da te: tono, formato, regole, contesto sul tuo ruolo. Le instructions di progetto si stratificano sopra.",
+        sn: "Get started", su: "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" },
+      { ico: "🧰", nm: "Memory tool (API)", persist: "tra le conversazioni", scope: "superficie diversa", writer: "Claude · /memories",
+        txt: "Primitiva per sviluppatori/agenti: Claude fa CRUD su file in una cartella /memories. NON è la feature di Cowork — stessa idea, prodotto diverso.",
+        sn: "Anthropic — Memory tool", su: "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool" },
+      { ico: "🪨", nm: "Vault Obsidian", persist: "sempre (su disco)", scope: "esempio illustrativo", writer: "Claude · R/W",
+        txt: "Una vault Obsidian è solo una cartella di file Markdown locali: la colleghi e diventa memoria. Non è un'integrazione ufficiale — il supportato è «leggere/scrivere una cartella Markdown locale».",
+        sn: "obsidian.md", su: "https://obsidian.md/" },
+    ];
+    panel.innerHTML = '<span style="color:var(--muted-2)">Clicca una superficie per i dettagli.</span>';
+    items.forEach((it) => {
+      const c = el("button", "dcard");
+      c.innerHTML = `<div class="d-ico">${it.ico}</div><div class="d-nm">${it.nm}</div>`;
+      c.addEventListener("click", () => {
+        $$(".dcard", grid).forEach((x) => x.classList.remove("on"));
+        c.classList.add("on");
+        panel.innerHTML = `<div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap">
+          <strong>${it.ico} ${it.nm}</strong>
+          <span class="pill clay">persiste: ${it.persist}</span>
+          <span class="pill">ambito: ${it.scope}</span>
+          <span class="pill sage">scrive: ${it.writer}</span></div>
+          <p style="margin:10px 0 0">${it.txt}</p>
+          <div class="src-row"><a class="src" href="${it.su}" target="_blank" rel="noopener">${it.sn}</a></div>`;
+      });
+      grid.appendChild(c);
+    });
+  })();
+
+  /* ========================================================================
      WIDGET 9d · CLI SESSION STEPPER
      ===================================================================== */
   (function cli() {
@@ -592,6 +710,9 @@
     if (!list) return;
     const terms = [
       ["Token", "Unità minima di testo (pezzo di parola, parola corta, simbolo) con cui il modello legge e scrive.", "Anthropic — Glossary", "https://docs.anthropic.com/en/docs/resources/glossary"],
+      ["Inferenza", "Il processo con cui un modello già addestrato genera output da un input, un token alla volta: è ciò che attendi (latenza) e che paghi (token). Nessun nuovo apprendimento.", "Anthropic — Glossary", "https://docs.anthropic.com/en/docs/resources/glossary"],
+      ["Modello", "Una specifica versione addestrata con capacità, velocità e costo propri. Claude è una famiglia: linee Opus (capacità), Sonnet (equilibrio), Haiku (velocità/costo).", "Anthropic — Models overview", "https://docs.anthropic.com/en/docs/about-claude/models/overview"],
+      ["Claude Cowork", "Superficie agentica di Claude Desktop per il lavoro non-coding: deleghi un task, ottieni un deliverable. Lavora su file locali e connettori, con permessi e task schedulati.", "Claude — Get started with Cowork", "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork"],
       ["LLM", "Modello addestrato su grandi testi che genera linguaggio prevedendo il token successivo più probabile.", "Anthropic — Glossary", "https://docs.anthropic.com/en/docs/resources/glossary"],
       ["Context window", "La memoria di lavoro della sessione: istruzioni, file, tool result e cronologia che il modello ha davanti. Ha un limite.", "Anthropic — Context windows", "https://docs.anthropic.com/en/docs/build-with-claude/context-windows"],
       ["Temperatura", "Parametro che regola quanto l'output è prevedibile (bassa) o vario/creativo (alta), modulando le probabilità.", "Google ML Crash Course", "https://developers.google.com/machine-learning/crash-course/llm/transformers"],
@@ -607,6 +728,8 @@
       ["Permission modes", "Livelli di autonomia di Claude Code (default, acceptEdits, plan, auto, dontAsk, bypassPermissions).", "Claude Code — Permission modes", "https://code.claude.com/docs/en/permission-modes"],
       ["Skills", "Cartelle con istruzioni, script e risorse che Claude carica on demand quando rilevanti.", "Lessons from building Claude Code — skills", "https://claude.com/blog/lessons-from-building-claude-code-how-we-use-skills"],
       ["Subagents", "Assistenti isolati per side task/esplorazioni: tengono pulito il contesto principale e tornano un summary.", "Anthropic — Subagents", "https://docs.anthropic.com/en/docs/claude-code/sub-agents"],
+      ["Orchestrazione", "Coordinare più chiamate, strumenti o agenti verso un obiettivo. Nel pattern orchestrator-workers un LLM centrale scompone il task, delega a worker e sintetizza i risultati. Cinque pattern: prompt chaining, routing, parallelization, orchestrator-workers, evaluator-optimizer.", "Anthropic — Building effective agents", "https://www.anthropic.com/engineering/building-effective-agents"],
+      ["Memoria (Cowork)", "Dove vive il contesto durevole in Cowork: file/cartelle locali (lette e scritte), folder instructions (auto-aggiornate), e il memory store dei Project che persiste tra le sessioni (solo dentro al progetto).", "Claude — Cowork Projects", "https://claude.com/docs/cowork/guide/projects"],
       ["MCP", "Model Context Protocol: standard aperto per collegare Claude a strumenti, dati e API esterni.", "Claude Code — MCP", "https://code.claude.com/docs/en/mcp"],
       ["Compaction", "Riassunto automatico del contesto quando la context window si riempie.", "Claude Code — Context window", "https://code.claude.com/docs/en/context-window"],
       ["Prompt caching", "Tecnica che migliora velocità e costi riusando parti di contesto; può essere invalidata da cambiamenti a tool/modello.", "Prompt caching is everything", "https://claude.com/blog/lessons-from-building-claude-code-prompt-caching-is-everything"],
@@ -647,6 +770,12 @@
         ["Anthropic — Glossary", "https://docs.anthropic.com/en/docs/resources/glossary"],
         ["Anthropic — Mapping the Mind of a LLM", "https://www.anthropic.com/research/mapping-mind-language-model"],
       ]],
+      ["Inferenza &amp; modelli", [
+        ["Anthropic — Models overview", "https://docs.anthropic.com/en/docs/about-claude/models/overview"],
+        ["Anthropic — Pricing", "https://docs.anthropic.com/en/docs/about-claude/pricing"],
+        ["Anthropic — Extended thinking", "https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking"],
+        ["Anthropic — Glossary", "https://docs.anthropic.com/en/docs/resources/glossary"],
+      ]],
       ["Agenti", [
         ["Anthropic — Building effective agents", "https://www.anthropic.com/engineering/building-effective-agents"],
         ["Google Cloud — What are AI agents?", "https://cloud.google.com/discover/what-are-ai-agents"],
@@ -654,6 +783,10 @@
         ["OpenAI — Agents SDK guide", "https://developers.openai.com/api/docs/guides/agents"],
         ["OpenAI — MCP (server, trust &amp; permessi)", "https://developers.openai.com/api/docs/mcp"],
         ["Claude Code in large codebases (harness)", "https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start"],
+        ["Anthropic — Multi-agent research system", "https://www.anthropic.com/engineering/multi-agent-research-system"],
+        ["Building agents with the Claude Agent SDK", "https://claude.com/blog/building-agents-with-the-claude-agent-sdk"],
+        ["Claude Code — Agents (orchestrazione)", "https://code.claude.com/docs/en/agents"],
+        ["Claude Code — Agent teams", "https://code.claude.com/docs/en/agent-teams"],
       ]],
       ["Prompt & Context engineering", [
         ["Anthropic — Prompt engineering overview", "https://docs.anthropic.com/en/docs/build-with-claude/prompt-engineering/overview"],
@@ -684,6 +817,19 @@
         ["Anthropic — Intro to Claude", "https://docs.anthropic.com/en/docs/intro-to-claude"],
         ["Anthropic — Tool use overview", "https://docs.anthropic.com/en/docs/build-with-claude/tool-use/overview"],
         ["Claude — What are Artifacts", "https://support.claude.com/en/articles/9487310-what-are-artifacts-and-how-do-i-use-them"],
+      ]],
+      ["Claude Cowork (configurazione)", [
+        ["Claude — Cowork (product)", "https://claude.com/product/cowork"],
+        ["Get started with Claude Cowork", "https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork"],
+        ["Best practices for getting started with Cowork", "https://claude.com/blog/best-practices-for-getting-started-with-claude-cowork"],
+        ["Customize Claude Cowork", "https://claude.com/resources/tutorials/customize-claude-cowork"],
+        ["Schedule recurring tasks in Cowork", "https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork"],
+        ["Use Claude Cowork safely", "https://support.claude.com/en/articles/13364135-use-claude-cowork-safely"],
+        ["Use connectors to extend Claude", "https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities"],
+        ["Cowork — Projects (memoria)", "https://claude.com/docs/cowork/guide/projects"],
+        ["Organize your tasks with projects", "https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork"],
+        ["Anthropic — Memory tool (API/agenti)", "https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool"],
+        ["Claude — Plugins", "https://claude.com/plugins"],
       ]],
     ];
     groups.forEach(([title, links]) => {

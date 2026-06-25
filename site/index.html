@@ -42,6 +42,7 @@
         <p class="sub">Cos'è davvero un modello linguistico, perché un agente non è una chat, e come usare Claude Code, Cowork e Design senza prenderli per magia.</p>
         <div class="meta-row">
           <span class="pill clay">LLM &amp; token</span>
+          <span class="pill">inferenza &amp; modelli</span>
           <span class="pill">chatbot vs agente</span>
           <span class="pill">prompt &amp; context engineering</span>
           <span class="pill sage">Claude Code · Cowork · Design</span>
@@ -144,10 +145,78 @@
       <p class="note">Limiti chiave (hallucination, conoscenza datata, context window come memoria limitata, steerability): <a class="src" href="https://www.anthropic.com/research/mapping-mind-language-model" target="_blank" rel="noopener">Anthropic — Mapping the Mind of a LLM</a> · <a class="src" href="https://stanford-cs324.github.io/winter2022/" target="_blank" rel="noopener">Stanford CS324</a></p>
     </section>
 
+    <!-- ===================================================== SLIDE 1b: INFERENZA & MODELLI -->
+    <section class="slide" data-title="Inferenza &amp; modelli" data-time="7 min"
+      data-notes="Due concetti. Inferenza: il modello GIÀ addestrato genera l'output un token alla volta — è ciò che attendi (latenza) e che paghi (token). Modelli: «Claude» non è un modello solo, è una famiglia (Opus, Sonnet, Haiku). Fai muovere il selettore e mostra il triangolo capacità/velocità/costo. Frase chiave: «più capace non vuol dire sempre meglio — per un task semplice un modello piccolo è più adatto, più veloce e più economico». Accenna al fatto che i modelli recenti possono «pensare» di più prima di rispondere: più token e più tempo, ma più qualità sui task difficili.">
+      <span class="kicker"><span class="num">02</span> · Inferenza &amp; modelli · <span class="time">7 min</span></span>
+      <h1 class="slide-title">Inferenza e modelli: cosa succede quando «pensa»</h1>
+      <p class="lead">Usare Claude significa fare <strong>inferenza</strong>: un modello <em>già addestrato</em> genera la risposta, un token alla volta. E «Claude» non è un modello solo — è una <strong>famiglia</strong>, e scegliere quello giusto cambia qualità, velocità e costo.</p>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Inferenza</div>
+          <p>Il processo con cui un modello <strong>già addestrato</strong> genera output a partire da un input: nessun nuovo apprendimento, solo applicazione di ciò che ha appreso, un token alla volta. È ciò che <em>attendi</em> (latenza) e ciò che <em>paghi</em> (token in input + output) a ogni richiesta.</p>
+          <div class="src-row">
+            <a class="src" href="https://docs.anthropic.com/en/docs/resources/glossary" target="_blank" rel="noopener">Anthropic — Glossary</a>
+          </div>
+        </div>
+        <div class="def">
+          <span class="deftag">Definizione</span>
+          <div class="term">Modello</div>
+          <p>Una specifica versione addestrata, con dimensioni, capacità, velocità e costo propri. Claude è una <strong>famiglia</strong> di modelli (linee <em>Opus</em>, <em>Sonnet</em>, <em>Haiku</em>): stessa «intelligenza» di base, equilibri diversi.</p>
+          <div class="src-row">
+            <a class="src" href="https://docs.anthropic.com/en/docs/about-claude/models/overview" target="_blank" rel="noopener">Anthropic — Models overview</a>
+          </div>
+        </div>
+      </div>
+
+      <h2>Tre linee, tre equilibri</h2>
+      <div class="grid cols-3">
+        <div class="card flat">
+          <h3>🧠 Opus</h3>
+          <p>La <strong>massima capacità</strong>: ragionamento profondo, lavori difficili e agentici di lunga durata. Più lento e più costoso — lo usi quando la difficoltà del task lo richiede.</p>
+        </div>
+        <div class="card flat">
+          <h3>⚖️ Sonnet</h3>
+          <p>Il <strong>miglior equilibrio</strong> tra capacità e velocità. Spesso la scelta «di default» per il lavoro di produzione ad alto volume.</p>
+        </div>
+        <div class="card flat">
+          <h3>⚡ Haiku</h3>
+          <p>Il <strong>più veloce ed economico</strong>: task semplici, classificazione, estrazione, alta frequenza. Quando velocità e costo contano più della profondità.</p>
+        </div>
+      </div>
+      <p class="note" style="margin-top:10px">Nomi e versioni correnti delle linee: <a class="src" href="https://docs.anthropic.com/en/docs/about-claude/models/overview" target="_blank" rel="noopener">Anthropic — Models overview</a></p>
+
+      <!-- WIDGET: model chooser -->
+      <div class="widget" id="w-models">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Scegli un modello: cosa cambia?</span>
+          <span class="w-hint">capacità ↔ velocità ↔ costo: non puoi massimizzare tutto</span>
+        </div>
+        <div class="seg" id="model-tiers"></div>
+        <div class="meters" id="model-meters" style="margin-top:18px"></div>
+        <div class="dpanel card flat" id="model-rec" style="margin-top:14px"></div>
+        <p class="note">Valori illustrativi per dare l'intuizione delle proporzioni, non un listino: capacità, velocità e prezzo reali dipendono dal modello specifico. Fonti: <a class="src" href="https://docs.anthropic.com/en/docs/about-claude/models/overview" target="_blank" rel="noopener">Models overview</a> · <a class="src" href="https://docs.anthropic.com/en/docs/about-claude/pricing" target="_blank" rel="noopener">Pricing</a></p>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">🎯</span>
+        <div><strong>Più capace non vuol dire sempre meglio.</strong> Per un task semplice, un modello grande è solo più lento e più costoso. La scelta giusta parte dal task: profondità richiesta, volume, latenza accettabile, budget.</div>
+      </div>
+
+      <div class="callout">
+        <span class="c-ico">💭</span>
+        <div>I modelli recenti possono <strong>«pensare» di più prima di rispondere</strong> (extended / adaptive thinking): più token e più tempo, ma risposte migliori sui problemi difficili. È un'altra leva dello stesso compromesso qualità ↔ costo ↔ latenza.
+        <div class="src-row"><a class="src" href="https://docs.anthropic.com/en/docs/build-with-claude/extended-thinking" target="_blank" rel="noopener">Anthropic — Extended thinking</a></div></div>
+      </div>
+    </section>
+
     <!-- ===================================================== SLIDE 2: CHAT → AGENTE -->
     <section class="slide" data-title="Da chat ad agente" data-time="8 min"
       data-notes="Mostra la scala: chatbot → assistant → tool-using → agente. Il salto vero è 'usa strumenti e lavora in loop'. Fai cliccare il diagramma del loop: gather context → act → verify → repeat. Esempio concreto: 'scrivimi una mail' (chat) vs 'leggi i documenti, estrai, confronta, crea il file' (agente). Prima di passare oltre, chiedi all'aula ad alta voce: cosa rende 'agente' un sistema?">
-      <span class="kicker"><span class="num">02</span> · Da chat ad agente · <span class="time">8 min</span></span>
+      <span class="kicker"><span class="num">03</span> · Da chat ad agente · <span class="time">8 min</span></span>
       <h1 class="slide-title">Da chat ad agente</h1>
       <p class="lead">Lo stesso modello, usato in modi diversi. Il salto non è "prompt migliori": è passare dal <strong>rispondere</strong> al <strong>lavorare su un obiettivo</strong> usando strumenti.</p>
 
@@ -212,7 +281,7 @@
     <!-- ===================================================== SLIDE 3: PROMPT & CONTEXT -->
     <section class="slide" data-title="Prompt &amp; Context engineering" data-time="10 min"
       data-notes="Due idee distinte: prompt engineering = COME chiedi; context engineering = COSA metti a disposizione. Usa il prompt builder dal vivo con un esempio reale (es. mail a cliente arrabbiato). Poi lo slider del costo del contesto: più contesto = più token = più costo, più latenza, più rischio di confusione. Frase chiave: 'il contesto è carburante, ma anche peso'.">
-      <span class="kicker"><span class="num">03</span> · Prompt &amp; Context engineering · <span class="time">10 min</span></span>
+      <span class="kicker"><span class="num">04</span> · Prompt &amp; Context engineering · <span class="time">10 min</span></span>
       <h1 class="slide-title">Chiedere bene, e dare il contesto giusto</h1>
 
       <div class="grid cols-2">
@@ -294,7 +363,7 @@
     <!-- ===================================================== SLIDE 4: MAPPA CLAUDE -->
     <section class="slide" data-title="Mappa Claude" data-time="15 min"
       data-notes="È il blocco centrale. Apri ogni card una alla volta. Messaggio cardine: non esiste UN solo uso dell'AI, esistono superfici diverse per lavori diversi. Per Claude Code spiega il loop e i permission modes (fai cliccare i modi). Per Cowork i 5 criteri del task adatto. Per Design: 'non fammi un'immagine', ma artefatto modificabile e iterabile. Skills e MCP li approfondiamo nella sezione successiva.">
-      <span class="kicker"><span class="num">04</span> · Mappa Claude · <span class="time">14 min</span></span>
+      <span class="kicker"><span class="num">05</span> · Mappa Claude · <span class="time">14 min</span></span>
       <h1 class="slide-title">Una mappa di Claude: Chat, Code, Cowork, Design</h1>
       <p class="lead">Non esiste un solo modo di usare l'AI. Esistono <strong>superfici diverse per tipi di lavoro diversi</strong>. Clicca una card per espanderla.</p>
 
@@ -442,7 +511,7 @@
     <!-- ===================================================== SLIDE 5: SKILLS / MCP -->
     <section class="slide" data-title="Skills, Subagents, Hooks &amp; MCP" data-time="9 min"
       data-notes="Idea guida: il modello conta, ma conta moltissimo l'harness intorno. Quattro modi per potenziare un agente. Skills = istruzioni/procedure riutilizzabili caricate solo quando servono. Subagents = worker isolati con contesto separato che tornano un summary (tengono pulito il contesto principale). Hooks = automazioni deterministiche su eventi (girano sempre, non dipendono dal giudizio del modello). MCP/Connectors = collegamento a dati e tool esterni. Usa i due widget interattivi. Chiudi sul rischio MCP: prompt injection, permessi e governance.">
-      <span class="kicker"><span class="num">05</span> · Estendere Claude · <span class="time">9 min</span></span>
+      <span class="kicker"><span class="num">06</span> · Estendere Claude · <span class="time">9 min</span></span>
       <h1 class="slide-title">Estendere Claude: Skills, MCP e Connectors</h1>
       <p class="lead">Il modello conta, ma <strong>conta moltissimo ciò che gli metti intorno</strong>: istruzioni riutilizzabili (skills) e collegamenti al mondo reale (MCP e connectors). È qui che «Claude risponde» diventa «Claude lavora dove serve».</p>
       <p class="note">Principio di fondo: «il modello conta, ma l'harness intorno al modello conta moltissimo». Fonte: <a class="src" href="https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start" target="_blank" rel="noopener">Claude Code in large codebases</a></p>
@@ -552,6 +621,53 @@
         </div>
       </div>
 
+      <!-- ===== ORCHESTRAZIONE ===== -->
+      <h2>Orchestrazione — coordinare più agenti verso un obiettivo</h2>
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Orchestrazione</div>
+        <p>Coordinare più chiamate, strumenti o <em>agenti</em> verso un obiettivo. Nel pattern <strong>orchestrator-workers</strong> «un LLM centrale scompone dinamicamente il task, delega a worker LLM e ne sintetizza i risultati» — i sottotask non sono predefiniti: li decide l'orchestratore in base all'input. Nei sistemi reali un <em>lead agent</em> coordina e delega a <em>subagent specializzati che lavorano in parallelo</em>.</p>
+        <div class="src-row">
+          <a class="src" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Anthropic — Building effective agents</a>
+          <a class="src" href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Multi-agent research system</a>
+        </div>
+      </div>
+
+      <!-- WIDGET: orchestration patterns -->
+      <div class="widget" id="w-orch">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">I pattern di orchestrazione</span>
+          <span class="w-hint">clicca un pattern · dal più semplice al più autonomo</span>
+        </div>
+        <div class="fourd" id="orch-grid" style="grid-template-columns:repeat(3,1fr)"></div>
+        <div class="dpanel card flat" id="orch-panel"></div>
+        <p class="note">Cinque pattern documentati da Anthropic. Fonte: <a class="src" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a></p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Dove lo vedi in Claude Code</h3>
+          <ul>
+            <li><strong>Subagents</strong>: worker isolati che tornano un <em>summary</em> al coordinatore, nella stessa conversazione;</li>
+            <li><strong>Agent teams</strong> (sperimentale): un <em>lead</em> + teammate con task list condivisa e messaggi diretti tra loro;</li>
+            <li><strong>Dynamic workflows / Workflow tool</strong>: uno script che orchestra da decine a centinaia di agenti <em>fuori</em> dal contesto della conversazione.</li>
+          </ul>
+          <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/agents" target="_blank" rel="noopener">Claude Code — Agents</a> <a class="src" href="https://code.claude.com/docs/en/agent-teams" target="_blank" rel="noopener">Agent teams</a></div>
+        </div>
+        <div class="card flat">
+          <h3>Workflow ≠ Agente (di nuovo)</h3>
+          <p>Nei <strong>workflow</strong> i passi sono «orchestrati con percorsi di codice predefiniti»; negli <strong>agenti</strong> il modello «dirige dinamicamente il proprio processo e l'uso degli strumenti». L'orchestrazione può essere l'uno, l'altro, o un mix.</p>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/engineering/building-effective-agents" target="_blank" rel="noopener">Building effective agents</a></div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <span class="c-ico">⚠️</span>
+        <div><strong>Orchestrare costa.</strong> Gli agenti usano «circa 4× più token» di una chat; i sistemi multi-agente «circa 15× più token». Vai semplice: spesso basta una singola chiamata ben contestualizzata. L'orchestrazione conviene su task di valore con forte parallelizzazione — non quando i sotto-agenti devono condividere lo stesso contesto o hanno molte dipendenze.
+        <div class="src-row"><a class="src" href="https://www.anthropic.com/engineering/multi-agent-research-system" target="_blank" rel="noopener">Multi-agent research system</a></div></div>
+      </div>
+
       <!-- ===== HOOKS ===== -->
       <h2>Hooks — automazioni deterministiche su eventi</h2>
       <div class="def">
@@ -622,10 +738,172 @@
       </div>
     </section>
 
+    <!-- ===================================================== SLIDE 5b: COWORK — CONFIGURAZIONE -->
+    <section class="slide" data-title="Claude Cowork: configurarlo bene" data-time="8 min"
+      data-notes="Mini-sezione ad hoc, tutte fonti ufficiali e recenti (claude.com, support.claude.com, verifica 2026-06-25). Idea guida: «porti Claude al tuo lavoro, non il lavoro a Claude»; la configurazione conta più del prompt. Ordine consigliato: connettori → istruzioni e contesto → (dopo qualche ripetizione) skill → condividi come plugin. Mostra i 5 «ingredienti» del task adatto. Sottolinea le due modalità di permesso (Ask before acting vs Act without asking) e il rischio prompt injection. Chiudi sui task schedulati e sul limite: girano solo a computer acceso e app aperta. Resti responsabile di ogni azione.">
+      <span class="kicker"><span class="num">07</span> · Focus: Claude Cowork · <span class="time">8 min</span></span>
+      <h1 class="slide-title">Claude Cowork: la configurazione che fa la differenza</h1>
+      <p class="lead">«Invece di portare il tuo lavoro a Claude, porti Claude al tuo lavoro»: punti una cartella, colleghi le app che già usi e descrivi il risultato. <strong>La differenza tra un output mediocre e uno ottimo non è quasi mai il prompt, ma il contesto che gli dai.</strong></p>
+      <p class="note">Definizione e framing: <a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Get started with Cowork</a> · <a class="src" href="https://claude.com/blog/best-practices-for-getting-started-with-claude-cowork" target="_blank" rel="noopener">Best practices</a> · <a class="src" href="https://claude.com/product/cowork" target="_blank" rel="noopener">Claude — Cowork</a></p>
+
+      <h2>L'ordine consigliato di setup</h2>
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">1 · Connettori</span>
+          <div class="term">Collega le app che già usi</div>
+          <p>Dal pannello <strong>Customize</strong>: autorizzi una volta, poi Claude può <em>leggere e scrivere</em> in quel sistema (aggiornare un ticket, preparare una risposta, salvare un file). Tra quelli ufficiali:</p>
+          <div class="chips"><span class="pill">Slack</span> <span class="pill">Gmail</span> <span class="pill">Google Drive</span> <span class="pill">Google Calendar</span> <span class="pill">Microsoft 365</span> <span class="pill">Jira</span> <span class="pill">Linear</span> <span class="pill">Salesforce</span> <span class="pill">Chrome</span></div>
+          <div class="src-row"><a class="src" href="https://claude.com/resources/tutorials/customize-claude-cowork" target="_blank" rel="noopener">Customize Cowork</a> <a class="src" href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities" target="_blank" rel="noopener">Connectors</a></div>
+        </div>
+        <div class="def">
+          <span class="deftag">2 · Istruzioni &amp; contesto</span>
+          <div class="term">Regole permanenti + cartelle giuste</div>
+          <p>Imposta <strong>Instructions</strong> a livello globale, di progetto o di organizzazione. Dai accesso solo alle <strong>cartelle</strong> giuste (Claude vede solo quelle collegate) e aggiungi istruzioni per-cartella. È qui che vive il «contesto ricco» che fa la qualità.</p>
+          <div class="src-row"><a class="src" href="https://claude.com/resources/tutorials/customize-claude-cowork" target="_blank" rel="noopener">Customize Cowork</a></div>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">3 · Skill</span>
+          <div class="term">Dopo qualche ripetizione, impacchetta</div>
+          <p>«Trasforma quello che abbiamo appena fatto in una skill»: cattura passi, template e dove stanno le fonti. La regola ufficiale: scrivi una skill <em>dopo</em> aver rifatto lo stesso task qualche volta.</p>
+          <div class="src-row"><a class="src" href="https://claude.com/resources/tutorials/customize-claude-cowork" target="_blank" rel="noopener">Customize Cowork</a></div>
+        </div>
+        <div class="def">
+          <span class="deftag">4 · Plugin</span>
+          <div class="term">Condividi col team</div>
+          <p>Un <strong>plugin</strong> impacchetta connettori + skill in un bundle distribuibile per ruolo (Sales, Product, Legal, Operations): lo stesso modo di lavorare per tutto il team.</p>
+          <div class="src-row"><a class="src" href="https://claude.com/plugins" target="_blank" rel="noopener">Claude — Plugins</a></div>
+        </div>
+      </div>
+
+      <h2>Memoria: dove vive il contesto che dura</h2>
+      <p class="lead" style="font-size:1.05rem">Cowork legge <em>e scrive</em> file locali: la memoria può letteralmente vivere su disco, in cartelle che colleghi tu — più alcuni livelli «di sistema» che persistono tra le sessioni.</p>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Modello mentale</span>
+          <div class="term">Effimero vs persistente</div>
+          <p>La <strong>context window</strong> è memoria di <em>lavoro</em>: vive nella sessione e si svuota (sez. 04). La <strong>memoria persistente</strong> sta altrove — su disco, nelle folder instructions o nel memory store di un Project — e sopravvive alla chiusura della sessione. Servono entrambe, ma vanno tenute distinte.</p>
+          <div class="src-row"><a class="src" href="https://docs.anthropic.com/en/docs/build-with-claude/context-windows" target="_blank" rel="noopener">Context windows</a> <a class="src" href="https://claude.com/docs/cowork/guide/projects" target="_blank" rel="noopener">Cowork — Projects</a></div>
+        </div>
+        <div class="def">
+          <span class="deftag">Regola pratica</span>
+          <div class="term">Cosa vale la pena ricordare</div>
+          <p>Non tutto va «ricordato»: salva <strong>fatti stabili, decisioni, vincoli, convenzioni, prossimi passi</strong> — non la cronologia grezza. Una buona memoria è <em>curata</em>, non un log che cresce all'infinito.</p>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/engineering/effective-context-engineering-for-ai-agents" target="_blank" rel="noopener">Anthropic — Context engineering</a></div>
+        </div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Su disco</span>
+          <div class="term">File &amp; cartelle locali</div>
+          <p>«Claude può leggere <em>e scrivere</em> i tuoi file locali senza upload o download manuali». Qualsiasi cartella collegata diventa archivio durevole: appunti, log, decisioni, output. (Legge file fino a 50 MB l'uno.)</p>
+          <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Get started</a> <a class="src" href="https://claude.com/docs/cowork/guide/projects" target="_blank" rel="noopener">Cowork — Projects</a></div>
+        </div>
+        <div class="def">
+          <span class="deftag">Auto-aggiornante</span>
+          <div class="term">Folder instructions</div>
+          <p>Contesto legato a una cartella che «Claude può anche aggiornare da solo durante una sessione». È la nota di memoria più leggera e auto-mantenuta: un file di contesto per-cartella che cresce mentre lavori.</p>
+          <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Get started with Cowork</a></div>
+        </div>
+      </div>
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Tra le sessioni</span>
+          <div class="term">Memoria dei Project</div>
+          <p>I <strong>Project</strong> hanno «un memory store dedicato che persiste tra le sessioni»: Claude ricorda il contesto dei task passati <em>nello stesso progetto</em>. <strong>Attenzione:</strong> «la memoria non è mantenuta tra le sessioni standalone» e non passa da un progetto all'altro.</p>
+          <div class="src-row"><a class="src" href="https://claude.com/docs/cowork/guide/projects" target="_blank" rel="noopener">Cowork — Projects</a> <a class="src" href="https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork" target="_blank" rel="noopener">Organize tasks with projects</a></div>
+        </div>
+        <div class="def">
+          <span class="deftag">Standing context</span>
+          <div class="term">Instructions globali / di progetto</div>
+          <p>Le <strong>Instructions</strong> globali valgono per ogni sessione; quelle di progetto si stratificano sopra. Contesto permanente che dai tu (tono, formato, regole), diverso dalla memoria che si accumula da sola.</p>
+          <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Get started</a></div>
+        </div>
+      </div>
+
+      <!-- WIDGET: memory surfaces comparator -->
+      <div class="widget" id="w-memory">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Dove può stare la memoria?</span>
+          <span class="w-hint">clicca una superficie · guarda persistenza, ambito e chi scrive</span>
+        </div>
+        <div class="fourd" id="mem-grid" style="grid-template-columns:repeat(3,1fr)"></div>
+        <div class="dpanel card flat" id="mem-panel"></div>
+        <p class="note">Confronto delle superfici di memoria di Cowork (più il memory tool API, superficie diversa). Fonti: <a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Get started</a> · <a class="src" href="https://claude.com/docs/cowork/guide/projects" target="_blank" rel="noopener">Projects</a></p>
+      </div>
+
+      <div class="callout">
+        <span class="c-ico">🧭</span>
+        <div><strong>Pattern consigliato.</strong> Crea una <strong>cartella di lavoro dedicata</strong>, tieni dentro un file tipo <code>MEMORIA.md</code> (fatti, decisioni, prossimi passi) e usa le <strong>folder instructions</strong> per dire a Claude di consultarlo e aggiornarlo. Per ricordare <em>tra</em> le sessioni, lavora dentro un <strong>Project</strong> (la memoria standalone non viene mantenuta).
+        <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Get started</a> <a class="src" href="https://support.claude.com/en/articles/14116274-organize-your-tasks-with-projects-in-claude-cowork" target="_blank" rel="noopener">Projects</a></div></div>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">🗂️</span>
+        <div><strong>Esempio: una vault Obsidian come memoria.</strong> Una vault Obsidian è solo «una cartella di file Markdown sul tuo disco». Colleghi quella cartella a Cowork e diventa la tua memoria leggibile e scrivibile: Claude annota lì decisioni e contesto, tu li riusi (in Cowork o in Obsidian). <em>Nota:</em> non è un'integrazione ufficiale — il meccanismo supportato è «leggere/scrivere una cartella Markdown locale»; Obsidian è solo un esempio comodo.
+        <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Local file read/write</a> <a class="src" href="https://obsidian.md/" target="_blank" rel="noopener">obsidian.md (cos'è Obsidian)</a></div></div>
+      </div>
+
+      <div class="callout">
+        <span class="c-ico">🧰</span>
+        <div>Superficie diversa, stessa idea: il <strong>memory tool</strong> delle API/agenti fa salvare a Claude file in una cartella <code>/memories</code> che «persiste tra le conversazioni». È una primitiva per sviluppatori, <em>non</em> la feature di Cowork — utile saperlo per non confonderle.
+        <div class="src-row"><a class="src" href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/memory-tool" target="_blank" rel="noopener">Anthropic — Memory tool</a></div></div>
+      </div>
+
+      <div class="callout warn">
+        <span class="c-ico">⚠️</span>
+        <div><strong>Cartella di memoria, con criterio.</strong> Claude può leggere, scrivere e <em>cancellare definitivamente</em> i file della cartella collegata: usa una <strong>cartella di lavoro dedicata</strong>, tieni dei backup e non darle dati sensibili (credenziali, documenti finanziari).
+        <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13364135-use-claude-cowork-safely" target="_blank" rel="noopener">Use Cowork safely</a></div></div>
+      </div>
+
+      <h2>Quando un task è adatto: i 5 «ingredienti»</h2>
+      <div class="grid cols-3">
+        <div class="card flat"><h3>📥 Più input</h3><p>Entra più di una cosa: più file, un'intera cartella, o file + connettori.</p></div>
+        <div class="card flat"><h3>📤 Un deliverable</h3><p>Esce un file: documento, deck, foglio, CSV — da allegare, presentare, riusare.</p></div>
+        <div class="card flat"><h3>🔁 Ricorrente</h3><p>Lo rifarai: i task ripetibili sono il punto ideale, più dei one-off.</p></div>
+        <div class="card flat"><h3>✅ Formato noto</h3><p>Sai già com'è fatto un buon risultato: lo valuti in 15 secondi.</p></div>
+        <div class="card flat"><h3>🥱 Lavoro «di mezzo»</h3><p>Il pensiero sta all'inizio (cosa vuoi) e alla fine (è giusto?); il mezzo, noioso, si delega.</p></div>
+        <div class="card flat" style="border-color:var(--clay)"><h3>🧭 Regola</h3><p>Non servono tutti e 5: se ne centra qualcuno, è un buon candidato.</p></div>
+      </div>
+      <p class="note">Fonte: <a class="src" href="https://claude.com/blog/best-practices-for-getting-started-with-claude-cowork" target="_blank" rel="noopener">Best practices for getting started with Cowork</a></p>
+
+      <div class="callout tip">
+        <span class="c-ico">🤝</span>
+        <div><strong>Il brief che funziona.</strong> Apri con: «<em>Prima di iniziare, ripetimi la richiesta così siamo allineati, poi fammi tutte le domande di chiarimento che hai.</em>» Fa emergere i requisiti impliciti ed evita rilavorazioni costose.
+        <div class="src-row"><a class="src" href="https://claude.com/blog/best-practices-for-getting-started-with-claude-cowork" target="_blank" rel="noopener">Best practices</a></div></div>
+      </div>
+
+      <h2>Permessi, automazioni e sicurezza</h2>
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>🛂 Due modalità di permesso</h3>
+          <p><strong>«Ask before acting»</strong>: mostra il piano e aspetta la tua approvazione (consigliata). <strong>«Act without asking»</strong>: più veloce ma «aumenta significativamente il rischio di prompt injection» — solo se supervisioni fonti fidate. La cancellazione di file richiede sempre permesso esplicito.</p>
+          <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13345190-get-started-with-claude-cowork" target="_blank" rel="noopener">Get started</a> <a class="src" href="https://support.claude.com/en/articles/13364135-use-claude-cowork-safely" target="_blank" rel="noopener">Use Cowork safely</a></div>
+        </div>
+        <div class="card flat">
+          <h3>⏰ Task schedulati</h3>
+          <p>Con <code>/schedule</code> o dalla sidebar <strong>Scheduled</strong>: ogni run è una sessione Cowork a cadenza oraria/giornaliera/settimanale, con modello opzionale. <strong>Limite chiave:</strong> girano solo «mentre il computer è acceso e l'app Claude Desktop è aperta» (i run saltati ripartono al risveglio).</p>
+          <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13854387-schedule-recurring-tasks-in-claude-cowork" target="_blank" rel="noopener">Schedule recurring tasks</a></div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <span class="c-ico">⚠️</span>
+        <div><strong>Governance.</strong> Il computer use «non ha sandbox» tra Claude e il tuo schermo; i connettori <em>ereditano i tuoi permessi</em> (Claude non può accedere a ciò che tu non puoi). Buone regole: collega solo servizi fidati e necessari, evita dati sensibili (credenziali, documenti finanziari), rivedi gli output, metti in pausa i task inutilizzati. <strong>Resti responsabile di ogni azione di Claude.</strong>
+        <div class="src-row"><a class="src" href="https://support.claude.com/en/articles/13364135-use-claude-cowork-safely" target="_blank" rel="noopener">Use Cowork safely</a> <a class="src" href="https://support.claude.com/en/articles/11176164-use-connectors-to-extend-claude-s-capabilities" target="_blank" rel="noopener">Connectors &amp; permessi</a></div></div>
+      </div>
+
+      <p class="note">Disponibile su piani a pagamento (Pro, Max, Team, Enterprise) in Claude Desktop per macOS e Windows, accanto a Chat e Code. Verifica fonti: 2026-06-25.</p>
+    </section>
+
     <!-- ===================================================== SLIDE 6: CLI vs UI -->
     <section class="slide" data-title="CLI: confronto &amp; uso" data-time="8 min"
       data-notes="Prima il confronto fra superfici col filtro profilo. Poi 'uso della CLI': come si lavora davvero nel terminale. Fai avanzare il terminale interattivo passo passo: avvio nella cartella, @file per il contesto, plan mode, esecuzione, verifica con i test. Frase chiave: la CLI è per chi vuole lavorare vicino al sistema; dai sempre a Claude un modo per verificare il lavoro.">
-      <span class="kicker"><span class="num">06</span> · CLI: confronto &amp; uso · <span class="time">8 min</span></span>
+      <span class="kicker"><span class="num">08</span> · CLI: confronto &amp; uso · <span class="time">8 min</span></span>
       <h1 class="slide-title">CLI o UI? Dipende da dove lavori</h1>
       <p class="lead">Stessa intelligenza, superfici diverse. La scelta dipende da quanto vuoi stare vicino al sistema e da quanto è tecnico il task.</p>
 
@@ -693,7 +971,7 @@
     <!-- ===================================================== SLIDE 6: RISCHI + 4D -->
     <section class="slide" data-title="Rischi &amp; framework 4D" data-time="5 min"
       data-notes="Chiudi sul giudizio umano. L'AI accelera, non sostituisce la responsabilità. Mostra i rischi (hallucination, dati sensibili, output convincente ma sbagliato, azioni automatiche non controllate). Poi clicca le 4 D: Delegation, Description, Discernment, Diligence. Messaggio: dare sempre criteri di verifica.">
-      <span class="kicker"><span class="num">07</span> · Rischi, verifica &amp; 4D · <span class="time">5 min</span></span>
+      <span class="kicker"><span class="num">09</span> · Rischi, verifica &amp; 4D · <span class="time">5 min</span></span>
       <h1 class="slide-title">Acceleratore, non sostituto del giudizio</h1>
 
       <div class="grid cols-2">
@@ -727,10 +1005,72 @@
       <p class="note">Framework 4D (Delegation, Description, Discernment, Diligence) introdotto nel percorso AI Fluency di Anthropic. Riferimento prodotto/risorse: <a class="src" href="https://docs.anthropic.com/en/docs/intro-to-claude" target="_blank" rel="noopener">Anthropic — Intro to Claude</a></p>
     </section>
 
+    <!-- ===================================================== SLIDE 6b: CANTIERE CREATIVO -->
+    <section class="slide" data-title="Cosa possiamo fare in Cantiere Creativo" data-time="6 min"
+      data-notes="Sezione interna, strategica. Tre temi. 1) Ognuno, personalmente, può lavorare con un modello: non serve essere sviluppatori, ognuno sceglie superficie e modello adatti; il salto è culturale — da «strumento che risponde» a «collaboratore a cui delego e che verifico». 2) Cosa cambia in produzione e offerta: velocità (bozze, ricerche, prototipi, report in ore), meno lavoro ripetitivo, più iterazioni col cliente; lo stesso team produce di più; il valore si sposta dal «fare» al «saper delegare e validare». 3) Cosa offrire ai clienti in futuro: prototipi navigabili, soluzioni AI su misura (agenti, automazioni, skill/MCP sui loro sistemi), contenuti e design iterabili, consulenza di AI fluency e governance. Chiusura: il vantaggio competitivo è il giudizio umano e la responsabilità, non l'AI da sola.">
+      <span class="kicker"><span class="num">10</span> · Cosa possiamo fare in Cantiere Creativo · <span class="time">6 min</span></span>
+      <h1 class="slide-title">Cosa possiamo fare in Cantiere Creativo</h1>
+      <p class="lead">Non è una questione di «se», ma di «come». Tre piani concreti: la <strong>persona</strong>, la <strong>produzione</strong> e l'<strong>offerta ai clienti</strong>.</p>
+
+      <h2>1 · Ognuno può lavorare con un modello</h2>
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Non serve essere sviluppatori</h3>
+          <ul>
+            <li><strong>Chat</strong> per ragionare, sintetizzare, fare bozze;</li>
+            <li><strong>Cowork</strong> per i deliverable non tecnici (report, deck, fogli);</li>
+            <li><strong>Code</strong> per chi tocca il codice;</li>
+            <li><strong>Design</strong> per wireframe, mockup, prototipi.</li>
+          </ul>
+          <p class="note">Ognuno sceglie la superficie — e il modello — adatti al proprio lavoro.</p>
+        </div>
+        <div class="card flat">
+          <h3>Il salto è culturale</h3>
+          <p>Passare da «strumento che risponde» a <strong>«collaboratore a cui delego e di cui verifico il lavoro»</strong>. Chi impara a <em>delegare bene e validare</em> diventa più rapido senza perdere il controllo della qualità.</p>
+        </div>
+      </div>
+
+      <h2>2 · Cosa cambia: produzione e offerta commerciale</h2>
+      <div class="grid cols-3">
+        <div class="card flat"><h3>⏱️ Velocità</h3><p>Bozze, ricerche, prototipi navigabili, varianti e report in <strong>ore invece di giorni</strong>. Più iterazioni con il cliente nello stesso tempo.</p></div>
+        <div class="card flat"><h3>🧹 Meno ripetitivo</h3><p>Estrazione, riformattazione, riconciliazione, primo QA: il lavoro «di mezzo» si delega. Il team si concentra su strategia e creatività.</p></div>
+        <div class="card flat"><h3>📈 Capacità</h3><p>Lo <strong>stesso team produce di più</strong>: margini e throughput migliori. L'offerta diventa più veloce e più ricca — preventivi, prototipi, opzioni.</p></div>
+      </div>
+      <div class="callout">
+        <span class="c-ico">⚖️</span>
+        <div>Il rovescio: <strong>la qualità va presidiata</strong>. Il valore si sposta dal «fare» al <strong>«saper delegare e validare»</strong> — verifica, fonti, tono e standard restano responsabilità nostra.</div>
+      </div>
+
+      <h2>3 · Cosa possiamo offrire ai clienti in futuro</h2>
+      <div class="grid cols-2">
+        <div class="card flat">
+          <h3>Nuove linee di servizio</h3>
+          <ul>
+            <li><strong>Prototipi interattivi</strong> rapidi per validare idee prima di costruire;</li>
+            <li><strong>Soluzioni AI su misura</strong>: agenti, automazioni, skill e connettori (MCP) sui loro sistemi;</li>
+            <li><strong>Contenuti e design iterabili</strong>, non consegne «usa e getta».</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h3>Consulenza e governance</h3>
+          <ul>
+            <li><strong>AI fluency</strong>: formare i team dei clienti a delegare e verificare;</li>
+            <li><strong>Governance e sicurezza</strong>: permessi, dati, prompt injection — parte del valore che vendiamo;</li>
+            <li><strong>Affiancamento continuo</strong>: dal progetto una tantum alla collaborazione viva.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">🎯</span>
+        <div><strong>Il nostro vantaggio non è l'AI: è il giudizio.</strong> Gli strumenti li avranno tutti. La differenza la fanno il gusto, il metodo e la responsabilità con cui li usiamo — ed è esattamente ciò che possiamo vendere.</div>
+      </div>
+    </section>
+
     <!-- ===================================================== SLIDE 7: TAKEAWAY + GLOSSARIO + FONTI -->
     <section class="slide" data-title="Takeaway · Glossario · Fonti" data-time="2 min"
       data-notes="Ricapitola i 5 messaggi. Ricorda che il glossario e tutte le fonti sono qui sotto, verificabili in autonomia. Invita a una micro-demo dal vivo se c'è tempo: 'leggi questa cartella, spiegamela, trova un bug, proponi una modifica'.">
-      <span class="kicker"><span class="num">08</span> · In sintesi · <span class="time">chiusura</span></span>
+      <span class="kicker"><span class="num">11</span> · In sintesi · <span class="time">chiusura</span></span>
       <h1 class="slide-title">Cinque cose da portare a casa</h1>
       <div class="grid cols-2">
         <div class="card"><h3>1 · Non è magia</h3><p>L'AI lavora su istruzioni, contesto e probabilità. Genera il plausibile, non la verità garantita.</p></div>
