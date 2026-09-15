@@ -1,6 +1,6 @@
 # Retreat interno · 16–17 settembre 2026 · guida di facilitazione
 
-Conduce tutti i blocchi: Matteo. Questa guida è prescrittiva su format e tempi perché serve a chi conduce, non a chi partecipa.
+Guida di facilitazione: prescrittiva su format e tempi perché serve a chi conduce, non a chi partecipa.
 
 Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla root del repo con `python3 -m http.server 8000` → `http://localhost:8000/sessioni/2026-09-16-17/deck/`).
 
@@ -50,7 +50,7 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 **Format.** Timeline del progetto sul muro (milestone, consegne, incidenti) → scrittura silenziosa su tre colonne «fatto / ha funzionato / non ha funzionato» → cluster e voto a punti → discussione dei tre cluster più votati → decisioni.
 
-**Timing.** 10′ timeline raccontata da chi ha seguito il progetto · 10′ scrittura silenziosa (un post-it per idea) · 15′ cluster e voto (tre punti a testa) · 20′ discussione dei tre cluster più votati (7′ ciascuno, con cronometro) · 5′ decisioni.
+**Timing.** 10′ timeline raccontata da chi ha seguito il progetto · 10′ scrittura silenziosa (un post-it per idea) · 15′ cluster e voto · 20′ discussione dei tre cluster più votati (7′ ciascuno, con cronometro) · 5′ decisioni.
 
 **Domande guida.** Dove abbiamo perso tempo e perché? Cosa ha sorpreso il cliente in positivo? Cosa avremmo fatto diversamente con gli strumenti di oggi? Cosa del processo non era scritto da nessuna parte?
 
@@ -64,7 +64,7 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 **Obiettivo.** Far parlare tutti, non tre relatori: come ognuno usa l'AI oggi nel proprio lavoro, cosa funziona, cosa non funziona, quali problemi e quali idee. Serve a vedere il quadro reale del team, non i casi migliori.
 
-**Format.** Giro completo del team con una scaletta fissa in quattro punti: **cosa faccio con l'AI nel mio lavoro · cosa funziona · cosa non funziona o mi blocca · un'idea che vorrei provare**. Chi vuole mostra una schermata. Matteo annota su una board a quattro colonne «funziona / non funziona / problemi / idee». Poi si raggruppano le voci e si discutono i tre temi più ricorrenti.
+**Format.** Giro completo del team con una scaletta fissa in quattro punti: **cosa faccio con l'AI nel mio lavoro · cosa funziona · cosa non funziona o mi blocca · un'idea che vorrei provare**. Chi vuole mostra una schermata. Si annota su una board a quattro colonne «funziona / non funziona / problemi / idee». Poi si raggruppano le voci e si discutono i tre temi più ricorrenti.
 
 **Timing.** 16:00 regole e board (5′) · 16:05 giro di tutti (55′) · 17:00 raggruppamento e discussione dei tre temi più ricorrenti (25′) · 17:25 chiusura: cosa portiamo a Cantiere Futuro (5′).
 
@@ -74,7 +74,7 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 **Materiali.** Scaletta in quattro punti inviata a tutti via messaggio il 15, così nessuno arriva impreparato; board con le quattro colonne; proiettore per chi vuole mostrare schermate; ordine del giro deciso prima (per team, non per gerarchia).
 
-**Piano B.** Se qualcuno non vuole parlare: scrive i quattro punti su post-it e Matteo li legge. Se si sfora: si taglia la discussione a un solo tema, gli altri due passano alla semina delle 18:00.
+**Piano B.** Se qualcuno preferisce non parlare: scrive i quattro punti su post-it e si leggono insieme. Se si sfora: si taglia la discussione a un solo tema, gli altri due passano alla semina delle 18:00.
 
 ### 18:00–19:00 · Semina per Cantiere Futuro
 
@@ -82,7 +82,7 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 **Format.** Brainstorming silenzioso su post-it per le tre domande del 17, poi clustering fatto insieme, poi un giro finale.
 
-**Timing.** 3 × 5′ di scrittura silenziosa (come ci organizziamo · come ci raccontiamo · cosa offriamo), un post-it per idea · 25′ clustering a voce, una board per domanda · 10′ giro «una cosa che mi porto a cena» (una frase a testa, senza discussione).
+**Timing.** 3 × 5′ di scrittura silenziosa (come ci organizziamo · come ci raccontiamo · cosa offriamo), un post-it per idea · 25′ clustering a voce, una board per domanda · 10′ giro «una cosa che mi porto a cena», senza discussione.
 
 **Domande guida.** Come ci organizziamo: chi fa cosa quando l'AI fa una parte del lavoro; chi verifica; quanto budget di strumenti. Come ci raccontiamo: cosa diciamo ai clienti di come lavoriamo; quali prove abbiamo. Cosa offriamo: quali servizi nuovi siamo pronti a vendere, quali da provare, quali no.
 
@@ -172,7 +172,7 @@ Primo check: data e chi lo convoca
 
 ### 16:30–17:00 · Chiusura plenaria (da confermare)
 
-Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì» (una frase a testa). Si fissa la data del primo check.
+Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì». Si fissa la data del primo check.
 
 ---
 
