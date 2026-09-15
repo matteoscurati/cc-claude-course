@@ -171,16 +171,6 @@ Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì»
 
 ---
 
-## Materiali da preparare prima del 16
-
-- Deck delle 11:30 pubblicato e provato con cronometro; le voci `check` in `deck/script.js` risolte o tolte la mattina del 16; demo con fallback.
-- Timeline di 21 Next stampata o su board; numeri del progetto (ore, margine).
-- Post-it di tre colori, pennarelli, bollini per il voto, tre board (fisiche o Miro/FigJam).
-- Scaletta in quattro punti di «Casi dal campo» inviata a tutti il 15; board a quattro colonne pronta; ordine del giro deciso.
-- Account con crediti per Claude Design e per i modelli di frontiera; workflow `ultracode` pronto da lanciare alle 11:20.
-- Repo reale per il team dev con Codex o Antigravity installati; caso cliente con brand kit per il marketing.
-- Questo file aperto sul portatile di chi conduce, per trascrivere gli esiti.
-
 ## Esiti (da compilare durante le due giornate)
 
 ### Retro 21 Next
