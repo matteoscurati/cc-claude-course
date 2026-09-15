@@ -128,8 +128,6 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 ### 11:00–12:00 · Geo Workshop
 
-Condotto da un consulente esterno: non è coperto da questa guida.
-
 ### 14:30–15:30 · Lab di team
 
 **Team marketing.** Su un caso cliente reale con brand kit: una persona fa un one-pager o una landing con Claude Design partendo dal design system del cliente; una imposta un report o briefing ricorrente con Cowork (task schedulato); una prova sul cliente quanto emerso dal Geo Workshop della mattina. 45′ di lavoro, 15′ di confronto. Output: tre artefatti reali e la lista di cosa serve per rifarlo su ogni cliente (accessi, brand kit, tempo).
