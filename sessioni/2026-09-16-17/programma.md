@@ -40,7 +40,7 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 **Output.** Deck pubblicato; glossario dei termini nuovi; le domande senza risposta finiscono nel board «da provare» del pomeriggio.
 
-**Materiali.** Deck provato con cronometro; workflow `ultracode` lanciato alle 11:20 su un repo di Cantiere (demo B); prompt della demo C pronto e crediti Claude Design controllati; screenshot datati di fallback in `media/2026-09/`.
+**Materiali.** Deck; workflow `ultracode` in esecuzione su un repo di Cantiere (demo B); prompt della demo C e crediti Claude Design; screenshot di fallback in `media/2026-09/`.
 
 **Piano B.** Cut list in ordine: widget dell'effort → riga «alternative» del confronto Design → gradini per vendor dell'orchestrazione (restano i sei pattern). Design non si taglia.
 
@@ -72,7 +72,7 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 **Output.** Board a quattro colonne trascritta negli Esiti; i tre temi ricorrenti e le idee «da provare» entrano nella semina delle 18:00 e nei piani di team del 17.
 
-**Materiali.** Scaletta in quattro punti inviata a tutti via messaggio il 15, così nessuno arriva impreparato; board con le quattro colonne; proiettore per chi vuole mostrare schermate; ordine del giro deciso prima (per team, non per gerarchia).
+**Materiali.** Board con le quattro colonne; proiettore per chi vuole mostrare schermate.
 
 **Piano B.** Se qualcuno preferisce non parlare: scrive i quattro punti su post-it e si leggono insieme. Se si sfora: si taglia la discussione a un solo tema, gli altri due passano alla semina delle 18:00.
 
@@ -139,7 +139,7 @@ Output: la pipeline di acquisizione disegnata su una pagina (segmento → agente
 
 **Team dev.** Su un repo reale di Cantiere: costruire l'harness minimo (CLAUDE.md o AGENTS.md, una skill, un hook di test, un subagent revisore), poi eseguire lo stesso task con due harness (Claude Code e Codex, oppure Antigravity) e confrontare risultato, tempo e costo. Opzionale: un workflow bounded con il pattern «adversarial verification». Output: template di harness in un repo di Cantiere e tabella di confronto per il piano.
 
-**Materiali.** Marketing: profilo del cliente ideale scritto prima, accessi a Cowork, Claude Design e ai connettori (CRM, mail, LinkedIn se disponibile), la skill `proposta-commerciale-cc` funzionante, una proposta di sei mesi fa da confrontare. Dev: repo scelto, Codex o Antigravity installati accanto a Claude Code, crediti sufficienti.
+**Materiali.** Marketing: profilo del cliente ideale, accessi a Cowork, Claude Design e ai connettori (CRM, mail, LinkedIn se disponibile), la skill `proposta-commerciale-cc`, una proposta di sei mesi fa da confrontare. Dev: un repo di Cantiere, Codex o Antigravity accanto a Claude Code, crediti sufficienti.
 
 **Piano B.** Se un lab non parte per accessi mancanti: si fa in coppia sul caso dell'altro team. Se il prospecting con connettori non è pronto: si parte da una lista fatta a mano e l'agente fa solo ricerca e bozze.
 
