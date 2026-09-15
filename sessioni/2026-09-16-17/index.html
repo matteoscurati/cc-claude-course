@@ -189,9 +189,14 @@
           <h3><span class="when">14:30–15:30</span> Lab di team</h3>
           <div class="grid cols-2">
             <div class="card flat">
-              <h3>Team marketing</h3>
-              <p>Su un caso cliente reale con brand kit: una persona fa un one-pager o una landing con Claude Design partendo dal design system del cliente; una imposta un report o briefing ricorrente con Cowork (task schedulato); una prova sul cliente quanto emerso dal Geo Workshop della mattina. 45′ di lavoro, 15′ di confronto.</p>
-              <p><strong>Output:</strong> tre artefatti reali e la lista di cosa serve per rifarlo su ogni cliente (accessi, brand kit, tempo).</p>
+              <h3>Team marketing <span class="pill clay">acquisizione, non analisi</span></h3>
+              <p>Due domande guida: <strong>come usiamo uno o più agenti per acquisire clienti? Come cambia la nostra offerta commerciale?</strong> Si lavora su un segmento vero, un tipo di cliente che vogliamo davvero prendere, in tre postazioni parallele: 45′ di lavoro, 15′ di confronto.</p>
+              <ul style="margin:8px 0 0;padding-left:18px;color:var(--ink-soft);font-size:.92rem">
+                <li><strong>Prospecting.</strong> Un agente (Cowork o Claude con ricerca web e connettori) parte dal profilo del cliente ideale, costruisce una lista di prospect con motivazione e segnale di interesse, e prepara una bozza di primo contatto per ciascuno. Domanda: cosa deve verificare una persona prima che il messaggio parta?</li>
+                <li><strong>Offerta.</strong> Dal brief di un prospect alla proposta commerciale con la skill interna <code>proposta-commerciale-cc</code>, includendo i servizi nuovi (prototipi navigabili, agenti su misura, GEO): cosa cambia in deliverable, tempi e prezzo rispetto a una proposta di sei mesi fa.</li>
+                <li><strong>Aggancio.</strong> Un prototipo o un one-pager con Claude Design fatto sul prospect, da allegare al primo contatto: il «vieni a vedere» al posto del «ti racconto».</li>
+              </ul>
+              <p style="margin-top:10px"><strong>Output:</strong> la pipeline di acquisizione su una pagina (segmento → agente di prospecting → verifica umana → aggancio → proposta), con chi fa cosa e cosa resta umano; tre righe su come cambia l'offerta (cosa vendiamo, come lo confezioniamo, a che prezzo); una lista di prospect reale da provare la settimana dopo.</p>
             </div>
             <div class="card flat">
               <h3>Team dev</h3>
@@ -200,8 +205,8 @@
             </div>
           </div>
           <dl class="fields" style="margin-top:14px">
-            <dt>Materiali</dt><dd>Marketing: caso cliente con brand kit, accessi a Claude Design e Cowork. Dev: repo scelto, Codex o Antigravity installati accanto a Claude Code, crediti sufficienti.</dd>
-            <dt>Piano B</dt><dd>Se un lab non parte per accessi mancanti: si fa in coppia sul caso dell'altro team.</dd>
+            <dt>Materiali</dt><dd>Marketing: profilo del cliente ideale scritto prima, accessi a Cowork, Claude Design e ai connettori (CRM, mail, LinkedIn se disponibile), la skill <code>proposta-commerciale-cc</code> funzionante, una proposta di sei mesi fa da confrontare. Dev: repo scelto, Codex o Antigravity installati accanto a Claude Code, crediti sufficienti.</dd>
+            <dt>Piano B</dt><dd>Se un lab non parte per accessi mancanti: si fa in coppia sul caso dell'altro team. Se il prospecting con connettori non è pronto: si parte da una lista fatta a mano e l'agente fa solo ricerca e bozze.</dd>
           </dl>
         </div>
 

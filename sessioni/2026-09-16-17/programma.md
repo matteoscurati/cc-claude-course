@@ -130,13 +130,18 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 ### 14:30–15:30 · Lab di team
 
-**Team marketing.** Su un caso cliente reale con brand kit: una persona fa un one-pager o una landing con Claude Design partendo dal design system del cliente; una imposta un report o briefing ricorrente con Cowork (task schedulato); una prova sul cliente quanto emerso dal Geo Workshop della mattina. 45′ di lavoro, 15′ di confronto. Output: tre artefatti reali e la lista di cosa serve per rifarlo su ogni cliente (accessi, brand kit, tempo).
+**Team marketing: acquisizione, non analisi.** Due domande guida: come usiamo uno o più agenti per acquisire clienti? Come cambia la nostra offerta commerciale? Si lavora su un segmento vero (un tipo di cliente che vogliamo davvero prendere) in tre postazioni parallele, 45′ di lavoro e 15′ di confronto:
+- *Prospecting.* Un agente (Cowork o Claude con ricerca web e connettori) parte dal profilo del cliente ideale, costruisce una lista di prospect con motivazione e segnale di interesse, e prepara una bozza di primo contatto per ciascuno. Domanda: cosa deve verificare una persona prima che il messaggio parta?
+- *Offerta.* Dal brief di un prospect alla proposta commerciale con la skill interna `proposta-commerciale-cc`, includendo i servizi nuovi (prototipi navigabili, agenti su misura, GEO): si guarda cosa cambia in deliverable, tempi e prezzo rispetto a una proposta di sei mesi fa.
+- *Aggancio.* Un prototipo o un one-pager con Claude Design fatto sul prospect, da allegare al primo contatto: il «vieni a vedere» al posto del «ti racconto».
+
+Output: la pipeline di acquisizione disegnata su una pagina (segmento → agente di prospecting → verifica umana → aggancio → proposta), con chi fa cosa e cosa resta umano; tre righe su come cambia l'offerta (cosa vendiamo, come lo confezioniamo, a che prezzo); una lista di prospect reale da provare la settimana dopo.
 
 **Team dev.** Su un repo reale di Cantiere: costruire l'harness minimo (CLAUDE.md o AGENTS.md, una skill, un hook di test, un subagent revisore), poi eseguire lo stesso task con due harness (Claude Code e Codex, oppure Antigravity) e confrontare risultato, tempo e costo. Opzionale: un workflow bounded con il pattern «adversarial verification». Output: template di harness in un repo di Cantiere e tabella di confronto per il piano.
 
-**Materiali.** Marketing: caso cliente con brand kit, accessi a Claude Design e Cowork. Dev: repo scelto, Codex o Antigravity installati accanto a Claude Code, crediti sufficienti.
+**Materiali.** Marketing: profilo del cliente ideale scritto prima, accessi a Cowork, Claude Design e ai connettori (CRM, mail, LinkedIn se disponibile), la skill `proposta-commerciale-cc` funzionante, una proposta di sei mesi fa da confrontare. Dev: repo scelto, Codex o Antigravity installati accanto a Claude Code, crediti sufficienti.
 
-**Piano B.** Se un lab non parte per accessi mancanti: si fa in coppia sul caso dell'altro team.
+**Piano B.** Se un lab non parte per accessi mancanti: si fa in coppia sul caso dell'altro team. Se il prospecting con connettori non è pronto: si parte da una lista fatta a mano e l'agente fa solo ricerca e bozze.
 
 ### 15:30–16:30 · Piano di team (separati, stesso template)
 
