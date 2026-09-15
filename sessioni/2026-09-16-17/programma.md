@@ -28,8 +28,6 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 ### 11:00–11:30 · Introduzione (Francesco)
 
-Blocco di Francesco: non è coperto da questa guida.
-
 ### 11:30–12:30 · Update: modelli, harness, orchestrazione, Claude Design
 
 **Obiettivo.** Aggiornare la mappa mentale di giugno con una regola sola: la logica è la stessa, cambia il fornitore.
