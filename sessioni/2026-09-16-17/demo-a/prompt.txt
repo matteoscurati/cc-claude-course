@@ -1,0 +1,3 @@
+Nel file fatture.js c'è un bug: i test in fatture.test.js falliscono.
+Trova il bug, spiegalo in tre righe al massimo e proponi la correzione minima.
+Non toccare i test. Esegui `node --test` per verificare.

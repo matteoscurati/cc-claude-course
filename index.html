@@ -1,22 +1,110 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" data-theme="dark">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Corso · LLM, Agenti e gli strumenti Anthropic</title>
-  <meta name="description" content="Mini-sito interattivo per una lezione su LLM, agenti e gli strumenti Anthropic: Claude Code, Cowork e Design." />
-  <meta http-equiv="refresh" content="0; url=./site/index.html" />
-  <link rel="canonical" href="./site/index.html" />
-  <script>window.location.replace("./site/index.html");</script>
+  <title>Formazione interna · LLM, agenti e strumenti</title>
+  <meta name="description" content="Home dei materiali di formazione interna di Cantiere Creativo: lezione di giugno 2026 su LLM e agenti, update di settembre 2026 su modelli, harness, orchestrazione e Claude Design, programma del retreat, demo, fonti." />
+  <link rel="stylesheet" href="./site/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23d97757'/></svg>" />
   <style>
-    html,body{height:100%;margin:0;background:#15110e;color:#f6efe7;
-      font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-      display:grid;place-items:center;text-align:center}
-    a{color:#d97757}
+    .deck { padding-top: 62px; }
+    .slide { display: block; min-height: auto; padding-bottom: 60px; animation: none; }
+    .home-cover { padding: 30px 0 10px; }
+    .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-top: 14px; }
+    a.card { display: block; text-decoration: none; color: inherit; transition: border-color .2s, transform .2s; }
+    a.card:hover { border-color: var(--clay); transform: translateY(-2px); }
+    .card .k { font-family: var(--mono); font-size: .72rem; color: var(--clay); letter-spacing: 1px; text-transform: uppercase; }
+    .card h3 { margin: 8px 0 6px; }
+    .card p { margin: 0; color: var(--muted-2); font-size: .94rem; }
+    .card .go { display: inline-block; margin-top: 12px; color: var(--clay); font-weight: 600; font-size: .92rem; }
+    .list a { display: block; text-decoration: none; color: var(--ink-soft); padding: 9px 0; border-bottom: 1px solid var(--line-soft); font-size: .95rem; }
+    .list a:hover { color: var(--clay); }
+    .list a small { display: block; color: var(--muted-2); font-size: .8rem; }
+    .list a code { font-size: .82em; }
+    .theme-hint { color: var(--muted-2); font-size: .82rem; }
   </style>
 </head>
 <body>
-  <p>Apertura del corso in corso… se non vieni reindirizzato,
-    <a href="./site/index.html">apri il sito</a>.</p>
+  <header class="topbar">
+    <div class="brand"><span class="dot"></span><span>Cantiere Creativo <small>· formazione interna</small></span></div>
+    <div class="spacer"></div>
+    <button class="iconbtn" id="btn-theme" title="Tema chiaro / scuro">◐</button>
+  </header>
+
+  <main class="deck">
+    <section class="slide">
+      <div class="home-cover">
+        <span class="kicker">Home dei materiali</span>
+        <h1 class="slide-title">LLM, agenti e strumenti: tutto quello che abbiamo costruito</h1>
+        <p class="lead">Deck interattivi da proiettare, guide di facilitazione, demo e fonti. Ogni definizione e ogni numero hanno una fonte ufficiale e una data di verifica.</p>
+      </div>
+
+      <h2>Le sessioni</h2>
+      <div class="cards">
+        <a class="card flat" href="./site/index.html">
+          <span class="k">Lezione 1 · giugno 2026 · ~60′</span>
+          <h3>Da chatbot ad agente</h3>
+          <p>Cos'è un LLM, chat vs agente, prompt e context engineering, la mappa di Claude (Code, Cowork, Design), skills, subagent, hook e MCP, rischi e framework 4D. 11 sezioni, 15 widget.</p>
+          <span class="go">Apri la lezione →</span>
+        </a>
+        <a class="card flat" href="./sessioni/2026-09-16-17/deck/index.html">
+          <span class="k">Update · 16 settembre 2026 · 60′</span>
+          <h3>La logica è la stessa, cambia il fornitore</h3>
+          <p>Modelli USA e Cina in quattro fasce, l'effort come leva, l'harness oltre Claude Code (Codex, Antigravity, Grok, Hermes), orchestrazione multi-agente e Claude Design. 7 sezioni, 3 demo.</p>
+          <span class="go">Apri l'update →</span>
+        </a>
+      </div>
+
+      <h2>Retreat 16–17 settembre 2026</h2>
+      <div class="cards">
+        <a class="card flat" href="./sessioni/2026-09-16-17/index.html">
+          <span class="k">Guida di facilitazione</span>
+          <h3>Programma delle due giornate</h3>
+          <p>Ogni blocco con obiettivo, format, timing, domande guida, output, materiali e piano B: update, retro 21 Next, casi dal campo, semina, Cantiere Futuro, Geo Workshop, lab e piani di team.</p>
+          <span class="go">Apri il programma →</span>
+        </a>
+        <a class="card flat" href="./sessioni/2026-09-16-17/demo-a/index.html">
+          <span class="k">Demo A · 3 minuti</span>
+          <h3>Modello e effort</h3>
+          <p>Stesso prompt, stessa funzione con un bug noto, modelli e effort diversi: tempo, costo ed esito. Script, test, sequenza minuto per minuto e variante multi-vendor.</p>
+          <span class="go">Apri la demo →</span>
+        </a>
+      </div>
+
+      <div class="grid cols-2" style="margin-top:34px">
+        <div>
+          <h2 style="margin-top:0">Scalette e fonti</h2>
+          <div class="list">
+            <a href="https://github.com/matteoscurati/cc-claude-course/blob/main/research/certified-sources.md">Fonti certificate<small><code>research/certified-sources.md</code> · solo siti ufficiali e Hugging Face, con data di verifica; sezione «Aggiornamento settembre 2026»</small></a>
+            <a href="https://github.com/matteoscurati/cc-claude-course/blob/main/research/lesson-structure.md">Scaletta della lezione 1<small><code>research/lesson-structure.md</code></small></a>
+            <a href="https://github.com/matteoscurati/cc-claude-course/blob/main/research/lesson-structure-2026-09.md">Scaletta dell'update di settembre<small><code>research/lesson-structure-2026-09.md</code> · obiettivi, minuti, frasi chiave, piano di taglio</small></a>
+            <a href="https://github.com/matteoscurati/cc-claude-course/blob/main/research/claude-corpus.md">Corpus sugli strumenti Claude<small><code>research/claude-corpus.md</code></small></a>
+            <a href="https://github.com/matteoscurati/cc-claude-course/blob/main/sessioni/2026-09-16-17/programma.md">Programma in markdown<small><code>sessioni/2026-09-16-17/programma.md</code> · con la sezione «Esiti» da compilare in sala</small></a>
+          </div>
+        </div>
+        <div>
+          <h2 style="margin-top:0">Repo e materiali</h2>
+          <div class="list">
+            <a href="https://github.com/matteoscurati/cc-claude-course">Repository su GitHub<small>codice sorgente, storia delle modifiche, README</small></a>
+            <a href="https://github.com/matteoscurati/cc-claude-course/blob/main/README.md">README<small>come si usa, scorciatoie da tastiera, struttura delle lezioni e del repo</small></a>
+            <a href="https://github.com/matteoscurati/cc-claude-course/tree/main/media/2026-09">Fallback delle demo<small><code>media/2026-09/</code> · script del workflow e screenshot datati</small></a>
+            <a href="https://github.com/matteoscurati/cc-claude-course/blob/main/LICENSE">Licenza CC BY 4.0<small>libero di riusare e adattare citando la fonte</small></a>
+          </div>
+          <p class="theme-hint" style="margin-top:16px">Nei deck: <kbd>←</kbd> <kbd>→</kbd> per navigare, <kbd>O</kbd> indice, <kbd>N</kbd> note del relatore, <kbd>T</kbd> tema, <kbd>S</kbd> scorri tutto; clic sul cronometro per il timer.</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (function () {
+      var root = document.documentElement, b = document.getElementById("btn-theme");
+      b.addEventListener("click", function () {
+        root.dataset.theme = root.dataset.theme === "light" ? "dark" : "light";
+        b.classList.toggle("active", root.dataset.theme === "light");
+      });
+    })();
+  </script>
 </body>
 </html>

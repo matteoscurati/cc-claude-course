@@ -310,3 +310,108 @@ Concetti da usare:
 - IBM Think/Developer: buona fonte divulgativa enterprise, ma secondaria rispetto a paper, docs vendor e corsi universitari.
 - News, Medium, Reddit, YouTube non ufficiali: esclusi dalla base del corso, eventualmente solo per esempi di percezione pubblica.
 
+
+# Aggiornamento settembre 2026 (sessione del 16/09)
+
+Data verifica: 2026-09-14. Regola: solo siti ufficiali dei vendor (annunci, docs, pricing, help center) o Hugging Face per i pesi aperti. Le voci segnate «check» hanno un dato (di solito la data di uscita) letto solo da fonti terze: si confermano la mattina del 16 o si tolgono dal deck.
+
+## Modelli USA
+
+Anthropic:
+
+- Introducing Claude Fable 5.1 and Mythos 5.1: https://www.anthropic.com/claude-fable-and-mythos-5-1
+- Introducing Claude Opus 5: https://www.anthropic.com/news/claude-opus-5
+- Introducing Claude Sonnet 5: https://www.anthropic.com/news/claude-sonnet-5
+- Redeploying Claude Fable 5: https://www.anthropic.com/news/redeploying-fable-5
+- Claude pricing: https://claude.com/pricing
+
+OpenAI:
+
+- GPT-6 Astra: https://openai.com/index/gpt-6-astra/
+- GPT-6 Astra (API model page): https://developers.openai.com/api/docs/models/gpt-6-astra
+- GPT-5.6: https://openai.com/index/gpt-5-6/
+- GPT-5.6 Sol (API model page): https://developers.openai.com/api/docs/models/gpt-5.6-sol
+- API pricing: https://developers.openai.com/api/docs/pricing
+
+Google:
+
+- Gemini API pricing: https://ai.google.dev/gemini-api/docs/pricing
+
+xAI:
+
+- Grok models and pricing: https://docs.x.ai/docs/models
+
+Meta:
+
+- Llama (nessun Llama 5 ufficiale al 2026-09-14; ultima famiglia annunciata Llama 4): https://ai.meta.com/blog/llama-4-multimodal-intelligence/
+
+Punti verificati:
+
+- Fable 5.1: $10 / $50 per Mtok, cache read $0.25; su Pro e Max via usage credits; «When set to Low or Medium effort, Fable 5.1 achieves results similar to or better than Fable 5's at a much lower cost».
+- Opus 5 (24 luglio 2026): $5 / $25, default su Max; Sonnet 5 (30 giugno 2026): $2 / $10; Haiku 4.5: $1 / $5.
+- Fable 5: uscito il 9 giugno, accesso sospeso il 12 giugno, ridistribuito dal 1 luglio con usage credits.
+- GPT-6 Astra: `gpt-6-astra`, $10 / $1 cached / $50, contesto 1.050.000, effort low→max; GPT-5.6 Sol $4 / $20 (promozionale almeno fino al 21 novembre 2026), Terra $2 / $12, Luna $0,20 / $1,20. Data GA di GPT-5.6 (9 luglio) e di Astra (3 settembre): check.
+- Gemini 3.1 Pro Preview $2 / $12 (≤200k), Gemini 3.8 Flash «latest» $0,75 / $3,75 fino al 31 dicembre 2026, Gemini 2.5 Flash-Lite $0,10 / $0,40 (pagina aggiornata 2026-09-11).
+- Grok 4.6 flagship, contesto 500k, $2 / $6 (long context $4 / $12); Grok Build 0.1 $1 / $2. Data di uscita di Grok 4.6 (12 agosto): check.
+
+## Modelli Cina
+
+- DeepSeek-V4.1-Flash (annuncio 10 settembre 2026): https://api-docs.deepseek.com/news/news260910/
+- DeepSeek pricing: https://api-docs.deepseek.com/quick_start/pricing
+- Qwen3.8 (repo ufficiale): https://github.com/QwenLM/Qwen3.8
+- Qwen3.8-27B: https://huggingface.co/Qwen/Qwen3.8-27B
+- Kimi K3 (pesi): https://huggingface.co/moonshotai/Kimi-K3
+- Kimi pricing: https://platform.kimi.ai/docs/pricing/chat
+- GLM-5.3 (pesi): https://huggingface.co/zai-org/GLM-5.3
+- Z.ai pricing: https://docs.z.ai/guides/overview/pricing
+- MiniMax-M3 (pesi): https://huggingface.co/MiniMaxAI/MiniMax-M3
+- MiniMax pricing: https://platform.minimax.io/docs/guides/pricing-paygo
+- Hunyuan Hy4-preview (pesi): https://huggingface.co/tencent/Hy4-preview
+
+Punti verificati:
+
+- DeepSeek V4.1 Flash: `deepseek-flash`, MoE 552B, contesto 1M, $0,30 / $1,20 in fascia di punta ($0,15 / $0,60 fuori punta), pesi su Hugging Face; V4 Pro $1,32 / $3,96.
+- Qwen3.8-27B (14 agosto) e Qwen3.8-2.4T-A95B (12 agosto), pesi aperti; nessun prezzo API nel repo.
+- Kimi K3: 2,8T totali / 104B attivi, contesto 1.048.576, $3 / $15 (cache hit $0,30), Kimi K3 License; uscita luglio 2026.
+- GLM-5.3: 753B, contesto 1M, $1,40 / $4,40; GLM-5.3-Flash $0,15 / $0,50; licenza GLM-5.3. Data di uscita (14 agosto): check.
+- MiniMax M3: 428B totali / 23B attivi, contesto 1M, $0,30 / $1,20 (long context $0,60 / $2,40), licenza minimax-community; giugno 2026.
+- Hy4-preview: 770B totali / 49B attivi, Apache 2.0. Data di uscita (28 agosto): check.
+
+## Harness e agenti (oltre Claude Code)
+
+- Claude Code — Orchestrate teams of Claude Code sessions: https://code.claude.com/docs/en/agent-teams
+- Claude Code — Introducing dynamic workflows: https://claude.com/blog/introducing-dynamic-workflows-in-claude-code
+- Claude Code — A harness for every task: https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code
+- Anthropic — Effective harnesses for long-running agents: https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents
+- OpenAI Codex docs: https://learn.chatgpt.com/docs
+- Google — Introducing Antigravity CLI: https://antigravity.google/blog/introducing-google-antigravity-cli
+- Google — Transitioning Gemini CLI to Antigravity CLI: https://github.com/google-gemini/gemini-cli/discussions/27274
+- xAI — Introducing Grok Bot: https://x.ai/news/introducing-grok-bot
+- xAI — Grok Build is now open source: https://x.ai/news/grok-build-open-source
+- Nous Research — Hermes Agent: https://github.com/NousResearch/hermes-agent
+
+Punti verificati:
+
+- Dynamic workflows (annuncio 28 maggio 2026): Claude scrive uno script JS per il Workflow tool che lancia subagent in parallelo o a stadi; si attiva con «ultracode» o su richiesta; abilitato di default su Max, Team, Enterprise; «can consume substantially more tokens». Sei pattern: classify-and-act, fan-out-and-synthesize, adversarial verification, generate-and-filter, tournament, loop-until-done; curano laziness, self-preferential bias, goal drift.
+- Agent teams: sperimentali, disabilitati di default; lead + teammate con context window propri, task list condivisa, messaggi diretti.
+- Codex: CLI, IDE, cloud, GitHub, Slack; modello primario GPT-6 Astra; AGENTS.md, skills, subagent, `/goal`, sandbox, MCP, hooks, plugin.
+- Antigravity CLI (`agy`, annuncio 19 maggio; dal 18 giugno Gemini CLI non serve piu' gli account individuali): in Go, skills, hooks, subagent, plugin, «asynchronous background workflows», stesso harness di Antigravity 2.0.
+- Grok Build (open source dal 15 luglio 2026): agent loop, skills, plugin, hooks, MCP, subagent, `config.toml`, local-first. Grok Bot (11 agosto 2026): agenti always-on con il proprio computer, memoria, approvazioni; beta SuperGrok e Cursor.
+- Hermes Agent: MIT, daemon persistente, memoria cross-sessione, skill che si scrive da solo (standard agentskills.io), cron, gateway Telegram/Discord/Slack/WhatsApp/Signal/email, model-agnostic; ~245k stelle.
+
+## Claude Design e alternative
+
+- Claude Design (prodotto): https://claude.com/product/design
+- Get started with Claude Design (help center, aggiornato 6 agosto 2026): https://support.claude.com/en/articles/14604416-get-started-with-claude-design
+- Introducing Claude Design by Anthropic Labs: https://www.anthropic.com/news/claude-design-anthropic-labs
+- Figma — Guide to the Figma MCP server: https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server
+- Figma Make: https://www.figma.com/make/
+- Google Stitch: https://stitch.withgoogle.com/
+- Google Stitch, real time design: https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/
+
+Punti verificati:
+
+- Claude Design: Anthropic Labs, 17 aprile 2026, beta su Pro, Max, Team, Enterprise (Enterprise off di default), condivide i limiti d'uso; chat a sinistra e canvas a destra; input screenshot, DOCX/PPTX/XLSX, catture web, repo e design system via `/design-sync`; editing via chat, commenti inline, drag/resize/align e slider; export PDF, PPTX, HTML, zip, link view/comment/edit; integrazioni Adobe, Canva, Gamma, Miro, Vercel, Wix, Lovable, Replit, Base44; handoff a Claude Code.
+- Figma MCP server: legge contesto di design, scrive sul canvas, Code Connect; client tra cui Claude Code, Codex, Cursor, Gemini CLI.
+- Figma Make: prototipi interattivi da linguaggio naturale con il design system del team, gratis su Starter.
+- Google Stitch: canvas AI-native con design agent, DESIGN.md open source, export in Antigravity.

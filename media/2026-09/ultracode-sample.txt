@@ -1,0 +1,21 @@
+// Esempio (accorciato) di script per il Workflow tool di Claude Code.
+// Pattern: fan-out-and-synthesize + adversarial verification.
+export const meta = {
+  name: 'review-pr-142',
+  description: 'Review su tre dimensioni, ogni finding verificato da un secondo agente',
+  phases: [{ title: 'Review' }, { title: 'Verify' }],
+}
+const DIMENSIONS = [
+  { key: 'security',    prompt: 'Cerca vulnerabilità nel diff...' },
+  { key: 'performance', prompt: 'Cerca regressioni di performance...' },
+  { key: 'tests',       prompt: 'Verifica la copertura dei test...' },
+]
+const results = await pipeline(
+  DIMENSIONS,
+  d => agent(d.prompt, { label: `review:${d.key}`, phase: 'Review', model: 'sonnet' }),
+  review => parallel(review.findings.map(f => () =>
+    agent(`Prova a smentire questo finding: ${f.title}`, { label: `verify:${f.file}`, phase: 'Verify', model: 'opus' })
+      .then(v => ({ ...f, verdict: v }))
+  ))
+)
+return { confirmed: results.flat().filter(f => f.verdict?.isReal) }

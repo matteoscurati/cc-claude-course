@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Retreat 16–17 settembre 2026</title>
+  <meta name="description" content="Guida di facilitazione della due giorni interna di Cantiere Creativo del 16 e 17 settembre 2026: obiettivo, format, timing, domande guida, output e materiali di ogni blocco." />
+  <link rel="stylesheet" href="../../site/styles.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23d97757'/></svg>" />
+  <style>
+    .deck { padding-top: 62px; }
+    .slide { display: block; min-height: auto; padding-bottom: 40px; animation: none; }
+    .toc { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0 6px; }
+    .toc a { text-decoration: none; }
+    .matrix td:first-child { font-family: var(--mono); color: var(--clay); white-space: nowrap; }
+    .matrix td:last-child { color: var(--muted-2); }
+    .blk { margin: 26px 0; }
+    .blk h3 { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px; margin-top: 0; }
+    .blk h3 .when { font-family: var(--mono); font-size: .82rem; color: var(--clay); }
+    .fields { display: grid; grid-template-columns: 140px 1fr; gap: 10px 16px; font-size: .95rem; }
+    .fields dt { font-family: var(--mono); font-size: .74rem; text-transform: uppercase; letter-spacing: .8px; color: var(--gold); padding-top: 3px; }
+    .fields dd { margin: 0; color: var(--ink-soft); }
+    .fields dd ul { margin: 4px 0 0; padding-left: 18px; }
+    .fields dd li { margin: 3px 0; }
+    .fields dd p { margin: 0 0 6px; max-width: none; }
+    @media (max-width: 640px) { .fields { grid-template-columns: 1fr; gap: 4px 0; } .fields dd { margin-bottom: 10px; } }
+    .tpl { font-size: .84rem; }
+    .esiti .card h3 { margin-top: 0; }
+    .esiti ul { margin: 6px 0 0; padding-left: 18px; color: var(--muted-2); font-size: .92rem; }
+    .back { font-size: .86rem; color: var(--muted-2); text-decoration: none; }
+    .back:hover { color: var(--clay); }
+    .day { margin-top: 44px; padding-top: 24px; border-top: 1px solid var(--line-soft); }
+    .blk, .day, [id] { scroll-margin-top: 80px; }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="dot"></span><span>Retreat 16–17 settembre 2026 <small>· guida di facilitazione</small></span></div>
+    <div class="spacer"></div>
+    <a class="back" href="../../index.html">← home</a>
+  </header>
+
+  <main class="deck">
+    <section class="slide">
+      <span class="kicker">Cantiere Creativo · due giorni interna</span>
+      <h1 class="slide-title">Retreat 16–17 settembre 2026</h1>
+      <p class="lead">Conduce tutti i blocchi Matteo: questa guida è prescrittiva su format e tempi perché serve a chi conduce, non a chi partecipa. Il deck della sessione delle 11:30 del 16 è in <a class="src" href="deck/index.html">deck/</a>, la demo A in <a class="src" href="demo-a/index.html">demo-a/</a>.</p>
+
+      <div class="toc">
+        <a class="pill clay" href="#g16">16 settembre</a>
+        <a class="pill" href="#b-intro">Introduzione</a><a class="pill" href="#b-update">Update 11:30</a><a class="pill" href="#b-retro">Retro 21 Next</a><a class="pill" href="#b-casi">Casi dal campo</a><a class="pill" href="#b-semina">Semina</a>
+        <a class="pill clay" href="#g17">17 settembre</a>
+        <a class="pill" href="#b-futuro">Cantiere Futuro</a><a class="pill" href="#b-geo">Geo Workshop</a><a class="pill" href="#b-lab">Lab di team</a><a class="pill" href="#b-piano">Piano di team</a><a class="pill" href="#b-chiusura">Chiusura</a>
+        <a class="pill sage" href="#materiali">Materiali</a><a class="pill sage" href="#esiti">Esiti</a>
+      </div>
+
+      <div class="callout warn">
+        <span class="c-ico">⚠️</span>
+        <div><strong>Assunzioni da confermare.</strong> «21 Next» è un progetto cliente concluso; «Geo Workshop» è Generative Engine Optimization, cioè la visibilità nelle risposte generate da AI Overviews, ChatGPT, Perplexity (coerente con il plugin <code>claude-seo</code> già installato); il pranzo del 17 è alle 13:00 come il 16; i pomeriggi del 17 finiscono alle 17:00 con una plenaria di chiusura; il blocco 15:30–16:30 del 16 non era in scaletta ed è trattato come pausa lunga.</div>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Filo delle due giornate</span>
+          <div class="term">16 = capire e confrontarsi · 17 = decidere</div>
+          <p>Il 16: novità → cosa è successo davvero su un progetto → casi reali dei colleghi → semina per domani. Il 17: Cantiere Futuro → GEO come primo servizio nuovo → piani di team.</p>
+        </div>
+        <div class="def">
+          <span class="deftag">Formato di ogni blocco</span>
+          <div class="term">Sette campi</div>
+          <p>Obiettivo · format · timing · domande guida · output e dove finisce · materiali da preparare · piano B se si sfora.</p>
+        </div>
+      </div>
+
+      <!-- ============================================================ 16 -->
+      <div class="day" id="g16">
+        <h2>16 settembre</h2>
+        <div style="overflow-x:auto">
+          <table class="matrix">
+            <thead><tr><th>Ora</th><th>Blocco</th><th>Chi</th></tr></thead>
+            <tbody>
+              <tr><td>11:00–11:30</td><td><a class="src" href="#b-intro">Introduzione</a></td><td>Francesco</td></tr>
+              <tr><td>11:30–12:30</td><td><a class="src" href="#b-update">Update: modelli, harness, orchestrazione, Claude Design</a></td><td>tutti</td></tr>
+              <tr><td>13:00–14:00</td><td>Pranzo</td><td></td></tr>
+              <tr><td>14:30–15:30</td><td><a class="src" href="#b-retro">Retro 21 Next</a></td><td>tutti</td></tr>
+              <tr><td>15:30–16:30</td><td>Pausa lunga (da confermare)</td><td></td></tr>
+              <tr><td>16:30–17:30</td><td><a class="src" href="#b-casi">Casi dal campo</a></td><td>tutti</td></tr>
+              <tr><td>17:30–18:00</td><td>Pausa</td><td></td></tr>
+              <tr><td>18:00–19:00</td><td><a class="src" href="#b-semina">Semina per Cantiere Futuro</a></td><td>tutti</td></tr>
+              <tr><td>20:00–23:00</td><td>Cena</td><td></td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel blk" id="b-intro">
+          <h3><span class="when">11:00–11:30</span> Introduzione (Francesco)</h3>
+          <p>Non è un blocco di Matteo. Da concordare con Francesco entro il 15: la regola dei tempi (ogni blocco finisce all'ora scritta, le domande si fanno dentro il blocco), il passaggio di consegne alle 11:30 e l'annuncio che il deck resta online dopo la sessione.</p>
+        </div>
+
+        <div class="panel blk" id="b-update">
+          <h3><span class="when">11:30–12:30</span> Update: modelli, harness, orchestrazione, Claude Design</h3>
+          <dl class="fields">
+            <dt>Obiettivo</dt><dd>Aggiornare la mappa mentale di giugno con una regola sola: la logica è la stessa, cambia il fornitore.</dd>
+            <dt>Format</dt><dd>Deck interattivo in sette sezioni con tre demo dal vivo. Scaletta, minuti e note del relatore sono nel <a class="src" href="deck/index.html">deck</a> (tasto <kbd>N</kbd>) e in <code>research/lesson-structure-2026-09.md</code>.</dd>
+            <dt>Timing</dt><dd>11:30 apertura · 11:33 modelli (demo A alle 11:41) · 11:45 harness · 11:55 orchestrazione (demo B alle 12:00) · <strong>12:05 Claude Design, comunque</strong> (demo C alle 12:09) · 12:15 confronto Figma / Design / <code>/design</code> · 12:22 chiusura · 12:26 domande. Il nav del deck mostra il ritardo rispetto al piano.</dd>
+            <dt>Domande guida</dt><dd>In quale fascia metteresti il modello che usi ogni giorno? Quale dei tre modi di modificare in Claude Design useresti per primo? Cosa deleghi oggi senza verificare?</dd>
+            <dt>Output</dt><dd>Deck pubblicato; glossario dei termini nuovi; le domande senza risposta finiscono nel board «da provare» del pomeriggio.</dd>
+            <dt>Materiali</dt><dd>Deck provato con cronometro; workflow <code>ultracode</code> lanciato alle 11:20 su un repo di Cantiere (demo B); prompt della demo C pronto e crediti Claude Design controllati; screenshot datati di fallback in <code>media/2026-09/</code>; <code>ai-consultants</code> funzionante. Demo A pronta in <a class="src" href="demo-a/index.html">demo-a/</a> (funzione con bug noto, test, <code>run.sh</code>, <code>consult.sh</code>, sequenza minuto per minuto).</dd>
+            <dt>Piano B</dt><dd>Cut list in ordine: demo A → riga «alternative» del confronto Design → gradini per vendor dell'orchestrazione (restano i sei pattern). Design non si taglia.</dd>
+          </dl>
+        </div>
+
+        <div class="panel blk" id="b-retro">
+          <h3><span class="when">14:30–15:30</span> Retro 21 Next <span class="pill">progetto cliente concluso, da confermare</span></h3>
+          <dl class="fields">
+            <dt>Obiettivo</dt><dd>Capire cosa rifare uguale e cosa non rifare, con tre decisioni e un owner ciascuna.</dd>
+            <dt>Format</dt><dd>Timeline del progetto sul muro (milestone, consegne, incidenti) → scrittura silenziosa su tre colonne «fatto / ha funzionato / non ha funzionato» → cluster e voto a punti → discussione dei tre cluster più votati → decisioni.</dd>
+            <dt>Timing</dt><dd>10′ timeline raccontata da chi ha seguito il progetto · 10′ scrittura silenziosa (un post-it per idea) · 15′ cluster e voto (tre punti a testa) · 20′ discussione dei tre cluster più votati (7′ ciascuno, con cronometro) · 5′ decisioni.</dd>
+            <dt>Domande guida</dt><dd>Dove abbiamo perso tempo e perché? Cosa ha sorpreso il cliente in positivo? Cosa avremmo fatto diversamente con gli strumenti di oggi? Cosa del processo non era scritto da nessuna parte?</dd>
+            <dt>Output</dt><dd>Tre decisioni con owner e data; lista «da rifare uguale» e «da non rifare». Trascrizione nella sezione <a class="src" href="#esiti">Esiti</a> o in Basecamp.</dd>
+            <dt>Materiali</dt><dd>Timeline stampata o su board; numeri del progetto (ore, margine, consegne) sotto mano; post-it, pennarelli, bollini per il voto.</dd>
+            <dt>Piano B</dt><dd>Se si sfora: si discute solo il cluster più votato e si rimandano gli altri due ai piani di team del 17.</dd>
+          </dl>
+        </div>
+
+        <div class="panel blk" id="b-casi">
+          <h3><span class="when">16:30–17:30</span> Casi dal campo</h3>
+          <dl class="fields">
+            <dt>Obiettivo</dt><dd>Vedere lavoro vero fatto con l'AI negli ultimi tre mesi, con costo e verifica, per far emergere pattern comuni e attriti.</dd>
+            <dt>Format</dt><dd>Tre o quattro colleghi, scelti e avvisati entro il 14, raccontano in 10′ ciascuno un lavoro reale con una scaletta fissa in cinque punti: <strong>cosa dovevo fare · quale strumento e quale modello · cosa ho verificato e come · quanto è costato (tempo e token) · cosa rifarei diverso</strong>. Matteo tiene i tempi e annota su una board a tre colonne «funziona / attrito / da provare». Ultimi 15–20′: discussione sui pattern comuni.</dd>
+            <dt>Timing</dt><dd>4 × 10′ (o 3 × 12′) · 15–20′ discussione.</dd>
+            <dt>Domande guida</dt><dd>Cosa si ripete in tutti i casi? Dove la verifica è mancata? Quale attrito è nostro (processo, accessi) e quale dello strumento?</dd>
+            <dt>Output</dt><dd>Board «funziona / attrito / da provare» trascritta negli Esiti; le voci «attrito» entrano nei piani di team del 17.</dd>
+            <dt>Materiali</dt><dd>Relatori confermati con la scaletta in cinque punti inviata via messaggio; board pronta con le tre colonne; proiettore per chi vuole mostrare schermate.</dd>
+            <dt>Piano B</dt><dd>Se un relatore manca, Matteo copre lo slot con un caso proprio (per esempio la proposta commerciale generata con la skill interna <code>proposta-commerciale-cc</code>).</dd>
+          </dl>
+        </div>
+
+        <div class="panel blk" id="b-semina">
+          <h3><span class="when">18:00–19:00</span> Semina per Cantiere Futuro</h3>
+          <dl class="fields">
+            <dt>Obiettivo</dt><dd>Arrivare alla mattina del 17 con i temi già raccolti e raggruppati, così il blocco delle 9:30 decide invece di raccogliere.</dd>
+            <dt>Format</dt><dd>Brainstorming silenzioso su post-it per le tre domande del 17, poi clustering fatto insieme, poi un giro finale.</dd>
+            <dt>Timing</dt><dd>3 × 5′ di scrittura silenziosa (come ci organizziamo · come ci raccontiamo · cosa offriamo), un post-it per idea · 25′ clustering a voce, una board per domanda · 10′ giro «una cosa che mi porto a cena» (una frase a testa, senza discussione).</dd>
+            <dt>Domande guida</dt><dd><ul><li><strong>Come ci organizziamo:</strong> chi fa cosa quando l'AI fa una parte del lavoro; chi verifica; quanto budget di strumenti.</li><li><strong>Come ci raccontiamo:</strong> cosa diciamo ai clienti di come lavoriamo; quali prove abbiamo.</li><li><strong>Cosa offriamo:</strong> quali servizi nuovi siamo pronti a vendere, quali da provare, quali no.</li></ul></dd>
+            <dt>Output</dt><dd>Tre board di cluster fotografate e trascritte negli Esiti prima delle 9:30 del 17.</dd>
+            <dt>Materiali</dt><dd>Post-it di tre colori (uno per domanda), pennarelli, tre board (fisiche, o Miro/FigJam se qualcuno è da remoto).</dd>
+            <dt>Piano B</dt><dd>Se il gruppo è stanco: si fa una sola domanda per esteso (cosa offriamo) e le altre due si aprono il 17 mattina con 10′ di scrittura in più.</dd>
+          </dl>
+        </div>
+      </div>
+
+      <!-- ============================================================ 17 -->
+      <div class="day" id="g17">
+        <h2>17 settembre</h2>
+        <div style="overflow-x:auto">
+          <table class="matrix">
+            <thead><tr><th>Ora</th><th>Blocco</th><th>Chi</th></tr></thead>
+            <tbody>
+              <tr><td>9:30–10:45</td><td><a class="src" href="#b-futuro">Cantiere Futuro</a></td><td>tutti</td></tr>
+              <tr><td>10:45–11:00</td><td>Pausa</td><td></td></tr>
+              <tr><td>11:00–12:00</td><td><a class="src" href="#b-geo">Geo Workshop</a></td><td>tutti</td></tr>
+              <tr><td>13:00–14:00</td><td>Pranzo (da confermare)</td><td></td></tr>
+              <tr><td>14:30–15:30</td><td><a class="src" href="#b-lab">Lab di team</a></td><td>marketing · dev, separati</td></tr>
+              <tr><td>15:30–16:30</td><td><a class="src" href="#b-piano">Piano di team</a></td><td>marketing · dev, separati</td></tr>
+              <tr><td>16:30–17:00</td><td><a class="src" href="#b-chiusura">Chiusura plenaria</a> (da confermare)</td><td>tutti</td></tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="panel blk" id="b-futuro">
+          <h3><span class="when">9:30–10:45</span> Cantiere Futuro</h3>
+          <dl class="fields">
+            <dt>Obiettivo</dt><dd>Tre decisioni per ciascuna delle tre domande, ognuna con owner e data.</dd>
+            <dt>Format</dt><dd>Si parte dai cluster della sera prima. Tre round da 22′: lettura dei cluster (5′), discussione (12′), decisione (5′). Ultimi 9′: priorità tra le nove decisioni e conferma degli owner.</dd>
+            <dt>Timing</dt><dd>9:30 come ci organizziamo · 9:52 come ci raccontiamo · 10:14 cosa offriamo · 10:36 priorità e owner.</dd>
+            <dt>Contenuti</dt><dd><ul><li><strong>Come ci organizziamo.</strong> Ruoli con l'AI nel flusso brief → proposta → design → dev → consegna; chi verifica cosa; regola di routing e budget di strumenti; cosa smettiamo di fare a mano.</li><li><strong>Come ci raccontiamo.</strong> Posizionamento: un'agenzia che sa delegare e verificare, non «un'agenzia AI»; prove concrete da mostrare (prototipi in ore, casi dal campo del 16); cosa non promettiamo.</li><li><strong>Cosa offriamo.</strong> Candidati: prototipi navigabili, agenti e automazioni su misura, skill e MCP sui sistemi del cliente, GEO, AI fluency e governance. Per ciascuno: pronto / da provare / no.</li></ul></dd>
+            <dt>Output</dt><dd>Nove decisioni con owner e data; lista servizi con stato. Trascrizione negli Esiti.</dd>
+            <dt>Materiali</dt><dd>Le tre board del 16 sera; un foglio «decisioni» per round con tre righe vuote; cronometro visibile.</dd>
+            <dt>Piano B</dt><dd>Se un round sfora: si chiude con una decisione sola e si passa al successivo; le altre due vanno nel piano di team del pomeriggio.</dd>
+          </dl>
+        </div>
+
+        <div class="panel blk" id="b-geo">
+          <h3><span class="when">11:00–12:00</span> Geo Workshop <span class="pill">GEO = Generative Engine Optimization, da confermare</span></h3>
+          <dl class="fields">
+            <dt>Obiettivo</dt><dd>Capire cosa cambia rispetto alla SEO quando la risposta la scrive un modello, fare un audit dal vivo e abbozzare un'offerta.</dd>
+            <dt>Format</dt><dd>Spiegazione breve, audit dal vivo con la skill <code>seo-geo</code> del plugin <code>claude-seo</code>, lavoro in gruppi, condivisione.</dd>
+            <dt>Timing</dt><dd>10′ cos'è GEO e come cambia rispetto alla SEO (crawler AI, <code>llms.txt</code>, citabilità dei passaggi, segnali di brand, AI Overviews / ChatGPT / Perplexity) · 25′ audit dal vivo del sito di Cantiere e di un sito cliente scelto con il team · 15′ in gruppi: «cosa venderemmo come servizio GEO» (pacchetto, deliverable, prezzo indicativo) · 10′ condivisione.</dd>
+            <dt>Domande guida</dt><dd>Su quali query i nostri clienti vengono citati da un'AI oggi? Cosa manca al loro sito per essere citato? Quale parte del lavoro è nostra e quale dello strumento?</dd>
+            <dt>Output</dt><dd>Checklist GEO di Cantiere; bozza di offerta GEO da rifinire nel pomeriggio marketing.</dd>
+            <dt>Materiali</dt><dd><code>claude-seo</code> funzionante sulla macchina di Matteo, provato il 15 sul sito di Cantiere; un sito cliente scelto con il consenso del team; proiettore.</dd>
+            <dt>Piano B</dt><dd>Se l'audit dal vivo si blocca: report dell'audit del 15 già esportato e proiettato.</dd>
+          </dl>
+        </div>
+
+        <div class="panel blk" id="b-lab">
+          <h3><span class="when">14:30–15:30</span> Lab di team</h3>
+          <div class="grid cols-2">
+            <div class="card flat">
+              <h3>Team marketing</h3>
+              <p>Su un caso cliente reale con brand kit: una persona fa un one-pager o una landing con Claude Design partendo dal design system del cliente; una imposta un report o briefing ricorrente con Cowork (task schedulato); una fa l'audit GEO del cliente. 45′ di lavoro, 15′ di confronto.</p>
+              <p><strong>Output:</strong> tre artefatti reali e la lista di cosa serve per rifarlo su ogni cliente (accessi, brand kit, tempo).</p>
+            </div>
+            <div class="card flat">
+              <h3>Team dev</h3>
+              <p>Su un repo reale di Cantiere: costruire l'harness minimo (CLAUDE.md o AGENTS.md, una skill, un hook di test, un subagent revisore), poi eseguire lo stesso task con due harness (Claude Code e Codex, oppure Antigravity) e confrontare risultato, tempo e costo. Opzionale: un workflow bounded con il pattern «adversarial verification».</p>
+              <p><strong>Output:</strong> template di harness in un repo di Cantiere e tabella di confronto per il piano.</p>
+            </div>
+          </div>
+          <dl class="fields" style="margin-top:14px">
+            <dt>Materiali</dt><dd>Marketing: caso cliente con brand kit, accessi a Claude Design e Cowork. Dev: repo scelto, Codex o Antigravity installati accanto a Claude Code, crediti sufficienti.</dd>
+            <dt>Piano B</dt><dd>Se un lab non parte per accessi mancanti: si fa in coppia sul caso dell'altro team.</dd>
+          </dl>
+        </div>
+
+        <div class="panel blk" id="b-piano">
+          <h3><span class="when">15:30–16:30</span> Piano di team <span class="pill">separati, stesso template</span></h3>
+          <dl class="fields">
+            <dt>Obiettivo</dt><dd>Tradurre Cantiere Futuro e il lab in un piano fino a dicembre.</dd>
+            <dt>Template</dt><dd><pre class="tpl"><code>Team: ______            Owner del piano: ______        Data: 17/09/2026
+
+Tre obiettivi entro dicembre (cosa, misura, owner, prima scadenza)
+1.
+2.
+3.
+
+Cosa smettiamo di fare a mano
+
+Attriti dal 16 (board «attrito») e come li togliamo
+
+Budget richiesto: strumenti, crediti, tempo
+
+Primo check: data e chi lo convoca</code></pre></dd>
+            <dt>Timing</dt><dd>10′ rilettura delle decisioni della mattina e del board «attrito» · 35′ compilazione · 15′ revisione incrociata (una persona dell'altro team legge il piano e fa tre domande).</dd>
+            <dt>Output</dt><dd>Due piani di una pagina trascritti negli Esiti (o in Basecamp).</dd>
+          </dl>
+        </div>
+
+        <div class="panel blk" id="b-chiusura">
+          <h3><span class="when">16:30–17:00</span> Chiusura plenaria <span class="pill">da confermare</span></h3>
+          <p>Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì» (una frase a testa). Si fissa la data del primo check.</p>
+        </div>
+      </div>
+
+      <!-- ============================================================ MATERIALI -->
+      <h2 id="materiali" class="day">Materiali da preparare prima del 16</h2>
+      <ul class="steps" style="color:var(--ink-soft)">
+        <li>Deck delle 11:30 pubblicato e provato con cronometro; le voci <code>check</code> in <code>deck/script.js</code> risolte o tolte la mattina del 16; demo con fallback.</li>
+        <li>Timeline di 21 Next stampata o su board; numeri del progetto (ore, margine).</li>
+        <li>Post-it di tre colori, pennarelli, bollini per il voto, tre board (fisiche o Miro/FigJam).</li>
+        <li>Relatori di «Casi dal campo» confermati entro il 14, scaletta in cinque punti inviata via messaggio; board a tre colonne pronta.</li>
+        <li>Account con crediti per Claude Design e per i modelli di frontiera; workflow <code>ultracode</code> pronto da lanciare alle 11:20; demo A provata il 15 (<a class="src" href="demo-a/index.html">demo-a/</a>).</li>
+        <li><code>claude-seo</code> provato il 15 sul sito di Cantiere; sito cliente scelto.</li>
+        <li>Repo reale per il team dev con Codex o Antigravity installati; caso cliente con brand kit per il marketing.</li>
+        <li><code>programma.md</code> aperto sul portatile di chi conduce, per trascrivere gli esiti.</li>
+      </ul>
+
+      <!-- ============================================================ ESITI -->
+      <h2 id="esiti" class="day">Esiti <span class="pill">da compilare durante le due giornate in <code>programma.md</code></span></h2>
+      <div class="grid cols-3 esiti">
+        <div class="card flat"><h3>Retro 21 Next</h3><ul><li>Decisioni</li><li>Da rifare uguale</li><li>Da non rifare</li></ul></div>
+        <div class="card flat"><h3>Casi dal campo</h3><ul><li>Funziona</li><li>Attrito</li><li>Da provare</li></ul></div>
+        <div class="card flat"><h3>Semina (cluster)</h3><ul><li>Come ci organizziamo</li><li>Come ci raccontiamo</li><li>Cosa offriamo</li></ul></div>
+        <div class="card flat"><h3>Cantiere Futuro (decisioni)</h3><ul><li>Come ci organizziamo</li><li>Come ci raccontiamo</li><li>Cosa offriamo</li></ul></div>
+        <div class="card flat"><h3>Geo Workshop</h3><ul><li>Checklist GEO di Cantiere</li><li>Bozza di offerta</li></ul></div>
+        <div class="card flat"><h3>Piani di team</h3><ul><li>Marketing</li><li>Dev</li></ul></div>
+      </div>
+      <p class="note" style="margin-top:22px">Versione testuale di questa guida: <code>programma.md</code> nella stessa cartella.</p>
+    </section>
+  </main>
+</body>
+</html>

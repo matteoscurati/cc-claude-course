@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Update settembre 2026 · modelli, harness, orchestrazione, Claude Design</title>
+  <meta name="description" content="Sessione di aggiornamento di 60 minuti (16 settembre 2026): la famiglia di modelli USA e Cina, harness oltre Claude Code, orchestrazione multi-agente e Claude Design. Ogni numero con fonte ufficiale e data di verifica." />
+  <link rel="stylesheet" href="../../../site/styles.css" />
+  <link rel="stylesheet" href="local.css" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='42' fill='%23d97757'/></svg>" />
+</head>
+<body>
+
+  <!-- ============================================================ TOPBAR -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="dot"></span>
+      <span>Update settembre 2026 <small>· modelli · harness · orchestrazione · Design</small></span>
+    </div>
+    <div class="spacer"></div>
+    <div class="timer" id="timer" data-target="60" title="Click per avviare / fermare il cronometro (doppio click: azzera)">
+      <span class="t-state"></span>
+      <span class="t-elapsed">00:00</span>
+      <span class="t-target">/ 60:00</span>
+    </div>
+    <a class="iconbtn" href="../../../index.html" title="Home dei materiali" style="text-decoration:none">⌂</a>
+    <button class="iconbtn" id="btn-overview" title="Indice delle sezioni (O)">☰</button>
+    <button class="iconbtn" id="btn-notes" title="Note del relatore (N)">🗒</button>
+    <button class="iconbtn" id="btn-mode" title="Modalità scorrimento / presentazione (S)">⤓</button>
+    <button class="iconbtn" id="btn-theme" title="Tema chiaro / scuro (T)">◐</button>
+  </header>
+
+  <div class="progress"><i id="progressbar"></i></div>
+
+  <!-- ============================================================ DECK -->
+  <main class="deck" id="deck">
+
+    <!-- ===================================================== 0 · APERTURA -->
+    <section class="slide" data-title="Apertura · tre mesi di cambiamenti" data-time="3 min" data-start="11:30"
+      data-notes="Tutti hanno visto la lezione di giugno: niente basi. Annuncia l'ora di fine fissa (12:30) e che alle 12:05 si passa a Design comunque. Fai scorrere la timeline: da giugno sono usciti più di dieci modelli di frontiera e cinque harness nuovi. Il punto della sessione non è la lista, è il modo di leggerla: quattro fasce di prezzo, l'effort come leva, l'harness come cornice, l'orchestrazione come regola di routing. Navigazione come l'altra volta: frecce, O indice, N note.">
+      <div class="cover">
+        <span class="eyebrow">Formazione interna · 16 settembre 2026 · 11:30–12:30</span>
+        <h1>Tre mesi dopo:<br /><em>la logica è la stessa</em>,<br />cambia il fornitore.</h1>
+        <p class="sub">Cosa è cambiato da giugno in modelli, harness, orchestrazione e design, letto con quattro regole che valgono per Anthropic, OpenAI, Google, xAI e per i laboratori cinesi.</p>
+        <div class="meta-row">
+          <span class="pill clay">4 fasce di prezzo</span>
+          <span class="pill">effort come leva</span>
+          <span class="pill">harness: 8 ingredienti</span>
+          <span class="pill">orchestrazione: chi giudica, chi esegue</span>
+          <span class="pill sage">Claude Design</span>
+        </div>
+        <div class="hint">
+          <span>→ <kbd>←</kbd> <kbd>→</kbd> per navigare · <kbd>1</kbd>–<kbd>7</kbd> vai alla sezione</span>
+          <span>→ <kbd>O</kbd> indice · <kbd>N</kbd> note · <kbd>T</kbd> tema · <kbd>S</kbd> scorri tutto</span>
+          <span>→ ogni numero ha fonte ufficiale e data di verifica</span>
+        </div>
+      </div>
+
+      <div class="widget" id="w-timeline">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Giugno → settembre 2026, tutti i vendor</span>
+          <span class="w-hint">clicca una tappa · scorri in orizzontale</span>
+        </div>
+        <div class="timeline" id="timeline"></div>
+        <div class="dpanel card flat" id="timeline-panel"></div>
+      </div>
+    </section>
+
+    <!-- ===================================================== 1 · MODELLI -->
+    <section class="slide" data-title="Modelli: la mappa USA + Cina" data-time="12 min" data-start="11:33"
+      data-notes="Messaggio: quattro fasce di prezzo, le stesse per tutti. Frontiera ≈ 10/50 dollari per milione di token (Fable 5.1, GPT-6 Astra); alta ≈ 4-5/20-25 (Opus 5, Sol, Kimi K3); media ≈ 2/10-12 (Sonnet 5, Terra, Gemini 3.1 Pro, GLM-5.3); economica sotto 1 dollaro (Haiku, Luna, Gemini Flash, DeepSeek Flash, MiniMax M3, Qwen3.8 27B). I modelli cinesi open weight stanno in alta/media/economica e fissano il pavimento del prezzo. Poi l'effort: è la leva vera, il modello grande a effort basso spesso batte il piccolo a effort alto. Si paga per task completato, non per token. Saga Fable 5 in 30 secondi: uscito il 9 giugno, sospeso il 12, tornato il 1 luglio con usage credits: la frontiera non garantisce disponibilità, serve un piano B su un altro vendor. Demo A, 3 minuti cronometrati, dal terminale in demo-a: node --test per mostrare i due test rossi; cat prompt.txt; ./run.sh opus low e la lasci girare; nel frattempo la tabella del giorno prima con gli altri due giri; a due minuti torni al terminale e leggi tempo, costo ed esito; frase: prima abbassi l'effort, poi cambi modello, si paga il task finito. Se non finisce in tempo, commenti la tabella di ieri e vai avanti.">
+      <span class="kicker"><span class="num">01</span> · Modelli · <span class="time">12 min · 11:33</span></span>
+      <h1 class="slide-title">Quattro fasce, molti fornitori</h1>
+      <p class="lead">Non serve ricordare i nomi. Serve riconoscere la <strong>fascia</strong> di prezzo e capacità, poi scegliere l'<strong>effort</strong>. Le fasce si ripetono identiche tra i vendor USA; i laboratori cinesi, con i pesi aperti, fissano il pavimento del prezzo.</p>
+
+      <div class="widget" id="w-tiers">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">La scala dei modelli, settembre 2026</span>
+          <span class="w-hint">prezzi reali per milione di token, input / output · clicca un modello</span>
+        </div>
+        <div class="tiers" id="tiers"></div>
+        <div class="legend" id="tiers-legend"></div>
+        <div class="dpanel card flat" id="tier-panel"></div>
+        <p class="verified" id="tiers-verified"></p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Regola 1</span>
+          <div class="term">Si paga per task completato, non per token</div>
+          <p>Un modello economico che riprova tre volte costa più di uno caro che chiude al primo colpo. Il prezzo per token è il punto di partenza; il costo per task finito è la misura che conta.</p>
+        </div>
+        <div class="def">
+          <span class="deftag">Regola 2</span>
+          <div class="term">L'effort è la leva, non solo il modello</div>
+          <p>I modelli di frontiera espongono livelli di effort (low → max) su Anthropic e OpenAI. «A effort low o medium Fable 5.1 ottiene risultati simili o migliori di Fable 5 a un costo molto più basso»: prima abbassa l'effort del modello grande, poi pensa a cambiare modello.</p>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/claude-fable-and-mythos-5-1" target="_blank" rel="noopener">Anthropic — Fable 5.1</a> <a class="src" href="https://developers.openai.com/api/docs/models/gpt-6-astra" target="_blank" rel="noopener">OpenAI — GPT-6 Astra</a></div>
+        </div>
+      </div>
+
+      <div class="widget" id="w-effort">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">La leva dell'effort</span>
+          <span class="w-hint">stesso modello, stessa domanda: cambia quanto «pensa»</span>
+        </div>
+        <div class="effort-row">
+          <div>
+            <input type="range" id="effort" min="0" max="4" step="1" value="2" />
+            <div class="effort-marks"><span>low</span><span>medium</span><span>high</span><span>xhigh</span><span>max</span></div>
+          </div>
+          <div class="effort-out">
+            <div class="stat"><div class="big" id="ef-tokens">×1</div><div class="lbl">token di ragionamento</div></div>
+            <div class="stat"><div class="big" id="ef-time">×1</div><div class="lbl">tempo di risposta</div></div>
+            <div class="stat"><div class="big" id="ef-fit">—</div><div class="lbl">adatto a</div></div>
+          </div>
+        </div>
+        <p class="note" id="ef-note"></p>
+      </div>
+
+      <div class="callout warn">
+        <span class="c-ico">⚠️</span>
+        <div><strong>La frontiera non garantisce disponibilità.</strong> Fable 5 è uscito il 9 giugno, l'accesso è stato sospeso il 12 giugno dopo un bypass delle protezioni ed è tornato il 1 luglio con usage credits. GPT-6 Astra è partito in rollout limitato. Lezione: tieni un piano B su un altro vendor per ogni fascia.
+        <div class="src-row"><a class="src" href="https://www.anthropic.com/news/redeploying-fable-5" target="_blank" rel="noopener">Anthropic — Redeploying Fable 5</a> <a class="src" href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">OpenAI — GPT-6 Astra</a></div></div>
+      </div>
+
+      <div class="card flat">
+        <h3>🎬 Demo A · 3 minuti · modello e effort</h3>
+        <p>Stesso prompt («trova il bug in questa funzione») su una fascia media e su una di frontiera, a due effort diversi: si guardano tempo e costo. Materiali e sequenza minuto per minuto in <a class="src" href="../demo-a/index.html">demo-a</a>: <code>run.sh</code> lancia lo stesso prompt su modelli e effort diversi e produce una tabella con tempo, costo ed esito; <code>consult.sh</code> manda la domanda in parallelo a più vendor con <code>ai-consultants</code>. Fallback: la tabella del giorno prima e due screenshot datati.</p>
+      </div>
+    </section>
+
+    <!-- ===================================================== 2 · HARNESS -->
+    <section class="slide" data-title="Harness: la cornice intorno al modello" data-time="10 min" data-start="11:45"
+      data-notes="Definizione in una frase: l'harness è tutto ciò che sta intorno al modello e decide cosa vede, cosa può fare e come viene verificato. Il modello conta, l'harness conta moltissimo. Otto ingredienti: file di istruzioni, skills, hooks, subagent, MCP, sandbox e permessi, memoria, orchestrazione. Fai vedere la matrice: tutti i vendor sono convergiti sugli stessi mattoni. Le differenze vere sono tre: quanto è dura la sandbox, se la memoria persiste tra le sessioni, se il modello è agnostico o proprietario. Callout dal post di Anthropic sui task lunghi: contesto fresco, progress file, self-verification. Ponte: quando l'harness coordina più agenti si chiama orchestrazione.">
+      <span class="kicker"><span class="num">02</span> · Harness · <span class="time">10 min · 11:45</span></span>
+      <h1 class="slide-title">Il modello conta, l'harness moltissimo</h1>
+      <p class="lead">L'<strong>harness</strong> è ciò che sta intorno al modello: cosa vede, cosa può fare, come viene verificato. Quello di default di Claude Code è fatto per il coding; «per ogni altro task lo costruisci», e tutti i vendor lo costruiscono con gli stessi otto mattoni.</p>
+
+      <div class="def">
+        <span class="deftag">Definizione</span>
+        <div class="term">Harness</div>
+        <p>La struttura di orchestrazione con cui un agente affronta un task: istruzioni persistenti, strumenti, permessi, memoria e verifica. Con i workflow dinamici «Claude è abbastanza intelligente da scrivere un harness su misura per il tuo caso d'uso» invece di orchestrare turno per turno.</p>
+        <div class="src-row"><a class="src" href="https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code" target="_blank" rel="noopener">A harness for every task</a> <a class="src" href="https://claude.com/blog/how-claude-code-works-in-large-codebases-best-practices-and-where-to-start" target="_blank" rel="noopener">Claude Code in large codebases</a></div>
+      </div>
+
+      <div class="widget" id="w-harness">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Otto ingredienti × sei harness</span>
+          <span class="w-hint">clicca una cella per il nome nativo · clicca l'intestazione per la scheda</span>
+        </div>
+        <div class="table-scroll"><table class="hm" id="hm"></table></div>
+        <div class="dpanel card flat" id="hm-panel"></div>
+        <p class="verified" id="hm-verified"></p>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="card flat">
+          <h3>🧱 Stessi mattoni</h3>
+          <p>CLAUDE.md o AGENTS.md, skills, hooks, subagent, MCP: ormai li trovi in Claude Code, Codex, Antigravity e Grok Build. La competenza si trasferisce da un harness all'altro.</p>
+        </div>
+        <div class="card flat">
+          <h3>🔀 Differenze vere</h3>
+          <p><strong>Sandbox</strong> (isolamento a livello di sistema operativo in Codex), <strong>memoria persistente</strong> (Hermes, Grok Bot), <strong>modello agnostico</strong> (Hermes, Grok Build) o proprietario (Claude Code, Codex, Antigravity).</p>
+        </div>
+        <div class="card flat">
+          <h3>⏱️ Task lunghi</h3>
+          <p>«Ogni nuova sessione inizia senza memoria di ciò che è successo prima»: serve un progress file letto all'avvio, una lista di feature con stato, e self-verification prima di dichiarare finito.</p>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/engineering/effective-harnesses-for-long-running-agents" target="_blank" rel="noopener">Effective harnesses for long-running agents</a></div>
+        </div>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">🎯</span>
+        <div><strong>Per Cantiere.</strong> L'harness è dove sta il valore che costruiamo per i clienti: istruzioni, skill, hook e connettori sui loro sistemi. Il modello sotto si può cambiare; l'harness resta nostro.</div>
+      </div>
+    </section>
+
+    <!-- ===================================================== 3 · ORCHESTRAZIONE -->
+    <section class="slide" data-title="Orchestrazione: quando un agente non basta" data-time="10 min" data-start="11:55"
+      data-notes="Scala a tre gradini: subagent (worker isolato che torna un riassunto), team (più sessioni con contesto proprio che si parlano), workflow (uno script che lancia decine o centinaia di agenti in background). Fai vedere che ogni vendor ha i suoi equivalenti. Poi i sei pattern del Workflow tool e le tre patologie che curano: pigrizia agentica, preferenza per il proprio output, deriva dall'obiettivo. Regola di routing di Cantiere detta ad alta voce: il forte pianifica e giudica, l'economico esegue, il revisore è dimensionato al lavoro, l'output delegato non è fatto finché non è verificato. Demo B: il workflow lanciato alle 11:20, mostrato in /workflows con risultato e costo. Nulla dal vivo. Chiudi sul costo: solo per task di alto valore.">
+      <span class="kicker"><span class="num">03</span> · Orchestrazione · <span class="time">10 min · 11:55</span></span>
+      <h1 class="slide-title">Chi giudica, chi esegue</h1>
+      <p class="lead">Quando un agente solo non basta, la regola è la stessa ovunque: <strong>il modello forte pianifica e giudica</strong>, quello economico esegue, il revisore è dimensionato al lavoro, e l'output delegato non è fatto finché non è verificato.</p>
+
+      <div class="widget" id="w-orch">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Tre gradini, per ogni vendor</span>
+          <span class="w-hint">subagent → team → workflow · clicca una cella</span>
+        </div>
+        <div class="orch-grid" id="orch"></div>
+        <div class="dpanel card flat" id="orch-panel"></div>
+      </div>
+
+      <div class="widget" id="w-patterns">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">I sei pattern del Workflow tool</span>
+          <span class="w-hint">clicca un pattern · quale patologia cura</span>
+        </div>
+        <div class="fourd" id="pat-grid" style="grid-template-columns:repeat(3,1fr)"></div>
+        <div class="dpanel card flat" id="pat-panel"></div>
+        <p class="note">Sei pattern e tre patologie (agentic laziness, self-preferential bias, goal drift) descritti da Anthropic. Fonte: <a class="src" href="https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code" target="_blank" rel="noopener">A harness for every task</a> · <a class="src" href="https://claude.com/blog/introducing-dynamic-workflows-in-claude-code" target="_blank" rel="noopener">Introducing dynamic workflows</a></p>
+      </div>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">La regola di Cantiere</span>
+          <div class="term">Routing per fascia, non per marca</div>
+          <ul style="margin:8px 0 0;padding-left:18px;color:var(--ink-soft);font-size:.94rem">
+            <li>il modello di <strong>frontiera</strong> pianifica e giudica: si paga il giudizio due volte, prima e dopo;</li>
+            <li>la fascia <strong>media/economica</strong> esegue il lavoro chiaro, meccanico o ad alto volume;</li>
+            <li>il <strong>revisore</strong> è almeno capace quanto chi ha scritto il diff, non di più per abitudine;</li>
+            <li>un output delegato è <strong>non verificato finché non lo leggi</strong> o lo riproduci;</li>
+            <li>il costo è un pareggio, non un criterio: intelligenza &gt; gusto &gt; costo per ciò che va in produzione.</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h3>🎬 Demo B · 4 minuti · un workflow vero</h3>
+          <p>Lanciato alle 11:20 su un repo di Cantiere (review di un diff su tre dimensioni, ogni finding verificato da un secondo agente): si apre <code>/workflows</code> e si guardano risultato, durata e costo. Nulla parte dal vivo. Fallback: il termine qui sotto.</p>
+          <div class="term-mock" id="ultra-term"></div>
+          <div class="chips" style="margin-top:10px">
+            <button class="btn small" id="ultra-step">▶ Mostra lo script</button>
+            <button class="btn ghost small" id="ultra-reset">reset</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="callout warn">
+        <span class="c-ico">⚠️</span>
+        <div><strong>Orchestrare costa.</strong> Gli agent team «usano molti più token di una sessione singola» e i workflow dinamici «possono consumare sostanzialmente più token»: si usano per task di alto valore, con parallelismo vero, non per il lavoro di tutti i giorni.
+        <div class="src-row"><a class="src" href="https://code.claude.com/docs/en/agent-teams" target="_blank" rel="noopener">Claude Code — Agent teams</a> <a class="src" href="https://claude.com/blog/introducing-dynamic-workflows-in-claude-code" target="_blank" rel="noopener">Introducing dynamic workflows</a></div></div>
+      </div>
+    </section>
+
+    <!-- ===================================================== 4 · CLAUDE DESIGN -->
+    <section class="slide" data-title="Claude Design · cos'è e come si lavora" data-time="10 min" data-start="12:05"
+      data-notes="Checkpoint: qui si arriva alle 12:05 comunque. Claude Design è un prodotto Anthropic Labs uscito il 17 aprile, in beta su Pro, Max, Team ed Enterprise, e consuma gli stessi limiti d'uso di chat, Code e Cowork: prima della demo controlla i crediti. Anatomia: chat a sinistra, canvas a destra. Tre cose da far vedere: gli input (screenshot, documenti, catture web, e soprattutto il design system del repo via /design-sync), i tre modi di modificare (chat per cambi larghi, commento inline sull'elemento, editing diretto con drag e slider), gli output (PPTX, PDF, HTML, zip, link con permessi, handoff a Claude Code). Widget stepper prima, poi demo C di 5 minuti cronometrati con il prompt pronto. Non è «fammi un'immagine»: è un artefatto iterabile che parte dal design system e finisce nel codice.">
+      <span class="kicker"><span class="num">04</span> · Claude Design · <span class="time">10 min · 12:05</span></span>
+      <h1 class="slide-title">Claude Design: un canvas, non un'immagine</h1>
+      <p class="lead">Un prodotto Anthropic Labs per creare e iterare lavoro visuale: prototipi, mockup, deck, landing, one-pager. Parte dal <strong>tuo design system</strong>, si modifica parlando, commentando o trascinando, e finisce nel codice.</p>
+
+      <div class="grid cols-2">
+        <div class="def">
+          <span class="deftag">Cos'è</span>
+          <div class="term">Claude Design</div>
+          <p>Lanciato da Anthropic Labs il 17 aprile 2026. In beta su Pro, Max, Team ed Enterprise (per Enterprise va attivato dall'amministratore). «Conta sugli stessi limiti d'uso del resto di Claude»: nessuna quota separata. Interfaccia: chat a sinistra, canvas a destra.</p>
+          <div class="src-row"><a class="src" href="https://www.anthropic.com/news/claude-design-anthropic-labs" target="_blank" rel="noopener">Introducing Claude Design</a> <a class="src" href="https://support.claude.com/en/articles/14604416-get-started-with-claude-design" target="_blank" rel="noopener">Get started with Claude Design</a></div>
+        </div>
+        <div class="def">
+          <span class="deftag">Il punto</span>
+          <div class="term">Dal design system al codice</div>
+          <p>Con <code>/design-sync</code> importi componenti da GitHub, da file di design o dal codebase locale: Claude costruisce con i componenti veri, non con template. Alla fine il lavoro passa a Claude Code, in locale o sul web, per l'implementazione.</p>
+          <div class="src-row"><a class="src" href="https://claude.com/product/design" target="_blank" rel="noopener">Claude Design — prodotto</a></div>
+        </div>
+      </div>
+
+      <div class="grid cols-3">
+        <div class="card flat">
+          <h3>📥 Input</h3>
+          <ul style="margin:6px 0 0;padding-left:18px;color:var(--ink-soft);font-size:.92rem">
+            <li>screenshot, asset esistenti, riferimenti;</li>
+            <li>DOCX, PPTX, XLSX;</li>
+            <li>catture web;</li>
+            <li>repo GitHub, design system, codebase locale.</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h3>✏️ Tre modi di modificare</h3>
+          <ul style="margin:6px 0 0;padding-left:18px;color:var(--ink-soft);font-size:.92rem">
+            <li><strong>chat</strong> per i cambi larghi («schema colori più scuro»);</li>
+            <li><strong>commento inline</strong> sull'elemento («più padding a questo bottone»);</li>
+            <li><strong>editing diretto</strong>: drag, resize, allinea; più gli <strong>slider</strong> che Claude crea per spaziature e colori.</li>
+          </ul>
+        </div>
+        <div class="card flat">
+          <h3>📤 Output</h3>
+          <ul style="margin:6px 0 0;padding-left:18px;color:var(--ink-soft);font-size:.92rem">
+            <li>prototipi interattivi condivisibili, wireframe, mockup;</li>
+            <li>PPTX, PDF, HTML, zip;</li>
+            <li>Adobe, Canva, Gamma, Miro, Vercel, Wix, Lovable, Replit, Base44;</li>
+            <li>link con permessi view / comment / edit; handoff a Claude Code.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="widget" id="w-design">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Un progetto in sei passi</span>
+          <span class="w-hint">avanza: brief → import → genera → itera → esporta → handoff</span>
+        </div>
+        <div class="loop-row" id="ds-steps"></div>
+        <div class="canvas-mock">
+          <div class="chat" id="ds-chat"></div>
+          <div class="canvas"><div class="art empty" id="ds-art">il canvas è vuoto</div></div>
+        </div>
+        <div class="chips" style="margin-top:12px">
+          <button class="btn small" id="ds-next">▶ Passo successivo</button>
+          <button class="btn ghost small" id="ds-reset">reset</button>
+          <span class="w-hint" id="ds-progress"></span>
+        </div>
+        <p class="note">Mock illustrativo del flusso; nomi dei comandi e delle voci di menu dal help center (aggiornato 6 agosto 2026). Fonte: <a class="src" href="https://support.claude.com/en/articles/14604416-get-started-with-claude-design" target="_blank" rel="noopener">Get started with Claude Design</a></p>
+      </div>
+
+      <div class="card flat">
+        <h3>🎬 Demo C · 5 minuti · dal brief al PDF</h3>
+        <p>Prompt pronto: «one-pager A4 di questa sessione, con i componenti del repo sincronizzato». Un commento inline, uno slider, export PDF, bottone di handoff a Claude Code. Fallback: tre screenshot datati. Controllare i crediti prima di partire.</p>
+      </div>
+    </section>
+
+    <!-- ===================================================== 5 · CONFRONTO -->
+    <section class="slide" data-title="Design · Figma, Claude Design, /design e le alternative" data-time="7 min" data-start="12:15"
+      data-notes="Tono onesto con i designer: Figma resta la source of truth dove servono precisione al pixel, libreria condivisa e multiplayer, e con il suo MCP server gli agenti leggono e scrivono nei file. Claude Design è per esplorare e per i deliverable rapidi, con il design system importato. La skill design in Claude Code è un canvas nel repo, early preview: serve al dev per un prototipo contestuale al codice. Le alternative fanno la stessa cosa con un altro modello: Figma Make, Google Stitch (Gemini, DESIGN.md, export in Antigravity). Fai cambiare il profilo: la colonna consigliata cambia. Chiudi: tre mestieri, tre strumenti, e cosa cambia nell'offerta di Cantiere.">
+      <span class="kicker"><span class="num">05</span> · Design: chi fa cosa · <span class="time">7 min · 12:15</span></span>
+      <h1 class="slide-title">Figma, Claude Design, <code>/design</code></h1>
+      <p class="lead">Tre mestieri: <strong>precisione</strong> e libreria condivisa (Figma), <strong>esplorazione</strong> e deliverable rapido (Claude Design), <strong>prototipo dentro il repo</strong> (skill <code>design</code> in Claude Code). Le alternative degli altri vendor fanno la stessa cosa con un altro modello.</p>
+
+      <div class="widget" id="w-cmp">
+        <div class="widget-head">
+          <span class="try">Interattivo</span>
+          <span class="w-title">Chi fa cosa, per profilo</span>
+          <span class="w-hint">scegli il profilo: evidenzia la colonna consigliata</span>
+        </div>
+        <div class="seg" id="cmp-profile">
+          <button data-p="designer" class="on">🎨 Designer</button>
+          <button data-p="dev">👩‍💻 Dev</button>
+          <button data-p="pm">🧑‍💼 PM / marketing</button>
+        </div>
+        <div class="table-scroll"><table class="matrix cmp" id="cmp-table"></table></div>
+        <p class="note">Fonti: <a class="src" href="https://help.figma.com/hc/en-us/articles/32132100833559-Guide-to-the-Figma-MCP-server" target="_blank" rel="noopener">Figma MCP server</a> · <a class="src" href="https://claude.com/product/design" target="_blank" rel="noopener">Claude Design</a> · <a class="src" href="https://www.figma.com/make/" target="_blank" rel="noopener">Figma Make</a> · <a class="src" href="https://blog.google/innovation-and-ai/models-and-research/google-labs/stitch-updates/" target="_blank" rel="noopener">Google Stitch</a></p>
+      </div>
+
+      <div class="callout tip">
+        <span class="c-ico">🤝</span>
+        <div><strong>Figma resta la source of truth.</strong> Claude Design non la sostituisce dove servono precisione e libreria condivisa: la affianca per esplorare in fretta e produrre deliverable, e via MCP gli agenti leggono e scrivono nei file Figma. Per Cantiere: prototipi navigabili in ore, non giorni, e un handoff al codice che non passa da un ridisegno.</div>
+      </div>
+    </section>
+
+    <!-- ===================================================== 6 · CHIUSURA -->
+    <section class="slide" data-title="Chiusura · per Cantiere · glossario · fonti" data-time="4 min" data-start="12:22"
+      data-notes="Quattro cose da portare a casa e una regola: cambia il mestiere, non lo strumento. Scegliere fascia più effort, costruire l'harness, verificare ciò che si delega, restare vendor-neutral. Glossario solo dei termini nuovi, bibliografia con data di verifica. Domande fino alle 12:30, poi pranzo. Ricorda che il pomeriggio alle 14:30 c'è la retro di 21 Next.">
+      <span class="kicker"><span class="num">06</span> · In sintesi · <span class="time">4 min · 12:22</span></span>
+      <h1 class="slide-title">Cambia il mestiere, non lo strumento</h1>
+      <div class="grid cols-2">
+        <div class="card"><h3>1 · Fascia, poi effort</h3><p>Quattro fasce uguali per tutti i vendor. Scegli la fascia dal task, abbassa l'effort prima di cambiare modello, conta il costo per task finito.</p></div>
+        <div class="card"><h3>2 · L'harness è nostro</h3><p>Otto mattoni identici ovunque. Il modello sotto si cambia; istruzioni, skill, hook e connettori sui sistemi del cliente restano il nostro valore.</p></div>
+        <div class="card"><h3>3 · Chi giudica, chi esegue</h3><p>Il forte pianifica e giudica, l'economico esegue, il revisore è dimensionato al lavoro. Nulla di delegato è fatto finché non è verificato.</p></div>
+        <div class="card"><h3>4 · Design iterabile</h3><p>Figma per la precisione, Claude Design per esplorare e consegnare, <code>/design</code> nel repo. Il prototipo navigabile diventa un deliverable standard.</p></div>
+      </div>
+      <div class="callout tip" style="margin-top:18px"><span class="c-ico">🎯</span><div><strong>5 · Vendor-neutral per scelta.</strong> La frontiera si sospende, i prezzi cambiano ogni mese, i pesi aperti cinesi abbassano il pavimento: ragioniamo per fasce e per harness, non per marca.</div></div>
+
+      <h2 id="glossario">Glossario dei termini nuovi</h2>
+      <div class="gloss">
+        <input class="g-search" type="text" id="gloss-search" placeholder="🔎 Cerca un termine…" />
+        <div id="gloss-list"></div>
+      </div>
+
+      <h2 id="fonti">Fonti</h2>
+      <p class="lead" style="font-size:1rem">Solo siti ufficiali dei vendor o Hugging Face per i pesi aperti. Le voci segnate <span class="chk">check</span> hanno un dato letto da fonti terze, da confermare la mattina del 16.</p>
+      <div class="biblio" id="biblio"></div>
+      <p class="note" style="margin-top:18px">Criteri e verifiche in <code>research/certified-sources.md</code>, sezione «Aggiornamento settembre 2026». <span id="biblio-verified"></span></p>
+    </section>
+
+  </main>
+
+  <!-- ============================================================ DECK NAV -->
+  <nav class="deck-nav" id="decknav">
+    <button class="navbtn" id="nav-prev">← Indietro</button>
+    <span class="here">Sezione <b id="nav-cur">1</b> / <span id="nav-total">7</span> · <b id="nav-name">Apertura</b></span>
+    <span class="plan" id="nav-plan"></span>
+    <div class="spacer"></div>
+    <div class="dots" id="dots"></div>
+    <div class="spacer"></div>
+    <button class="navbtn" id="nav-next">Avanti →</button>
+  </nav>
+
+  <aside class="notes" id="notes">
+    <h4>Note del relatore</h4>
+    <div id="notes-body"></div>
+  </aside>
+
+  <div class="overview" id="overview">
+    <div class="ov-grid" id="ov-grid"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
