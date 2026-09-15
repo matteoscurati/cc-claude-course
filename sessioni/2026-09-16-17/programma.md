@@ -4,9 +4,9 @@ Conduce tutti i blocchi: Matteo. Questa guida è prescrittiva su format e tempi 
 
 Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla root del repo con `python3 -m http.server 8000` → `http://localhost:8000/sessioni/2026-09-16-17/deck/`).
 
-**Assunzioni da confermare** (segnate «da confermare» nei blocchi): «21 Next» è un progetto cliente concluso; «Geo Workshop» è Generative Engine Optimization, cioè la visibilità nelle risposte generate da AI Overviews, ChatGPT, Perplexity (coerente con il plugin `claude-seo` già installato); il pranzo del 17 è alle 13:00 come il 16; i pomeriggi del 17 finiscono alle 17:00 con una plenaria di chiusura; il blocco 15:30–16:30 del 16 non era in scaletta ed è trattato come pausa lunga.
+**Assunzioni da confermare** (segnate «da confermare» nei blocchi): «21 Next» è un progetto cliente concluso; il pranzo del 17 è alle 13:00 come il 16; i pomeriggi del 17 finiscono alle 17:00 con una plenaria di chiusura; il blocco 15:30–16:30 del 16 non era in scaletta ed è trattato come pausa lunga.
 
-**Filo delle due giornate.** 16 = capire e confrontarsi (novità → cosa è successo davvero su un progetto → casi reali dei colleghi → semina per domani). 17 = decidere (Cantiere Futuro → GEO come primo servizio nuovo → piani di team).
+**Filo delle due giornate.** 16 = capire e confrontarsi (novità → cosa è successo davvero su un progetto → casi reali dei colleghi → semina per domani). 17 = decidere (Cantiere Futuro → Geo Workshop con il consulente → piani di team).
 
 **Formato di ogni blocco:** obiettivo · format · timing · domande guida · output e dove finisce · materiali da preparare · piano B se si sfora.
 
@@ -28,23 +28,23 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 ### 11:00–11:30 · Introduzione (Francesco)
 
-Non è un blocco di Matteo. Da concordare con Francesco entro il 15: la regola dei tempi (ogni blocco finisce all'ora scritta, le domande si fanno dentro il blocco), il passaggio di consegne alle 11:30 e l'annuncio che il deck resta online dopo la sessione.
+Blocco di Francesco: non è coperto da questa guida.
 
 ### 11:30–12:30 · Update: modelli, harness, orchestrazione, Claude Design
 
 **Obiettivo.** Aggiornare la mappa mentale di giugno con una regola sola: la logica è la stessa, cambia il fornitore.
 
-**Format.** Deck interattivo in sette sezioni con tre demo dal vivo. Scaletta, minuti e note del relatore sono nel deck (tasto `N`) e in `research/lesson-structure-2026-09.md`.
+**Format.** Deck interattivo in sette sezioni con due demo dal vivo (orchestrazione e Claude Design); la sezione Modelli è solo teorica. Scaletta, minuti e note del relatore sono nel deck (tasto `N`) e in `research/lesson-structure-2026-09.md`.
 
-**Timing.** 11:30 apertura · 11:33 modelli (demo A alle 11:41) · 11:45 harness · 11:55 orchestrazione (demo B alle 12:00) · **12:05 Claude Design, comunque** (demo C alle 12:09) · 12:15 confronto Figma / Design / `/design` · 12:22 chiusura · 12:26 domande. Il nav del deck mostra il ritardo rispetto al piano.
+**Timing.** 11:30 apertura · 11:33 modelli · 11:45 harness · 11:55 orchestrazione (demo B alle 12:00) · **12:05 Claude Design, comunque** (demo C alle 12:09) · 12:15 confronto Figma / Design / `/design` · 12:22 chiusura · 12:26 domande. Il nav del deck mostra il ritardo rispetto al piano.
 
 **Domande guida per il pubblico.** In quale fascia metteresti il modello che usi ogni giorno? Quale dei tre modi di modificare in Claude Design useresti per primo? Cosa deleghi oggi senza verificare?
 
 **Output.** Deck pubblicato; glossario dei termini nuovi; le domande senza risposta finiscono nel board «da provare» del pomeriggio.
 
-**Materiali.** Deck provato con cronometro; workflow `ultracode` lanciato alle 11:20 su un repo di Cantiere (demo B); prompt della demo C pronto e crediti Claude Design controllati; screenshot datati di fallback in `media/2026-09/`; `ai-consultants` funzionante per la variante della demo A. Materiali della demo A pronti in [`demo-a/`](demo-a/index.html) (funzione con bug noto, test, `run.sh` per il confronto modello/effort, `consult.sh` per la variante multi-vendor).
+**Materiali.** Deck provato con cronometro; workflow `ultracode` lanciato alle 11:20 su un repo di Cantiere (demo B); prompt della demo C pronto e crediti Claude Design controllati; screenshot datati di fallback in `media/2026-09/`.
 
-**Piano B.** Cut list in ordine: demo A → riga «alternative» del confronto Design → gradini per vendor dell'orchestrazione (restano i sei pattern). Design non si taglia.
+**Piano B.** Cut list in ordine: widget dell'effort → riga «alternative» del confronto Design → gradini per vendor dell'orchestrazione (restano i sei pattern). Design non si taglia.
 
 ### 14:30–15:30 · Retro 21 Next (progetto cliente concluso, da confermare)
 
@@ -102,7 +102,7 @@ Non è un blocco di Matteo. Da concordare con Francesco entro il 15: la regola d
 |---|---|---|
 | 9:30–10:45 | Cantiere Futuro | tutti |
 | 10:45–11:00 | Pausa | |
-| 11:00–12:00 | Geo Workshop | tutti |
+| 11:00–12:00 | Geo Workshop | consulente esterno |
 | 13:00–14:00 | Pranzo (da confermare) | |
 | 14:30–15:30 | Lab di team | marketing · dev, separati |
 | 15:30–16:30 | Piano di team | marketing · dev, separati |
@@ -127,25 +127,13 @@ Non è un blocco di Matteo. Da concordare con Francesco entro il 15: la regola d
 
 **Piano B.** Se un round sfora: si chiude con una decisione sola e si passa al successivo; le altre due vanno nel piano di team del pomeriggio.
 
-### 11:00–12:00 · Geo Workshop (GEO = Generative Engine Optimization, da confermare)
+### 11:00–12:00 · Geo Workshop
 
-**Obiettivo.** Capire cosa cambia rispetto alla SEO quando la risposta la scrive un modello, fare un audit dal vivo e abbozzare un'offerta.
-
-**Format.** Spiegazione breve, audit dal vivo con la skill `seo-geo` del plugin `claude-seo`, lavoro in gruppi, condivisione.
-
-**Timing.** 10′ cos'è GEO e come cambia rispetto alla SEO (crawler AI, `llms.txt`, citabilità dei passaggi, segnali di brand, AI Overviews / ChatGPT / Perplexity) · 25′ audit dal vivo del sito di Cantiere e di un sito cliente scelto con il team · 15′ in gruppi: «cosa venderemmo come servizio GEO» (pacchetto, deliverable, prezzo indicativo) · 10′ condivisione.
-
-**Domande guida.** Su quali query i nostri clienti vengono citati da un'AI oggi? Cosa manca al loro sito per essere citato? Quale parte del lavoro è nostra e quale dello strumento?
-
-**Output.** Checklist GEO di Cantiere; bozza di offerta GEO da rifinire nel pomeriggio marketing.
-
-**Materiali.** `claude-seo` funzionante sulla macchina di Matteo, provato il 15 sul sito di Cantiere; un sito cliente scelto con il consenso del team; proiettore.
-
-**Piano B.** Se l'audit dal vivo si blocca: report dell'audit del 15 già esportato e proiettato.
+Condotto da un consulente esterno: non è coperto da questa guida.
 
 ### 14:30–15:30 · Lab di team
 
-**Team marketing.** Su un caso cliente reale con brand kit: una persona fa un one-pager o una landing con Claude Design partendo dal design system del cliente; una imposta un report o briefing ricorrente con Cowork (task schedulato); una fa l'audit GEO del cliente. 45′ di lavoro, 15′ di confronto. Output: tre artefatti reali e la lista di cosa serve per rifarlo su ogni cliente (accessi, brand kit, tempo).
+**Team marketing.** Su un caso cliente reale con brand kit: una persona fa un one-pager o una landing con Claude Design partendo dal design system del cliente; una imposta un report o briefing ricorrente con Cowork (task schedulato); una prova sul cliente quanto emerso dal Geo Workshop della mattina. 45′ di lavoro, 15′ di confronto. Output: tre artefatti reali e la lista di cosa serve per rifarlo su ogni cliente (accessi, brand kit, tempo).
 
 **Team dev.** Su un repo reale di Cantiere: costruire l'harness minimo (CLAUDE.md o AGENTS.md, una skill, un hook di test, un subagent revisore), poi eseguire lo stesso task con due harness (Claude Code e Codex, oppure Antigravity) e confrontare risultato, tempo e costo. Opzionale: un workflow bounded con il pattern «adversarial verification». Output: template di harness in un repo di Cantiere e tabella di confronto per il piano.
 
@@ -193,7 +181,6 @@ Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì»
 - Post-it di tre colori, pennarelli, bollini per il voto, tre board (fisiche o Miro/FigJam).
 - Relatori di «Casi dal campo» confermati entro il 14, scaletta in cinque punti inviata via messaggio; board a tre colonne pronta.
 - Account con crediti per Claude Design e per i modelli di frontiera; workflow `ultracode` pronto da lanciare alle 11:20.
-- `claude-seo` provato il 15 sul sito di Cantiere; sito cliente scelto.
 - Repo reale per il team dev con Codex o Antigravity installati; caso cliente con brand kit per il marketing.
 - Questo file aperto sul portatile di chi conduce, per trascrivere gli esiti.
 
@@ -218,10 +205,6 @@ Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì»
 - Come ci organizziamo:
 - Come ci raccontiamo:
 - Cosa offriamo:
-
-### Geo Workshop
-- Checklist GEO di Cantiere:
-- Bozza di offerta:
 
 ### Piani di team
 - Marketing:

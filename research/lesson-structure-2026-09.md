@@ -51,7 +51,7 @@ Concetti:
 
 Widget: `tierLadder` (fasce × vendor, prezzi reali, click su un modello → scheda), `effortLever` (slider low → max).
 
-Demo A (3 minuti): stesso prompt su due fasce e due effort, con tempo e costo. Variante: lo stesso prompt in parallelo a piu' vendor con `ai-consultants`.
+Nessuna demo: sezione solo teorica, il tempo va ai due widget.
 
 Frase chiave:
 
@@ -143,4 +143,4 @@ Buffer e domande: 4 minuti (12:26).
 
 ## Piano di taglio se si sfora
 
-In ordine: demo A → riga «alternative» del confronto Design → gradini per vendor di `orchLadder` (restano i pattern). Design non si taglia.
+In ordine: widget dell'effort → riga «alternative» del confronto Design → gradini per vendor di `orchLadder` (restano i pattern). Design non si taglia.

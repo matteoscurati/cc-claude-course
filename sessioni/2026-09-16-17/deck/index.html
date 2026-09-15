@@ -37,7 +37,7 @@
 
     <!-- ===================================================== 0 · APERTURA -->
     <section class="slide" data-title="Apertura · tre mesi di cambiamenti" data-time="3 min" data-start="11:30"
-      data-notes="Tutti hanno visto la lezione di giugno: niente basi. Annuncia l'ora di fine fissa (12:30) e che alle 12:05 si passa a Design comunque. Fai scorrere la timeline: da giugno sono usciti più di dieci modelli di frontiera e cinque harness nuovi. Il punto della sessione non è la lista, è il modo di leggerla: quattro fasce di prezzo, l'effort come leva, l'harness come cornice, l'orchestrazione come regola di routing. Navigazione come l'altra volta: frecce, O indice, N note.">
+      data-notes="Tutti hanno visto la lezione di giugno: niente basi. Annuncia l'ora di fine fissa (12:30) e che alle 12:05 si passa a Design comunque. Due demo dal vivo: orchestrazione e Claude Design. Fai scorrere la timeline: da giugno sono usciti più di dieci modelli di frontiera e cinque harness nuovi. Il punto della sessione non è la lista, è il modo di leggerla: quattro fasce di prezzo, l'effort come leva, l'harness come cornice, l'orchestrazione come regola di routing. Navigazione come l'altra volta: frecce, O indice, N note.">
       <div class="cover">
         <span class="eyebrow">Formazione interna · 16 settembre 2026 · 11:30–12:30</span>
         <h1>Tre mesi dopo:<br /><em>la logica è la stessa</em>,<br />cambia il fornitore.</h1>
@@ -69,7 +69,7 @@
 
     <!-- ===================================================== 1 · MODELLI -->
     <section class="slide" data-title="Modelli: la mappa USA + Cina" data-time="12 min" data-start="11:33"
-      data-notes="Messaggio: quattro fasce di prezzo, le stesse per tutti. Frontiera ≈ 10/50 dollari per milione di token (Fable 5.1, GPT-6 Astra); alta ≈ 4-5/20-25 (Opus 5, Sol, Kimi K3); media ≈ 2/10-12 (Sonnet 5, Terra, Gemini 3.1 Pro, GLM-5.3); economica sotto 1 dollaro (Haiku, Luna, Gemini Flash, DeepSeek Flash, MiniMax M3, Qwen3.8 27B). I modelli cinesi open weight stanno in alta/media/economica e fissano il pavimento del prezzo. Poi l'effort: è la leva vera, il modello grande a effort basso spesso batte il piccolo a effort alto. Si paga per task completato, non per token. Saga Fable 5 in 30 secondi: uscito il 9 giugno, sospeso il 12, tornato il 1 luglio con usage credits: la frontiera non garantisce disponibilità, serve un piano B su un altro vendor. Demo A, 3 minuti cronometrati, dal terminale in demo-a: node --test per mostrare i due test rossi; cat prompt.txt; ./run.sh opus low e la lasci girare; nel frattempo la tabella del giorno prima con gli altri due giri; a due minuti torni al terminale e leggi tempo, costo ed esito; frase: prima abbassi l'effort, poi cambi modello, si paga il task finito. Se non finisce in tempo, commenti la tabella di ieri e vai avanti.">
+      data-notes="Messaggio: quattro fasce di prezzo, le stesse per tutti. Frontiera ≈ 10/50 dollari per milione di token (Fable 5.1, GPT-6 Astra); alta ≈ 4-5/20-25 (Opus 5, Sol, Kimi K3); media ≈ 2/10-12 (Sonnet 5, Terra, Gemini 3.1 Pro, GLM-5.3); economica sotto 1 dollaro (Haiku, Luna, Gemini Flash, DeepSeek Flash, MiniMax M3, Qwen3.8 27B). I modelli cinesi open weight stanno in alta/media/economica e fissano il pavimento del prezzo. Poi l'effort: è la leva vera, il modello grande a effort basso spesso batte il piccolo a effort alto. Si paga per task completato, non per token. Saga Fable 5 in 30 secondi: uscito il 9 giugno, sospeso il 12, tornato il 1 luglio con usage credits: la frontiera non garantisce disponibilità, serve un piano B su un altro vendor. Niente demo in questa sezione: il tempo va ai due widget, la scala e la leva dell'effort; chiudi con la frase «prima abbassi l'effort, poi cambi modello, si paga il task finito» e passa avanti.">
       <span class="kicker"><span class="num">01</span> · Modelli · <span class="time">12 min · 11:33</span></span>
       <h1 class="slide-title">Quattro fasce, molti fornitori</h1>
       <p class="lead">Non serve ricordare i nomi. Serve riconoscere la <strong>fascia</strong> di prezzo e capacità, poi scegliere l'<strong>effort</strong>. Le fasce si ripetono identiche tra i vendor USA; i laboratori cinesi, con i pesi aperti, fissano il pavimento del prezzo.</p>
@@ -126,10 +126,6 @@
         <div class="src-row"><a class="src" href="https://www.anthropic.com/news/redeploying-fable-5" target="_blank" rel="noopener">Anthropic — Redeploying Fable 5</a> <a class="src" href="https://openai.com/index/gpt-6-astra/" target="_blank" rel="noopener">OpenAI — GPT-6 Astra</a></div></div>
       </div>
 
-      <div class="card flat">
-        <h3>🎬 Demo A · 3 minuti · modello e effort</h3>
-        <p>Stesso prompt («trova il bug in questa funzione») su una fascia media e su una di frontiera, a due effort diversi: si guardano tempo e costo. Materiali e sequenza minuto per minuto in <a class="src" href="../demo-a/index.html">demo-a</a>: <code>run.sh</code> lancia lo stesso prompt su modelli e effort diversi e produce una tabella con tempo, costo ed esito; <code>consult.sh</code> manda la domanda in parallelo a più vendor con <code>ai-consultants</code>. Fallback: la tabella del giorno prima e due screenshot datati.</p>
-      </div>
     </section>
 
     <!-- ===================================================== 2 · HARNESS -->
