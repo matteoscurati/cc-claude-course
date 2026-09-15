@@ -64,17 +64,17 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 
 **Obiettivo.** Far parlare tutti, non tre relatori: come ognuno usa l'AI oggi nel proprio lavoro, cosa funziona, cosa non funziona, quali problemi e quali idee. Serve a vedere il quadro reale del team, non i casi migliori.
 
-**Format.** Giro completo del team con una scaletta fissa in quattro punti, 4′ a testa con cronometro: **cosa faccio con l'AI nel mio lavoro · cosa funziona · cosa non funziona o mi blocca · un'idea che vorrei provare**. Chi vuole mostra una schermata. Matteo annota su una board a quattro colonne «funziona / non funziona / problemi / idee». Poi si raggruppano le voci e si discutono i tre temi più ricorrenti.
+**Format.** Giro completo del team con una scaletta fissa in quattro punti: **cosa faccio con l'AI nel mio lavoro · cosa funziona · cosa non funziona o mi blocca · un'idea che vorrei provare**. Chi vuole mostra una schermata. Matteo annota su una board a quattro colonne «funziona / non funziona / problemi / idee». Poi si raggruppano le voci e si discutono i tre temi più ricorrenti.
 
-**Timing.** 16:00 regole e board (5′) · 16:05 giro di tutti, 4′ a testa (fino a 14 persone: 55′) · 17:00 raggruppamento e discussione dei tre temi più ricorrenti (25′) · 17:25 chiusura: cosa portiamo a Cantiere Futuro (5′).
+**Timing.** 16:00 regole e board (5′) · 16:05 giro di tutti (55′) · 17:00 raggruppamento e discussione dei tre temi più ricorrenti (25′) · 17:25 chiusura: cosa portiamo a Cantiere Futuro (5′).
 
 **Domande guida.** Cosa si ripete in quasi tutti i racconti? Dove la verifica manca? Quali problemi sono nostri (processo, accessi, tempo) e quali dello strumento? Quali idee si possono provare senza chiedere nulla a nessuno?
 
 **Output.** Board a quattro colonne trascritta negli Esiti; i tre temi ricorrenti e le idee «da provare» entrano nella semina delle 18:00 e nei piani di team del 17.
 
-**Materiali.** Scaletta in quattro punti inviata a tutti via messaggio il 15, così nessuno arriva impreparato; board con le quattro colonne; cronometro visibile; proiettore per chi vuole mostrare schermate; ordine del giro deciso prima (per team, non per gerarchia).
+**Materiali.** Scaletta in quattro punti inviata a tutti via messaggio il 15, così nessuno arriva impreparato; board con le quattro colonne; proiettore per chi vuole mostrare schermate; ordine del giro deciso prima (per team, non per gerarchia).
 
-**Piano B.** Se il team è più numeroso: 3′ a testa. Se qualcuno non vuole parlare: scrive i quattro punti su post-it e Matteo li legge. Se si sfora: si taglia la discussione a un solo tema, gli altri due passano alla semina delle 18:00.
+**Piano B.** Se qualcuno non vuole parlare: scrive i quattro punti su post-it e Matteo li legge. Se si sfora: si taglia la discussione a un solo tema, gli altri due passano alla semina delle 18:00.
 
 ### 18:00–19:00 · Semina per Cantiere Futuro
 
