@@ -4,9 +4,9 @@ Conduce tutti i blocchi: Matteo. Questa guida è prescrittiva su format e tempi 
 
 Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla root del repo con `python3 -m http.server 8000` → `http://localhost:8000/sessioni/2026-09-16-17/deck/`).
 
-**Assunzioni da confermare** (segnate «da confermare» nei blocchi): «21 Next» è un progetto cliente concluso; il pranzo del 17 è alle 13:00 come il 16; i pomeriggi del 17 finiscono alle 17:00 con una plenaria di chiusura; il blocco 15:30–16:30 del 16 non era in scaletta ed è trattato come pausa lunga.
+**Assunzioni da confermare** (segnate «da confermare» nei blocchi): «21 Next» è un progetto cliente concluso; i pomeriggi del 17 finiscono alle 17:00 con una plenaria di chiusura.
 
-**Filo delle due giornate.** 16 = capire e confrontarsi (novità → cosa è successo davvero su un progetto → casi reali dei colleghi → semina per domani). 17 = decidere (Cantiere Futuro → Geo Workshop con il consulente → piani di team).
+**Filo delle due giornate.** 16 = capire e confrontarsi (novità → cosa è successo davvero su un progetto → come ognuno usa l'AI, cosa funziona e cosa no → semina per domani). 17 = decidere (Cantiere Futuro → Geo Workshop con il consulente → piani di team).
 
 **Formato di ogni blocco:** obiettivo · format · timing · domande guida · output e dove finisce · materiali da preparare · piano B se si sfora.
 
@@ -18,10 +18,10 @@ Deck della sessione delle 11:30 del 16: [`deck/`](deck/index.html) (aprire dalla
 |---|---|---|
 | 11:00–11:30 | Introduzione | Francesco |
 | 11:30–12:30 | Update: modelli, harness, orchestrazione, Claude Design | tutti |
-| 13:00–14:00 | Pranzo | |
-| 14:30–15:30 | Retro 21 Next | tutti |
-| 15:30–16:30 | Pausa lunga (da confermare) | |
-| 16:30–17:30 | Casi dal campo | tutti |
+| 13:00–14:30 | Pranzo | |
+| 14:30–15:00 | Ripresa | |
+| 15:00–16:00 | Retro 21 Next | tutti |
+| 16:00–17:30 | Casi dal campo: come usiamo l'AI, cosa funziona e cosa no | tutti |
 | 17:30–18:00 | Pausa | |
 | 18:00–19:00 | Semina per Cantiere Futuro | tutti |
 | 20:00–23:00 | Cena | |
@@ -46,7 +46,7 @@ Blocco di Francesco: non è coperto da questa guida.
 
 **Piano B.** Cut list in ordine: widget dell'effort → riga «alternative» del confronto Design → gradini per vendor dell'orchestrazione (restano i sei pattern). Design non si taglia.
 
-### 14:30–15:30 · Retro 21 Next (progetto cliente concluso, da confermare)
+### 15:00–16:00 · Retro 21 Next (progetto cliente concluso, da confermare)
 
 **Obiettivo.** Capire cosa rifare uguale e cosa non rifare, con tre decisioni e un owner ciascuna.
 
@@ -60,23 +60,23 @@ Blocco di Francesco: non è coperto da questa guida.
 
 **Materiali.** Timeline stampata o su board; numeri del progetto (ore, margine, consegne) sotto mano; post-it, pennarelli, bollini per il voto.
 
-**Piano B.** Se si sfora: si discute solo il cluster più votato e si rimandano gli altri due ai piani di team del 17.
+**Piano B.** Se si sfora: si discute solo il cluster più votato e si rimandano gli altri due ai piani di team del 17. Fine tassativa alle 16:00: dopo c'è il giro di tutto il team.
 
-### 16:30–17:30 · Casi dal campo
+### 16:00–17:30 · Casi dal campo: come usiamo l'AI, cosa funziona e cosa no
 
-**Obiettivo.** Vedere lavoro vero fatto con l'AI negli ultimi tre mesi, con costo e verifica, per far emergere pattern comuni e attriti.
+**Obiettivo.** Far parlare tutti, non tre relatori: come ognuno usa l'AI oggi nel proprio lavoro, cosa funziona, cosa non funziona, quali problemi e quali idee. Serve a vedere il quadro reale del team, non i casi migliori.
 
-**Format.** Tre o quattro colleghi, scelti e avvisati entro il 14, raccontano in 10′ ciascuno un lavoro reale con una scaletta fissa in cinque punti: cosa dovevo fare · quale strumento e quale modello · cosa ho verificato e come · quanto è costato (tempo e token) · cosa rifarei diverso. Matteo tiene i tempi e annota su una board a tre colonne «funziona / attrito / da provare». Ultimi 15–20′: discussione sui pattern comuni.
+**Format.** Giro completo del team con una scaletta fissa in quattro punti, 4′ a testa con cronometro: **cosa faccio con l'AI nel mio lavoro · cosa funziona · cosa non funziona o mi blocca · un'idea che vorrei provare**. Chi vuole mostra una schermata. Matteo annota su una board a quattro colonne «funziona / non funziona / problemi / idee». Poi si raggruppano le voci e si discutono i tre temi più ricorrenti.
 
-**Timing.** 4 × 10′ (o 3 × 12′) · 15–20′ discussione.
+**Timing.** 16:00 regole e board (5′) · 16:05 giro di tutti, 4′ a testa (fino a 14 persone: 55′) · 17:00 raggruppamento e discussione dei tre temi più ricorrenti (25′) · 17:25 chiusura: cosa portiamo a Cantiere Futuro (5′).
 
-**Domande guida per la discussione.** Cosa si ripete in tutti i casi? Dove la verifica è mancata? Quale attrito è nostro (processo, accessi) e quale dello strumento?
+**Domande guida.** Cosa si ripete in quasi tutti i racconti? Dove la verifica manca? Quali problemi sono nostri (processo, accessi, tempo) e quali dello strumento? Quali idee si possono provare senza chiedere nulla a nessuno?
 
-**Output.** Board «funziona / attrito / da provare» trascritta qui sotto; le voci «attrito» entrano nei piani di team del 17.
+**Output.** Board a quattro colonne trascritta negli Esiti; i tre temi ricorrenti e le idee «da provare» entrano nella semina delle 18:00 e nei piani di team del 17.
 
-**Materiali.** Relatori confermati con la scaletta in cinque punti inviata via messaggio; board pronta con le tre colonne; proiettore per chi vuole mostrare schermate.
+**Materiali.** Scaletta in quattro punti inviata a tutti via messaggio il 15, così nessuno arriva impreparato; board con le quattro colonne; cronometro visibile; proiettore per chi vuole mostrare schermate; ordine del giro deciso prima (per team, non per gerarchia).
 
-**Piano B.** Se un relatore manca, Matteo copre lo slot con un caso proprio (per esempio la proposta commerciale generata con la skill interna `proposta-commerciale-cc`).
+**Piano B.** Se il team è più numeroso: 3′ a testa. Se qualcuno non vuole parlare: scrive i quattro punti su post-it e Matteo li legge. Se si sfora: si taglia la discussione a un solo tema, gli altri due passano alla semina delle 18:00.
 
 ### 18:00–19:00 · Semina per Cantiere Futuro
 
@@ -103,7 +103,8 @@ Blocco di Francesco: non è coperto da questa guida.
 | 9:30–10:45 | Cantiere Futuro | tutti |
 | 10:45–11:00 | Pausa | |
 | 11:00–12:00 | Geo Workshop | consulente esterno |
-| 13:00–14:00 | Pranzo (da confermare) | |
+| 12:30–14:00 | Pranzo | |
+| 14:00–14:30 | Ripresa | |
 | 14:30–15:30 | Lab di team | marketing · dev, separati |
 | 15:30–16:30 | Piano di team | marketing · dev, separati |
 | 16:30–17:00 | Chiusura plenaria (da confermare) | tutti |
@@ -157,14 +158,14 @@ Tre obiettivi entro dicembre (cosa, misura, owner, prima scadenza)
 
 Cosa smettiamo di fare a mano
 
-Attriti dal 16 (board «attrito») e come li togliamo
+Problemi dal 16 (board «non funziona / problemi») e come li togliamo; idee da provare
 
 Budget richiesto: strumenti, crediti, tempo
 
 Primo check: data e chi lo convoca
 ```
 
-**Timing.** 10′ rilettura delle decisioni della mattina e del board «attrito» · 35′ compilazione · 15′ revisione incrociata (una persona dell'altro team legge il piano e fa tre domande).
+**Timing.** 10′ rilettura delle decisioni della mattina e della board del 16 · 35′ compilazione · 15′ revisione incrociata (una persona dell'altro team legge il piano e fa tre domande).
 
 **Output.** Due piani di una pagina trascritti qui sotto (o in Basecamp).
 
@@ -179,7 +180,7 @@ Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì»
 - Deck delle 11:30 pubblicato e provato con cronometro; le voci `check` in `deck/script.js` risolte o tolte la mattina del 16; demo con fallback.
 - Timeline di 21 Next stampata o su board; numeri del progetto (ore, margine).
 - Post-it di tre colori, pennarelli, bollini per il voto, tre board (fisiche o Miro/FigJam).
-- Relatori di «Casi dal campo» confermati entro il 14, scaletta in cinque punti inviata via messaggio; board a tre colonne pronta.
+- Scaletta in quattro punti di «Casi dal campo» inviata a tutti il 15; board a quattro colonne pronta; ordine del giro deciso.
 - Account con crediti per Claude Design e per i modelli di frontiera; workflow `ultracode` pronto da lanciare alle 11:20.
 - Repo reale per il team dev con Codex o Antigravity installati; caso cliente con brand kit per il marketing.
 - Questo file aperto sul portatile di chi conduce, per trascrivere gli esiti.
@@ -193,8 +194,10 @@ Ogni team presenta il piano in 5′; giro finale «una cosa che faccio lunedì»
 
 ### Casi dal campo
 - Funziona:
-- Attrito:
-- Da provare:
+- Non funziona:
+- Problemi:
+- Idee:
+- Tre temi ricorrenti:
 
 ### Semina per Cantiere Futuro (cluster)
 - Come ci organizziamo:
